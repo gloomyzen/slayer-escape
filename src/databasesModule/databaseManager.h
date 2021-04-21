@@ -14,6 +14,7 @@ namespace mb::databasesModule {
         enum class eDatabaseList {
             CHARACTER_DB = 0,
             TILES_DB,
+            MAPS_DB,
         };
         databaseManager();
         ~databaseManager() override;

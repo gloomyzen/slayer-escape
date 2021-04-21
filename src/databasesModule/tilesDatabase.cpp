@@ -1,7 +1,6 @@
 #include "tilesDatabase.h"
 #include "common/debugModule/logManager.h"
 #include "common/utilityModule/stringUtility.h"
-#include <string>
 #include <map>
 
 using namespace mb::databasesModule;

@@ -1,0 +1,37 @@
+#ifndef SLAYER_ESCAPE_MAPSDATABASE_H
+#define SLAYER_ESCAPE_MAPSDATABASE_H
+
+#include "cocos2d.h"
+#include "common/databaseModule/databaseInterface.h"
+#include "rapidjson/document.h"
+#include "rapidjson/ostreamwrapper.h"
+#include <map>
+#include <string>
+#include <vector>
+
+namespace mb::databasesModule {
+
+    struct sMapData {
+        int id;
+        std::vector<int> fill;
+        int width;
+        int height;
+        int free;
+        bool load(const rapidjson::GenericValue<rapidjson::UTF8<char>>::ConstObject&);
+    };
+
+    class mapsDatabase : public common::databaseModule::databaseInterface {
+      public:
+        mapsDatabase();
+        ~mapsDatabase();
+        void load(const rapidjson::Document&) override;
+        const std::map<int, sMapData*>& getMaps() { return mapsDb; }
+        sMapData* getMapById(int);
+
+      private:
+        std::map<int, sMapData*> mapsDb;
+    };
+}// namespace mb::databasesModule
+
+
+#endif// SLAYER_ESCAPE_MAPSDATABASE_H

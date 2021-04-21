@@ -11,6 +11,7 @@
 #include "common/databaseModule/databaseInterface.h"
 #include "databasesModule/charactersDatabase.h"
 #include "databasesModule/tilesDatabase.h"
+#include "databasesModule/mapsDatabase.h"
 #include "databasesModule/databaseManager.h"
 // all scenes
 #include "battleModule/battleScene.h"
@@ -103,6 +104,9 @@ bool AppDelegate::applicationDidFinishLaunching() {
     GET_DATABASE_MANAGER().addDatabase(databaseManager::eDatabaseList::TILES_DB,
                                        "properties/database/tiles/db.json",
                                        new tilesDatabase());
+    GET_DATABASE_MANAGER().addDatabase(databaseManager::eDatabaseList::MAPS_DB,
+                                       "properties/database/maps/db.json",
+                                       new mapsDatabase());
 	GET_DATABASE_MANAGER().executeLoadData();
 	// register external node types
 	mb::interfaceModule::customNodeTypes::registerAllCustomNodes();
