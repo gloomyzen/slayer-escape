@@ -1,0 +1,10 @@
+{
+  "type": "node",
+  "name": "sky",
+  "child": [
+    {
+      "type": "sprite",
+      "name": "skySprite"
+    }
+  ]
+}

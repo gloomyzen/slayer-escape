@@ -1,0 +1,30 @@
+{
+  "type": "layer",
+  "name": "battleScene",
+  "child": [
+    {
+      "type": "scrollView",
+      "name": "scrollContainer",
+      "child": [
+        {
+          "type": "layer",
+          "name": "world"
+        }
+      ]
+    },
+    {
+      "type": "layer",
+      "name": "uiLayer",
+      "child": [
+        {
+          "type": "battleIncomeWidget",
+          "name": "incomeGoldWidget"
+        },
+        {
+          "type": "battleIncomeWidget",
+          "name": "incomeTrophiesWidget"
+        }
+      ]
+    }
+  ]
+}

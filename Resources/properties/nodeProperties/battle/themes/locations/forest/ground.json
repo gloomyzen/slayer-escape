@@ -1,0 +1,72 @@
+{
+  "ground": {
+    "transformComponent": {
+      "rotation3d": [-35, 0, 0],
+      "position": [-800, 58, 76]
+    }
+  },
+  "unitHolder": {
+    "transformComponent": {
+      "rotation3d": [35, 0, 0],
+      "position": [0, -20, -20]
+    }
+  },
+  "floor": {
+    "transformComponent": {
+      "position": [0, 0],
+      "anchor": [ 0.0, 0.0 ]
+    },
+    "spriteComponent": {
+      "image": "images/battle/themes/location_1/ground.png"
+    }
+  },
+  "floor2": {
+    "transformComponent": {
+      "position": [1313, 0],
+      "anchor": [ 0.0, 0.0 ]
+    },
+    "spriteComponent": {
+      "image": "images/battle/themes/location_1/ground.png"
+    }
+  },
+  "floor3": {
+    "transformComponent": {
+      "position": [2627, 0],
+      "anchor": [ 0.0, 0.0 ]
+    },
+    "spriteComponent": {
+      "image": "images/battle/themes/location_1/ground.png"
+    }
+  },
+  "floorGlass": {
+    "transformComponent": {
+      "position": [0, 412],
+      "rotation3d": [35, 0, 0],
+      "anchor": [ 0.0, 0.0 ]
+    },
+    "spriteComponent": {
+      "image": "images/battle/themes/location_1/groundGrass1.png"
+    }
+  },
+  "floorGlass2": {
+    "transformComponent": {
+      "position": [0, 412],
+      "rotation3d": [35, 0, 0],
+      "anchor": [ 0.0, 0.0 ]
+    },
+    "spriteComponent": {
+      "image": "images/battle/themes/location_1/groundGrass1.png"
+    }
+  },
+  "floorGlass3": {
+    "transformComponent": {
+      "position": [0, 412],
+      "rotation3d": [35, 0, 0],
+      "anchor": [ 0.0, 0.0 ]
+    },
+    "spriteComponent": {
+      "image": "images/battle/themes/location_1/groundGrass1.png"
+    }
+  }
+
+}

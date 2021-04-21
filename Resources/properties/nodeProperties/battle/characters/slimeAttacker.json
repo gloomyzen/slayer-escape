@@ -1,0 +1,15 @@
+{
+  "bones": {
+    "transformComponent": {
+      "anchor": [ 0.5, 0.5 ],
+      "pivot": [ 0.5, 0.5 ],
+      "scale": 0.5
+    },
+    "dragonbonesComponent": {
+      "name": "SlimeAttacker",
+      "texFile": "images/characters/slimeAttacker/anim/spine_tex.json",
+      "skeFile": "images/characters/slimeAttacker/anim/spine_ske.json",
+      "animation": "idle"
+    }
+  }
+}

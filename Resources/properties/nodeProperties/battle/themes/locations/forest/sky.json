@@ -1,0 +1,11 @@
+{
+  "skySprite": {
+    "transformComponent": {
+      "position": [-300, -200],
+      "anchor": [ 0.0, 0.0 ]
+    },
+    "spriteComponent": {
+      "image": "images/battle/themes/location_1/sky.png"
+    }
+  }
+}

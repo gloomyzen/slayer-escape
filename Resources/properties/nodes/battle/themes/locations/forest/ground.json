@@ -1,0 +1,36 @@
+{
+  "type": "node",
+  "name": "ground",
+  "child": [
+    {
+      "type": "sprite",
+      "name": "floor",
+      "child": [
+        {
+          "type": "sprite",
+          "name": "floorGlass"
+        }
+      ]
+    },
+    {
+      "type": "sprite",
+      "name": "floor2",
+      "child": [
+        {
+          "type": "sprite",
+          "name": "floorGlass2"
+        }
+      ]
+    },
+    {
+      "type": "sprite",
+      "name": "floor3",
+      "child": [
+        {
+          "type": "sprite",
+          "name": "floorGlass3"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "type": "node",
+  "name": "1stPlan",
+  "child": [
+    {
+      "type": "sprite",
+      "name": "line1"
+    },
+    {
+      "type": "sprite",
+      "name": "line2"
+    },
+    {
+      "type": "sprite",
+      "name": "line3"
+    }
+  ]
+}

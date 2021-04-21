@@ -1,0 +1,16 @@
+{
+  "type": "node",
+  "name": "cardProgressBar",
+  "child": [
+    {
+      "type": "scale9sprite",
+      "name": "bg",
+      "child": [
+        {
+          "type": "scale9sprite",
+          "name": "progressBar"
+        }
+      ]
+    }
+  ]
+}

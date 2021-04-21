@@ -1,0 +1,14 @@
+{
+  "type": "sprite",
+  "name": "battleIncomeWidget",
+  "child": [
+    {
+      "type": "sprite",
+      "name": "icon"
+    },
+    {
+      "type": "label",
+      "name": "label"
+    }
+  ]
+}

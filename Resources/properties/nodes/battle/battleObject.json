@@ -1,0 +1,10 @@
+{
+  "type": "node3d",
+  "name": "battleObject",
+  "child": [
+    {
+      "type": "node",
+      "name": "objectHolder"
+    }
+  ]
+}

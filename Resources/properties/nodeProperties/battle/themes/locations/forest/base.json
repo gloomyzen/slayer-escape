@@ -1,0 +1,46 @@
+{
+  "base": {
+    "transformComponent": {
+      "position": [800, 20, -20],
+      "size": [1820, 340]
+    }
+  },
+  "anim": {
+    "transformComponent": {
+      "pivot": [ 0.5, 0.5 ],
+      "anchor": [ 0.5, 0.5 ]
+    },
+    "dragonbonesComponent": {
+      "name": "SlimeBasic",
+      "texFile": "images/characters/slimeBasic/anim/bones_tex.json",
+      "skeFile": "images/characters/slimeBasic/anim/bones_ske.json",
+      "animation": "idle"
+    }
+  },
+  "anim2": {
+    "transformComponent": {
+      "pivot": [ 0.5, 0.5 ],
+      "anchor": [ 0.5, 0.5 ]
+    },
+    "dragonbonesComponent": {
+      "name": "SlimeDefender",
+      "texFile": "images/characters/slimeDefender/anim/spine_tex.json",
+      "skeFile": "images/characters/slimeDefender/anim/spine_ske.json",
+      "animation": "idle"
+    }
+  },
+  "unit1": {
+    "transformComponent": {
+      "size": [100, 10],
+      "rotation3d": [35, 0, 0],
+      "position": [85, 118]
+    }
+  },
+  "unit2": {
+    "transformComponent": {
+      "size": [100, 10],
+      "rotation3d": [35, 0, 0],
+      "position": [779, 131]
+    }
+  }
+}
