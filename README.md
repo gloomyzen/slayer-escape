@@ -1,9 +1,9 @@
-![Linux Tests](https://github.com/gloomyzen/cocos-mercenary-battles/workflows/Linux%20Tests/badge.svg?branch=master)
-# Mercenary Battles
+![Linux Tests](https://github.com/gloomyzen/slayer-escape/workflows/Linux%20Tests/badge.svg?branch=master)
+# Slayer Escape
 
 #### Project submodules structure:
 
-- (root) [Current game project](https://github.com/gloomyzen/cocos-mercenary-battles)
+- (root) [Current game project](https://github.com/gloomyzen/slayer-escape)
 - (src/common) [Common modules for all games](https://github.com/gloomyzen/cocos2d-common)
 - (cocos2d) [Modified core](https://github.com/gloomyzen/cocos2d)
 - (lib/dragonbones) [dragonBones for cocos2d v4](https://github.com/gloomyzen/cocos2d-dragonbones)
@@ -11,8 +11,8 @@
 
 #### First of all, be sure to clone all submodules:
 ```bash
-git clone --recurse-submodules git@github.com:gloomyzen/cocos-mercenary-battles.git cocos-mercenary-battles 
-cd cocos-mercenary-battles
+git clone --recurse-submodules git@github.com:gloomyzen/slayer-escape.git slayer-escape 
+cd slayer-escape
 ```
 
 #### Install cocos2d v4:

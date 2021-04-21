@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.6)
 
-set(APP_NAME mercenary-battles)
+set(APP_NAME slayer-escape)
 
 project(${APP_NAME})
 
