@@ -1,11 +1,11 @@
 {
   "tiles": {
     "30001": {
-      "propertyPath": "todo properties/nodeProperties/battle/characters/simpleHero",
+      "propertyPath": "properties/nodeProperties/battle/tiles/ground",
       "type": "ground"
     },
     "30002": {
-      "propertyPath": "todo properties/nodeProperties/battle/characters/simpleHero",
+      "propertyPath": "properties/nodeProperties/battle/tiles/wall",
       "type": "wall"
     }
   }
