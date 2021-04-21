@@ -14,17 +14,7 @@
     },
     {
       "type": "layer",
-      "name": "uiLayer",
-      "child": [
-        {
-          "type": "battleIncomeWidget",
-          "name": "incomeGoldWidget"
-        },
-        {
-          "type": "battleIncomeWidget",
-          "name": "incomeTrophiesWidget"
-        }
-      ]
+      "name": "uiLayer"
     }
   ]
 }

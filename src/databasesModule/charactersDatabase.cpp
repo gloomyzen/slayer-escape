@@ -1,5 +1,4 @@
 #include "charactersDatabase.h"
-#include "common/coreModule/resources/resourceManager.h"
 #include "common/debugModule/logManager.h"
 #include "common/utilityModule/stringUtility.h"
 
@@ -13,6 +12,7 @@ charactersDatabase::~charactersDatabase() {
         db = nullptr;
     }
 }
+
 void charactersDatabase::load(const rapidjson::Document& json) {
     if (getPath().empty()) {
         LOG_ERROR("charactersDatabase::load: path is empty!");
