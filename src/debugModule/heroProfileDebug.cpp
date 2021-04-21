@@ -128,31 +128,6 @@ void heroProfileDebug::rightData() {
             character->stats->attackSpeed = attackSpeed;
         }
     }
-    if (ImGui::CollapsingHeader("Craft stats")) {
-        float craftTime = character->stats->craft.craftTime;
-        ImGui::DragFloat("Craft time", &craftTime, 0.1, 0.1);
-        if (craftTime != character->stats->craft.craftTime) {
-            character->stats->craft.craftTime = craftTime;
-        }
-
-        int income = character->stats->craft.income;
-        ImGui::DragInt("Income", &income, 1, 0);
-        if (income != character->stats->craft.income) {
-            character->stats->craft.income = income;
-        }
-
-        int cost = character->stats->craft.cost;
-        ImGui::DragInt("Craft cost", &cost, 1, 0);
-        if (cost != character->stats->craft.cost) {
-            character->stats->craft.cost = cost;
-        }
-
-        int trophiesCost = character->stats->craft.trophiesCost;
-        ImGui::DragInt("Craft trophies cost", &trophiesCost, 1, 0);
-        if (trophiesCost != character->stats->craft.trophiesCost) {
-            character->stats->craft.trophiesCost = trophiesCost;
-        }
-    }
 
 }
 

@@ -12,19 +12,11 @@
 
 namespace mb::databasesModule {
 
-    struct sCharacterCraft {
-        int cost = 0;
-        int trophiesCost = 0;
-        float craftTime = 0; //time in seconds
-        int income = 0;
-    };
-
     struct sCharacterStats {
         float hp;
         std::pair<float, float> attack; //attack min and max
         float speed = 1.0f; //movement speed
         float attackSpeed = 1.0f;
-        sCharacterCraft craft;
 
         bool load(const rapidjson::GenericValue<rapidjson::UTF8<char>>::ConstObject&);
     };

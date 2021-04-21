@@ -13,7 +13,6 @@ namespace mb::databasesModule {
       public:
         enum class eDatabaseList {
             CHARACTER_DB = 0,
-            BUILDING_DB,
         };
         databaseManager();
         ~databaseManager() override;

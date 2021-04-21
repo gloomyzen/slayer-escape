@@ -9,7 +9,6 @@
 #include "localProfile/heroesProfileBlock.h"
 // all databases header
 #include "common/databaseModule/databaseInterface.h"
-#include "databasesModule/buildingsDatabase.h"
 #include "databasesModule/charactersDatabase.h"
 #include "databasesModule/databaseManager.h"
 // all scenes
@@ -60,11 +59,11 @@ bool AppDelegate::applicationDidFinishLaunching() {
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32) || (CC_TARGET_PLATFORM == CC_PLATFORM_MAC) \
  || (CC_TARGET_PLATFORM == CC_PLATFORM_LINUX)
 		glView = GLViewImpl::createWithRect(
-				"Mercenary Battles",
+				"Slayer Escape",
 				cocos2d::Rect(0, 0, currentResolution->size.width, currentResolution->size.height),
 				currentResolution->scale);
 #else
-		glView = GLViewImpl::create("Mercenary Battles");
+		glView = GLViewImpl::create("Slayer Escape");
 #endif
 		director->setOpenGLView(glView);
 	}
@@ -76,8 +75,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	director->setAnimationInterval(1.0f / 60);
 
 	// set project view mode
-	director->setProjection(Director::Projection::_3D);
-//	cocos2d::Sprite::setUsePixelMode(currentResolution->spritePixel);
+	director->setProjection(Director::Projection::_2D);
+	cocos2d::Sprite::setUsePixelMode(currentResolution->spritePixel);
 
 	// Set the design resolution
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32) || (CC_TARGET_PLATFORM == CC_PLATFORM_MAC) \
@@ -100,9 +99,6 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	GET_DATABASE_MANAGER().addDatabase(databaseManager::eDatabaseList::CHARACTER_DB,
 									   "properties/database/characters/db.json",
 									   new charactersDatabase());
-	GET_DATABASE_MANAGER().addDatabase(
-			databaseManager::eDatabaseList::BUILDING_DB, "properties/database/buildings/db.json",
-			new buildingsDatabase());
 	GET_DATABASE_MANAGER().executeLoadData();
 	// register external node types
 	mb::interfaceModule::customNodeTypes::registerAllCustomNodes();
