@@ -13,10 +13,7 @@ namespace mb::databasesModule {
 
     struct sMapData {
         int id;
-        std::vector<int> fill;
-        int width;
-        int height;
-        int free;
+        std::map<int, std::map<int, int>> map; //x y tileId
         bool load(const rapidjson::GenericValue<rapidjson::UTF8<char>>::ConstObject&);
     };
 
