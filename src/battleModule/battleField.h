@@ -17,7 +17,7 @@ namespace mb::battleModule {
         void initLayer(int);
 
       private:
-        cocos2d::Layer* world = nullptr;
+        cocos2d::Layer* world = nullptr; //not owner
     };
 }// namespace mb::battleModule
 

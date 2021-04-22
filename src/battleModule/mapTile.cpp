@@ -2,12 +2,13 @@
 
 using namespace mb::battleModule;
 
-mapTile::mapTile() {}
+mapTile::mapTile() = default;
 
-mapTile::~mapTile() {}
+mapTile::~mapTile() = default;
 
 void mapTile::initWithProp(const std::string& name, const std::string& path) {
+    this->setName("tile");
+    loadJson(path);
+    loadComponent(this, "tile");
     this->setName(name);
-    loadProperty(path, dynamic_cast<cocos2d::Sprite*>(this));
-    init();
 }

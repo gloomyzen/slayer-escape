@@ -23,8 +23,7 @@
   "world": {
     "transformComponent": {
       "pivot": [ 0.0, 0.0 ],
-      "anchor": [ 0.0, 0.0 ],
-      "stretch": [ 2.0, 1.0 ]
+      "anchor": [ 0.0, 0.0 ]
     }
   },
   "incomeGoldWidget": {

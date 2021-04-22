@@ -27,12 +27,19 @@ void battleField::initLayer(int id) {
         // todo log error
         return;
     }
+    mapTile* tempMap = nullptr;
     for (const auto& row : map->map) {
         for (const auto& col : row.second) {
             if (auto tile = tilesDb->getTileById(col.second)) {
                 auto node = new mapTile();
                 node->initWithProp(STRING_FORMAT("tile_%d", tile->id), tile->nodePath);
-
+                if (tempMap == nullptr) {
+                    tempMap = node;
+                } else {
+                    node->setPositionX(node->getContentSize().width * node->getScale() * row.first);
+                    node->setPositionY(node->getContentSize().height * node->getScale() * col.first);
+                }
+                world->addChild(node);
             }
         }
     }

@@ -1,11 +1,11 @@
 {
   "tiles": {
     "30001": {
-      "propertyPath": "properties/nodeProperties/battle/tiles/ground",
+      "propertyPath": "battle/tiles/ground",
       "type": "ground"
     },
     "30002": {
-      "propertyPath": "properties/nodeProperties/battle/tiles/wall",
+      "propertyPath": "battle/tiles/wall",
       "type": "wall"
     }
   }
