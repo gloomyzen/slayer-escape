@@ -5,15 +5,11 @@
 #include "databasesModule/mapsDatabase.h"
 #include "databasesModule/tilesDatabase.h"
 #include "battleModule/mapTile.h"
-#include <map>
 #include <tuple>
 
 using namespace mb::battleModule;
 
-battleField::battleField() {
-    this->setName("battleField");
-    //    loadProperty("scenes/" + this->getName(), dynamic_cast<Node*>(this));
-}
+battleField::battleField() {}
 
 battleField::~battleField() {}
 
@@ -24,7 +20,7 @@ void battleField::initLayer(int id) {
     auto tilesDb = GET_DATABASE_MANAGER().getDatabase<tilesDatabase>(databaseManager::eDatabaseList::TILES_DB);
     auto map = mapsDb->getMapById(id);
     if (map == nullptr) {
-        // todo log error
+        LOG_ERROR(STRING_FORMAT("battleField::initLayer: Can't find map bu id - %d", id));
         return;
     }
     mapTile* tempMap = nullptr;

@@ -5,9 +5,7 @@
 #include "common/coreModule/nodes/nodeProperties.h"
 
 namespace mb::battleModule {
-    class battleField
-        : public common::coreModule::nodeProperties
-        , public cocos2d::Node {
+    class battleField {
       public:
         battleField();
         ~battleField();

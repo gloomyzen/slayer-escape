@@ -1,11 +1,13 @@
 #include "battleScene.h"
-#include "ui/CocosGUI.h"
-#include "common/debugModule/logManager.h"
 #include "common/coreModule/gameManager.h"
 #include "common/coreModule/scenes/mainScene.h"
+#include "common/debugModule/logManager.h"
 #include "common/utilityModule/stringUtility.h"
+#include "ui/CocosGUI.h"
 
 #ifdef DEBUG
+#include "ImGuiEXT/imgui/imgui.h"
+#include "ImGuiEXT/imgui/imgui_internal.h"
 #include "debugModule/heroProfileDebug.h"
 #include "debugModule/soundLibraryDebug.h"
 #endif
@@ -19,10 +21,26 @@ battleScene::battleScene() {
 
 #ifdef DEBUG
     if (GET_GAME_MANAGER().getMainScene()->getImGuiLayer()) {
+#if CC_USE_PHYSICS
+        auto clb = [this]() {
+            auto temp = physicsDebugDraw;
+            if (ImGui::Button("Debug physics")) {
+                physicsDebugDraw = !physicsDebugDraw;
+            }
+            if (temp != physicsDebugDraw) {
+                GET_GAME_MANAGER().getMainScene()->initWithPhysics();
+                GET_GAME_MANAGER().getMainScene()->getPhysicsWorld()->setDebugDrawMask(
+                    physicsDebugDraw ? cocos2d::PhysicsWorld::DEBUGDRAW_ALL : cocos2d::PhysicsWorld::DEBUGDRAW_NONE);
+            }
+        };
+#else
+        auto clb = []() {};
+#endif
         GET_GAME_MANAGER().getMainScene()->getImGuiLayer()->resetDebugModules();
-        GET_GAME_MANAGER().getMainScene()->getImGuiLayer()->addDebugModules([](){
-               debugProfile::heroProfileDebug::getInstance().update();
-               debugProfile::soundLibraryDebug::getInstance().update();
+        GET_GAME_MANAGER().getMainScene()->getImGuiLayer()->addDebugModules([clb]() {
+            debugProfile::heroProfileDebug::getInstance().update();
+            debugProfile::soundLibraryDebug::getInstance().update();
+            clb();
         });
     }
 #endif
@@ -37,19 +55,7 @@ std::deque<nodeTasks> battleScene::getTasks() {
         world = dynamic_cast<cocos2d::Layer*>(findNode("world"));
         maze = new battleField();
         maze->setLayer(world);
-        maze->initLayer(40001); //todo remove after testing
-
-        return eTasksStatus::STATUS_OK;
-    });
-
-    result.emplace_back([this]() {
-        auto scrollView = dynamic_cast<ui::ScrollView*>(findNode("scrollContainer"));
-        if (!scrollView) {
-            return eTasksStatus::STATUS_ERROR_BREAK;
-        }
-        auto worldSize = world->getContentSize();
-        scrollView->setInnerContainerSize(cocos2d::Size(worldSize.width * 0.8f, worldSize.height * 0.8f));
-        world->setMarkDirty();
+        maze->initLayer(40001);// todo remove after testing
 
         return eTasksStatus::STATUS_OK;
     });
