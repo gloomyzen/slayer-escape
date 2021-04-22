@@ -22,7 +22,7 @@ namespace mb::battleModule {
         // world section
         cocos2d::Layer* world = nullptr; //owner
         battleField* maze = nullptr; //owner
-        bool physicsDebugDraw = false;
+        bool physicsDebugDraw = false; //for debug
     };
 }// namespace mb::battleModule
 

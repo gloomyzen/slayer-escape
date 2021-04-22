@@ -18,7 +18,8 @@ using namespace cocos2d;
 battleScene::battleScene() {
     this->setName("battleScene");
     loadProperty("scenes/" + this->getName(), dynamic_cast<Node*>(this));
-
+    GET_GAME_MANAGER().getMainScene()->initWithPhysics();
+    GET_GAME_MANAGER().getMainScene()->getPhysicsWorld()->setGravity(cocos2d::Vec2(1.f, 1.f));
 #ifdef DEBUG
     if (GET_GAME_MANAGER().getMainScene()->getImGuiLayer()) {
 #if CC_USE_PHYSICS
@@ -28,7 +29,10 @@ battleScene::battleScene() {
                 physicsDebugDraw = !physicsDebugDraw;
             }
             if (temp != physicsDebugDraw) {
-                GET_GAME_MANAGER().getMainScene()->initWithPhysics();
+                if (physicsDebugDraw)
+                    LOG_INFO("Enable physics debug for current scene.");
+                else
+                    LOG_INFO("Disable physics debug for current scene.");
                 GET_GAME_MANAGER().getMainScene()->getPhysicsWorld()->setDebugDrawMask(
                     physicsDebugDraw ? cocos2d::PhysicsWorld::DEBUGDRAW_ALL : cocos2d::PhysicsWorld::DEBUGDRAW_NONE);
             }

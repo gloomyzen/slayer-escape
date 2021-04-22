@@ -1,10 +1,10 @@
 #include "battleField.h"
+#include "battleModule/mapTile.h"
 #include "common/debugModule/logManager.h"
 #include "common/utilityModule/stringUtility.h"
 #include "databasesModule/databaseManager.h"
 #include "databasesModule/mapsDatabase.h"
 #include "databasesModule/tilesDatabase.h"
-#include "battleModule/mapTile.h"
 #include <tuple>
 
 using namespace mb::battleModule;
@@ -35,6 +35,9 @@ void battleField::initLayer(int id) {
                     node->setPositionX(node->getContentSize().width * node->getScale() * row.first);
                     node->setPositionY(node->getContentSize().height * node->getScale() * col.first);
                 }
+                auto physics = cocos2d::PhysicsBody::create(1.f, 1.f);
+                physics->setDynamic(false);
+                node->addComponent(physics);
                 world->addChild(node);
             }
         }
