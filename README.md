@@ -44,6 +44,12 @@ cmake ../.. -GXcode -DCMAKE_SYSTEM_NAME=iOS -DCMAKE_OSX_SYSROOT=iphoneos
 sudo xcode-select --reset
 ```
 
+For iOS destribution
+```bash
+cmake -S . -B build -GXcode -DCMAKE_TOOLCHAIN_FILE=cmake/ios.mini.cmake -DCMAKE_SYSTEM_NAME=iOS -DPLATFORM=OS -DENABLE_ARC=0
+cmake --build build --config Release --target slayer-escape -- -quiet -jobs 16
+```
+
 For Visual Studio Community 2019
 ```bash
 mkdir build && cd build
