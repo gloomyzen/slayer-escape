@@ -4,7 +4,8 @@
 #include "cocos2d.h"
 #include "common/coreModule/nodes/nodeProperties.h"
 #include "common/coreModule/scenes/windows/windowBase.h"
-#include "battleField.h"
+#include "battleModule/battleField.h"
+#include "battleModule/players/playerController.h"
 #include <tuple>
 
 namespace mb::battleModule {
@@ -23,6 +24,7 @@ namespace mb::battleModule {
         cocos2d::Layer* world = nullptr; //owner
         battleField* maze = nullptr; //owner
         bool physicsDebugDraw = false; //for debug
+        playerController* plrController = nullptr; //owner
     };
 }// namespace mb::battleModule
 

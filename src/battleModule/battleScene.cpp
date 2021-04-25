@@ -56,7 +56,13 @@ std::deque<nodeTasks> battleScene::getTasks() {
     std::deque<nodeTasks> result;
 
     result.emplace_back([this]() {
-        world = dynamic_cast<cocos2d::Layer*>(findNode("world"));
+           world = dynamic_cast<cocos2d::Layer*>(findNode("world"));
+           plrController = new playerController();
+
+           return eTasksStatus::STATUS_OK;
+    });
+
+    result.emplace_back([this]() {
         maze = new battleField();
         maze->setLayer(world);
         maze->initLayer(40001);// todo remove after testing
