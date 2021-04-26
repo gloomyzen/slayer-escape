@@ -18,7 +18,6 @@ using namespace cocos2d;
 battleScene::battleScene() {
     this->setName("battleScene");
     loadProperty("scenes/" + this->getName(), dynamic_cast<Node*>(this));
-    GET_GAME_MANAGER().getMainScene()->initWithPhysics();
     GET_GAME_MANAGER().getMainScene()->getPhysicsWorld()->setGravity(cocos2d::Vec2(1.f, 1.f));
 #ifdef DEBUG
     if (GET_GAME_MANAGER().getMainScene()->getImGuiLayer()) {
