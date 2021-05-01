@@ -13,6 +13,8 @@ namespace mb::battleModule {
       public:
         playerBase();
         ~playerBase();
+
+        void initWithId(int);
     };
 }// namespace mb::battleModule
 

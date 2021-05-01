@@ -3,6 +3,7 @@
 #include "common/coreModule/scenes/mainScene.h"
 #include "common/debugModule/logManager.h"
 #include "common/utilityModule/stringUtility.h"
+#include "battleModule/players/playerBase.h"
 #include "ui/CocosGUI.h"
 
 #ifdef DEBUG
@@ -57,6 +58,15 @@ std::deque<nodeTasks> battleScene::getTasks() {
     result.emplace_back([this]() {
            world = dynamic_cast<cocos2d::Layer*>(findNode("world"));
            plrController = new playerController();
+           auto player = new playerBase();
+           //todo remove after testing
+           {
+               player->initWithId(20001);
+               world->addChild(player);
+           }
+//           todo plrController.setPawn(player);
+//           todo plrController.disableControl();
+//           todo plrController.enableControl();
 
            return eTasksStatus::STATUS_OK;
     });
