@@ -1,8 +1,9 @@
 {
   "characters": {
     "20001": {
-      "propertyPath": "properties/nodeProperties/battle/characters/simpleHero",
+      "propertyPath": "battle/characters/simpleHero",
       "iconPath": "images/characters/simpleHero/icon/icon.png",
+      "isSpine": false,
       "hp": 17.5,
       "attackMin": 7.0,
       "attackMax": 7.5,

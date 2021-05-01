@@ -23,9 +23,10 @@ namespace mb::databasesModule {
 
     struct sCharacterData {
         int id;
-        std::string bonesString;
+        std::string propertyPath;
         std::string iconPatch;
         sCharacterStats* stats = nullptr;
+        bool isSpine = false;
         bool load(const rapidjson::GenericValue<rapidjson::UTF8<char>>::ConstObject&);
     };
 

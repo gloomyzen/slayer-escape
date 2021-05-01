@@ -58,10 +58,9 @@ std::deque<nodeTasks> battleScene::getTasks() {
     result.emplace_back([this]() {
            world = dynamic_cast<cocos2d::Layer*>(findNode("world"));
            plrController = new playerController();
-           auto player = new playerBase();
+           auto player = playerBase::initWithId(20001);
            //todo remove after testing
            {
-               player->initWithId(20001);
                world->addChild(player);
            }
 //           todo plrController.setPawn(player);

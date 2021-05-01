@@ -8,14 +8,16 @@
 
 namespace mb::battleModule {
     class playerBase
-        : public common::coreModule::nodeProperties
-        , public cocos2d::Sprite {
+        : public common::coreModule::nodeProperties, public cocos2d::Node {
       public:
         playerBase();
         ~playerBase();
 
-        void initWithId(int);
+        static playerBase* initWithId(int);
     };
+
+    class playerSprite : public playerBase, public cocos2d::Sprite {};
+    class playerSpine : public playerBase, public cocos2d::Sprite {};
 }// namespace mb::battleModule
 
 
