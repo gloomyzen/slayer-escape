@@ -25,16 +25,19 @@ jobs:
 
     env:
       GIT: "https://github.com"
-      ENGINEX_PATH: "/var/temp/engine-x"
       MANUAL_CACHING: "6"
       AUTO_CACHING: "1"
 
     steps:
+      - name: Get repository name.
+        shell: bash
+        run: echo "REPO_NAME=${GITHUB_REPOSITORY##*/}" >> $GITHUB_ENV
 
       - name: Clone. 🛎️
         uses: actions/checkout@v2
         with:
           submodules: recursive
+          path: ${{ env.REPO_NAME }}
 
       - name: First set up. 🛠
         shell: bash
@@ -54,14 +57,17 @@ jobs:
       - name: Clone engine. 🔨
         shell: bash
         run: |
-          git clone git@github.com:gloomyzen/engine-x.git $ENGINEX_PATH
+          rm -rf external && mkdir external &&cd external
+          git clone git@github.com:gloomyzen/engine-x.git engine-x
+          echo "ENGINEX_PATH=$(pwd)/engine-x" >> $GITHUB_ENV
+          echo "ENGINEX_CONSOLE_ROOT=$(pwd)/engine-x/tools/cocos2d-console/bin" >> $GITHUB_ENV
 
 
       - name: Build. 🔨
         shell: bash
         run: |
-          ENGINEX_ROOT="$ENGINEX_PATH"
-          ENGINEX_CONSOLE_ROOT="$ENGINEX_PATH/tools/cocos2d-console/bin"
+          ENGINEX_PATH=${{ env.ENGINEX_PATH }}
+          ENGINEX_CONSOLE_ROOT=${{ env.ENGINEX_CONSOLE_ROOT }}
           rm -rf build
           mkdir build
           cd build
