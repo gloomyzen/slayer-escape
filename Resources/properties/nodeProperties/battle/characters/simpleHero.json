@@ -1,5 +1,10 @@
 {
   "unit": {
+    "transformComponent": {
+      "scale": 2
+    }
+  },
+  "sprite": {
     "spriteComponent": {
       "image": "images/characters/simpleHero/player.png",
       "polygon": false

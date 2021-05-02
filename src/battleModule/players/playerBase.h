@@ -15,9 +15,6 @@ namespace mb::battleModule {
 
         static playerBase* initWithId(int);
     };
-
-    class playerSprite : public playerBase, public cocos2d::Sprite {};
-    class playerSpine : public playerBase, public cocos2d::Sprite {};
 }// namespace mb::battleModule
 
 
