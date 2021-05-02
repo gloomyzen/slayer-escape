@@ -25,9 +25,7 @@ jobs:
 
     env:
       GIT: "https://github.com"
-      CMAKE_VER: "3.18.4"
-      REPO_NAME: "2048-rpg"
-      LIB_PATH: "/var/temp"
+      ENGINEX_PATH: "/var/temp/engine-x"
       MANUAL_CACHING: "6"
       AUTO_CACHING: "1"
 
@@ -43,28 +41,25 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y --fix-missing \
-          build-essential clang git wget autoconf python2 python2-pip g++ libgdk-pixbuf2.0-dev \
+          build-essential clang git wget autoconf python python-pip g++ libgdk-pixbuf2.0-dev \
           libx11-dev libxmu-dev libglu1-mesa-dev libgl2ps-dev libxi-dev libzip-dev \
           libpng-dev libcurl4-gnutls-dev libfontconfig1-dev libsqlite3-dev libglew-dev \
           libssl-dev libgtk-3-dev libglfw3 libglfw3-dev xorg-dev cmake
 
-      - name: Setup vars
+      - name: Clone engine. 🔨
         shell: bash
         run: |
-          if test -z "{{ EVENT_PAYLOAD.pull_request.html_url }}"
-          then
-            echo "BUILD_PULL_REQUEST_TEXT=''" >> $GITHUB_ENV
-          else
-            echo "BUILD_PULL_REQUEST_TEXT='Pull request - {{ EVENT_PAYLOAD.pull_request.html_url }}'" >> $GITHUB_ENV
-          fi
+          git clone git@github.com:gloomyzen/engine-x.git $ENGINEX_PATH
+
 
       - name: Build. 🔨
         shell: bash
         run: |
+          ENGINEX_ROOT="$ENGINEX_PATH"
+          ENGINEX_CONSOLE_ROOT="$ENGINEX_PATH/tools/cocos2d-console/bin"
           rm -rf build
           mkdir build
           cd build
           cmake ../
           make -j 4
-          echo "BUILD_SUCCESS=true" >> $GITHUB_ENV
 #          make test todo
