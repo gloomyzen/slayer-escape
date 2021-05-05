@@ -7,8 +7,10 @@ using namespace mb::battleModule;
 playerBase::playerBase() {}
 
 playerBase* playerBase::initWithId(int id) {
+    using namespace databasesModule;
     auto player = new playerBase();
-    auto characterDb = GET_DATABASE_MANAGER().getDatabase<databasesModule::charactersDatabase>(databasesModule::databaseManager::eDatabaseList::CHARACTER_DB);
+    auto characterDb =
+        GET_DATABASE_MANAGER().getDatabase<charactersDatabase>(databaseManager::eDatabaseList::CHARACTER_DB);
     auto data = characterDb->getCharacterById(id);
     player->setName("unit");
     player->loadJson(data->propertyPath);
@@ -19,7 +21,7 @@ playerBase* playerBase::initWithId(int id) {
         player->loadComponent(sprite, sprite->getName());
         player->addChild(sprite);
     } else {
-        //todo add spine node when spine is be ready
+        // todo add spine node when spine is be ready
         auto spine = new cocos2d::Sprite();
         spine->setName("spine");
         player->loadComponent(spine, spine->getName());
@@ -30,5 +32,3 @@ playerBase* playerBase::initWithId(int id) {
 }
 
 playerBase::~playerBase() = default;
-
-

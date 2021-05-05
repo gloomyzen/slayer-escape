@@ -1,9 +1,9 @@
 #include "battleScene.h"
+#include "battleModule/players/playerBase.h"
 #include "common/coreModule/gameManager.h"
 #include "common/coreModule/scenes/mainScene.h"
 #include "common/debugModule/logManager.h"
 #include "common/utilityModule/stringUtility.h"
-#include "battleModule/players/playerBase.h"
 #include "ui/CocosGUI.h"
 
 #ifdef DEBUG
@@ -56,18 +56,20 @@ std::deque<nodeTasks> battleScene::getTasks() {
     std::deque<nodeTasks> result;
 
     result.emplace_back([this]() {
-           world = dynamic_cast<cocos2d::Layer*>(findNode("world"));
-           plrController = new playerController();
-           auto player = playerBase::initWithId(20001);
-           //todo remove after testing
-           {
-               world->addChild(player);
-           }
-//           todo plrController.setPawn(player);
-//           todo plrController.disableControl();
-//           todo plrController.enableControl();
+        world = dynamic_cast<cocos2d::Layer*>(findNode("world"));
+        plrController = new playerController();
+        auto player = playerBase::initWithId(20001);
+        // todo remove after testing
+        {
+            //todo нужно поменять структуру уровня, чтобы земля и коллиции находились на разных планах
+            // а коллизиции и объекты были совмещенны
+            world->addChild(player);
+        }
+        plrController->setPawn(player);
+        plrController->disableControl();
+        plrController->enableControl();
 
-           return eTasksStatus::STATUS_OK;
+        return eTasksStatus::STATUS_OK;
     });
 
     result.emplace_back([this]() {

@@ -8,7 +8,8 @@
 
 namespace mb::battleModule {
     class playerBase
-        : public common::coreModule::nodeProperties, public cocos2d::Node {
+        : public common::coreModule::nodeProperties
+        , public cocos2d::Node {
       public:
         playerBase();
         ~playerBase();

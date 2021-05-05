@@ -1,11 +1,26 @@
 #ifndef SLAYER_ESCAPE_PLAYERCONTROLLER_H
 #define SLAYER_ESCAPE_PLAYERCONTROLLER_H
 
+#include "cocos2d.h"
+#include "common/coreModule/nodes/nodeProperties.h"
+#include "playerBase.h"
+
 namespace mb::battleModule {
-    class playerController {
+    class playerController
+        : public cocos2d::Node
+        , public common::coreModule::nodeProperties {
       public:
         playerController();
         ~playerController();
+        void initController();
+
+        void setPawn(playerBase* pBase);
+        void disableControl();
+        void enableControl();
+
+      private:
+        playerBase* player = nullptr;
+        bool controlAvailable = false;
     };
 }// namespace mb::battleModule
 

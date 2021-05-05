@@ -80,7 +80,6 @@ bool AppDelegate::applicationDidFinishLaunching() {
     // set project view mode
     director->setProjection(Director::Projection::_2D);
     cocos2d::Sprite::setUsePixelMode(currentResolution->spritePixel);
-
     // Set the design resolution
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32) || (CC_TARGET_PLATFORM == CC_PLATFORM_MAC) \
     || (CC_TARGET_PLATFORM == CC_PLATFORM_LINUX)
