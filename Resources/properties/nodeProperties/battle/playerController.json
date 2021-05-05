@@ -1,0 +1,26 @@
+{
+  "playerController": {
+    "transformComponent": {
+      "position": [ 200, 200 ],
+      "scale": 1
+    }
+  },
+  "bigCircle": {
+    "transformComponent": {
+      "position": [ 128, 128 ],
+      "scale": 1
+    },
+    "spriteComponent": {
+      "image": "images/battle/ui/white_circle_big.png"
+    }
+  },
+  "smallCircle": {
+    "transformComponent": {
+      "position": [ 128, 128 ],
+      "scale": 1
+    },
+    "spriteComponent": {
+      "image": "images/battle/ui/white_circle_small.png"
+    }
+  }
+}

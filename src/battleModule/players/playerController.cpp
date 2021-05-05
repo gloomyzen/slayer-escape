@@ -5,6 +5,7 @@ using namespace mb::battleModule;
 
 playerController::playerController() {
     setName("playerController");
+    loadProperty("battle/" + this->getName(), this);
     initController();
 }
 
