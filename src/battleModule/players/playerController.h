@@ -4,6 +4,7 @@
 #include "cocos2d.h"
 #include "common/coreModule/nodes/nodeProperties.h"
 #include "playerBase.h"
+#include "stickButton.h"
 
 namespace mb::battleModule {
     class playerController
@@ -21,6 +22,8 @@ namespace mb::battleModule {
       private:
         playerBase* player = nullptr;
         bool controlAvailable = false;
+        stickButton* bigCircle = nullptr;
+        stickButton* smallCircle = nullptr;
     };
 }// namespace mb::battleModule
 

@@ -10,8 +10,15 @@ playerController::playerController() {
 }
 
 void playerController::initController() {
+    bigCircle = new stickButton();
+    bigCircle->setName("bigCircle");
+    loadComponent(bigCircle, bigCircle->getName());
+    addChild(bigCircle);
+    smallCircle = new stickButton();
+    smallCircle->setName("smallCircle");
+    loadComponent(smallCircle, smallCircle->getName());
+    addChild(smallCircle);
     auto scene = cocos2d::Director::getInstance()->getRunningScene();
-
     if (auto windowNode = scene->findNode("windowViewer")) {
         auto order = windowNode->getLocalZOrder();
         scene->addChild(this, order - 1);
