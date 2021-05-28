@@ -1,26 +1,8 @@
 {
   "playerController": {
     "transformComponent": {
-      "position": [ 20, 20 ],
-      "size": [ 220, 220 ]
-    }
-  },
-  "bigCircle": {
-    "transformComponent": {
-      "anchor": [ 0.5, 0.5 ],
-      "pivot": [ 0.5, 0.5 ]
-    },
-    "buttonComponent": {
-      "image": "images/battle/ui/white_circle_big.png"
-    }
-  },
-  "smallCircle": {
-    "transformComponent": {
-      "anchor": [ 0.5, 0.5 ],
-      "pivot": [ 0.5, 0.5 ]
-    },
-    "buttonComponent": {
-      "image": "images/battle/ui/white_circle_small.png"
+      "position": [20, 20],
+      "size": [220, 220]
     }
   }
 }

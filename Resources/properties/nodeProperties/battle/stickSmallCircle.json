@@ -1,0 +1,11 @@
+{
+  "stickSmallCircle": {
+    "transformComponent": {
+      "anchor": [0.5, 0.5],
+      "pivot": [0.5, 0.5]
+    },
+    "spriteComponent": {
+      "image": "images/battle/ui/white_circle_small.png"
+    }
+  }
+}

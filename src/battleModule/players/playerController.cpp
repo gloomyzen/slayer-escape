@@ -10,13 +10,9 @@ playerController::playerController() {
 }
 
 void playerController::initController() {
-    bigCircle = new stickButton();
-    bigCircle->setName("bigCircle");
-    loadComponent(bigCircle, bigCircle->getName());
+    bigCircle = new stickButton(stickButton::eStickType::BIG_STICK);
     addChild(bigCircle);
-    smallCircle = new stickButton();
-    smallCircle->setName("smallCircle");
-    loadComponent(smallCircle, smallCircle->getName());
+    smallCircle = new stickButton(stickButton::eStickType::SMALL_STICK);
     addChild(smallCircle);
     auto scene = cocos2d::Director::getInstance()->getRunningScene();
     if (auto windowNode = scene->findNode("windowViewer")) {
@@ -30,15 +26,16 @@ void playerController::initController() {
 
 playerController::~playerController() {}
 
-void playerController::setPawn(playerBase* pBase) { player = pBase; }
+void playerController::setPawn(playerBase* pBase) {
+    player = pBase;
+}
 
 void playerController::enableControl() {
     controlAvailable = true;
-    //todo action for show controls
+    // todo action for show controls
 }
 
 void playerController::disableControl() {
     controlAvailable = false;
-    //todo action for hide controls
+    // todo action for hide controls
 }
-

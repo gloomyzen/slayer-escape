@@ -10,7 +10,7 @@ namespace mb::battleModule {
     class playerController
         : public cocos2d::Node
         , public common::coreModule::nodeProperties {
-      public:
+    public:
         playerController();
         ~playerController();
         void initController();
@@ -19,7 +19,7 @@ namespace mb::battleModule {
         void disableControl();
         void enableControl();
 
-      private:
+    private:
         playerBase* player = nullptr;
         bool controlAvailable = false;
         stickButton* bigCircle = nullptr;
