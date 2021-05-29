@@ -19,6 +19,8 @@
     }
   },
   "settings": {
-    "waitAfterEndTouch": 0.9
+    "waitAfterEndTouch": 0.9,
+    "stickXPos": [44, -44],
+    "stickYPos": [44, -44]
   }
 }

@@ -8,11 +8,21 @@ stickButton::stickButton() {
     setName("stickButton");
     loadProperty("battle/" + this->getName(), this);
     {
-        //setup settings
+        // setup settings
         auto data = getPropertyObject("settings");
         auto item = data.FindMember("waitAfterEndTouch");
         if (item != data.MemberEnd() && item->value.IsNumber()) {
             waitAfterEndTouch = item->value.GetFloat();
+        }
+        item = data.FindMember("stickXPos");
+        if (item != data.MemberEnd() && item->value.IsArray()) {
+            auto array = item->value.GetArray();
+            stickXPos = { array[0].GetFloat(), array[1].GetFloat() };
+        }
+        item = data.FindMember("stickYPos");
+        if (item != data.MemberEnd() && item->value.IsArray()) {
+            auto array = item->value.GetArray();
+            stickYPos = { array[0].GetFloat(), array[1].GetFloat() };
         }
     }
 
@@ -39,17 +49,34 @@ void stickButton::initController() {
             auto newPos = cocos2d::Vec2(startPos.x - btn->getContentSize().width / 2,
                                         startPos.y - btn->getContentSize().height / 2);
             btn->setPosition(newPos);
+            smallBtn->setPosition(cocos2d::Vec2::ZERO);
         } break;
         case Widget::TouchEventType::MOVED: {
-            //todo startPos - new position
+            // todo startPos - new position
+            auto movePos = getTouchMovePosition();
+            auto newPos = cocos2d::Vec2(movePos.x - startPos.x, movePos.y - startPos.y);
+            if (std::abs(newPos.distance(cocos2d::Vec2::ZERO)) >= 44) {
+//                newPos = smallBtn->getPosition();
+                if (newPos.x > stickXPos.first)
+                    newPos.x = stickXPos.first;
+                if (newPos.x < stickXPos.second)
+                    newPos.x = stickXPos.second;
+                if (newPos.y > stickYPos.first)
+                    newPos.y = stickYPos.first;
+                if (newPos.y < stickYPos.second)
+                    newPos.y = stickYPos.second;
+            }
+            smallBtn->setPosition(newPos);
         } break;
         case Widget::TouchEventType::ENDED:
         case Widget::TouchEventType::CANCELED: {
             {
                 // action move btn to start position
+                // todo uncomment after testing
                 auto delay = cocos2d::DelayTime::create(waitAfterEndTouch);
                 auto clb = cocos2d::CallFunc::create([this]() {
                     btn->setPosition(cocos2d::Vec2::ZERO);
+                    smallBtn->setPosition(cocos2d::Vec2::ZERO);
                 });
                 auto seq = cocos2d::Sequence::create(delay, clb, nullptr);
                 seq->setTag(static_cast<int>(stickButton::eActionType::WAIT_AFTER_END_TOUCH));
