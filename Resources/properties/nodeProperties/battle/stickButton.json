@@ -3,7 +3,7 @@
     "transformComponent": {
       "anchor": [0.0, 0.0],
       "pivot": [0.0, 0.0],
-      "size": [320, 320]
+      "size": [350, 640]
     },
     "spriteComponent": {
       "image": "images/battle/ui/white_circle_big.png"

@@ -21,10 +21,13 @@ namespace mb::battleModule {
         bool getStickEnabled();
 
     private:
+        enum class eActionType { WAIT_AFTER_END_TOUCH = 0 };
         void initController();
 
         cocos2d::Sprite* btn = nullptr;
+        cocos2d::Sprite* smallBtn = nullptr;
         bool stickEnabled = false;
+        cocos2d::Vec2 startPos = cocos2d::Vec2::ZERO;
     };
 }// namespace mb::battleModule
 
