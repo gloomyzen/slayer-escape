@@ -8,7 +8,6 @@
 #include <functional>
 #include <map>
 #include <string>
-#include <tuple>
 
 namespace mb::battleModule {
     class stickButton
@@ -32,8 +31,8 @@ namespace mb::battleModule {
 
         //settings
         float waitAfterEndTouch = 0.f;
-        std::pair<float, float> stickXPos = {0.f, 0.f};
-        std::pair<float, float> stickYPos = {0.f, 0.f};
+        float stickDistance = 0.f;
+        float stickInertionTime = 0.f;
     };
 }// namespace mb::battleModule
 

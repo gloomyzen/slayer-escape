@@ -14,15 +14,13 @@ stickButton::stickButton() {
         if (item != data.MemberEnd() && item->value.IsNumber()) {
             waitAfterEndTouch = item->value.GetFloat();
         }
-        item = data.FindMember("stickXPos");
-        if (item != data.MemberEnd() && item->value.IsArray()) {
-            auto array = item->value.GetArray();
-            stickXPos = { array[0].GetFloat(), array[1].GetFloat() };
+        item = data.FindMember("stickDistance");
+        if (item != data.MemberEnd() && item->value.IsNumber()) {
+            stickDistance = item->value.GetFloat();
         }
-        item = data.FindMember("stickYPos");
-        if (item != data.MemberEnd() && item->value.IsArray()) {
-            auto array = item->value.GetArray();
-            stickYPos = { array[0].GetFloat(), array[1].GetFloat() };
+        item = data.FindMember("stickInertionTime");
+        if (item != data.MemberEnd() && item->value.IsNumber()) {
+            stickInertionTime = item->value.GetFloat();
         }
     }
 
@@ -44,6 +42,7 @@ void stickButton::initController() {
             {
                 // break active actions
                 stopAllActionsByTag(static_cast<int>(stickButton::eActionType::WAIT_AFTER_END_TOUCH));
+                smallBtn->stopAllActionsByTag(static_cast<int>(stickButton::eActionType::WAIT_AFTER_END_TOUCH));
             }
             startPos = getTouchBeganPosition();
             auto newPos = cocos2d::Vec2(startPos.x - btn->getContentSize().width / 2,
@@ -52,19 +51,19 @@ void stickButton::initController() {
             smallBtn->setPosition(cocos2d::Vec2::ZERO);
         } break;
         case Widget::TouchEventType::MOVED: {
-            // todo startPos - new position
-            auto movePos = getTouchMovePosition();
-            auto newPos = cocos2d::Vec2(movePos.x - startPos.x, movePos.y - startPos.y);
-            if (std::abs(newPos.distance(cocos2d::Vec2::ZERO)) >= 44) {
-//                newPos = smallBtn->getPosition();
-                if (newPos.x > stickXPos.first)
-                    newPos.x = stickXPos.first;
-                if (newPos.x < stickXPos.second)
-                    newPos.x = stickXPos.second;
-                if (newPos.y > stickYPos.first)
-                    newPos.y = stickYPos.first;
-                if (newPos.y < stickYPos.second)
-                    newPos.y = stickYPos.second;
+            auto currentTouchPos = getTouchMovePosition();
+            auto newPos = cocos2d::Vec2(currentTouchPos.x - startPos.x, currentTouchPos.y - startPos.y);
+            while (newPos.distance(cocos2d::Vec2::ZERO) > stickDistance) {
+                if (newPos.x > 0.f) {
+                    newPos.x -= .1f;
+                } else {
+                    newPos.x += .1f;
+                }
+                if (newPos.y > 0.f) {
+                    newPos.y -= .1f;
+                } else {
+                    newPos.y += .1f;
+                }
             }
             smallBtn->setPosition(newPos);
         } break;
@@ -72,7 +71,6 @@ void stickButton::initController() {
         case Widget::TouchEventType::CANCELED: {
             {
                 // action move btn to start position
-                // todo uncomment after testing
                 auto delay = cocos2d::DelayTime::create(waitAfterEndTouch);
                 auto clb = cocos2d::CallFunc::create([this]() {
                     btn->setPosition(cocos2d::Vec2::ZERO);
@@ -81,6 +79,13 @@ void stickButton::initController() {
                 auto seq = cocos2d::Sequence::create(delay, clb, nullptr);
                 seq->setTag(static_cast<int>(stickButton::eActionType::WAIT_AFTER_END_TOUCH));
                 runAction(seq);
+
+                {
+                    //move stick
+                    auto move = cocos2d::MoveTo::create(stickInertionTime, cocos2d::Vec2::ZERO);
+                    move->setTag(static_cast<int>(stickButton::eActionType::WAIT_AFTER_END_TOUCH));
+                    smallBtn->runAction(move);
+                }
             }
             return true;
         } break;

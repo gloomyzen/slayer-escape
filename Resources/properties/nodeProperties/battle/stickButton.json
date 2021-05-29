@@ -20,7 +20,7 @@
   },
   "settings": {
     "waitAfterEndTouch": 0.9,
-    "stickXPos": [44, -44],
-    "stickYPos": [44, -44]
+    "stickDistance": 55,
+    "stickInertionTime": 0.2
   }
 }
