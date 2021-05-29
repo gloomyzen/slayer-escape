@@ -65,7 +65,7 @@ std::deque<nodeTasks> battleScene::getTasks() {
             // а коллизиции и объекты были совмещенны
             world->addChild(player);
         }
-        plrController->setPawn(player);
+//        plrController->setPawn(player);
         plrController->disableControl();
         plrController->enableControl();
 

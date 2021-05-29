@@ -13,17 +13,15 @@ namespace mb::battleModule {
     public:
         playerController();
         ~playerController();
-        void initController();
 
-        void setPawn(playerBase* pBase);
         void disableControl();
         void enableControl();
 
     private:
-        playerBase* player = nullptr;
+        void initJoystick();
+
         bool controlAvailable = false;
-        stickButton* bigCircle = nullptr;
-        stickButton* smallCircle = nullptr;
+        stickButton* joystick = nullptr;
     };
 }// namespace mb::battleModule
 

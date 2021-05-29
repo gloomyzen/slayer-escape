@@ -6,29 +6,25 @@ using namespace mb::battleModule;
 playerController::playerController() {
     setName("playerController");
     loadProperty("battle/" + this->getName(), this);
-    initController();
+    initJoystick();
 }
 
-void playerController::initController() {
-    bigCircle = new stickButton(stickButton::eStickType::BIG_STICK);
-    addChild(bigCircle);
-    smallCircle = new stickButton(stickButton::eStickType::SMALL_STICK);
-    addChild(smallCircle);
+void playerController::initJoystick() {
+    joystick = new stickButton();
+    addChild(joystick);
     auto scene = cocos2d::Director::getInstance()->getRunningScene();
     if (auto windowNode = scene->findNode("windowViewer")) {
         auto order = windowNode->getLocalZOrder();
         scene->addChild(this, order - 1);
     } else {
-        LOG_ERROR("playerController::initController: Can't find windowViewer node");
+        LOG_ERROR("playerController::initJoystick: Can't find windowViewer node");
         return;
     }
+    LOG_INFO("playerController::initJoystick: Init control");
+
 }
 
 playerController::~playerController() {}
-
-void playerController::setPawn(playerBase* pBase) {
-    player = pBase;
-}
 
 void playerController::enableControl() {
     controlAvailable = true;

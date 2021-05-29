@@ -1,0 +1,21 @@
+{
+  "stickButton": {
+    "transformComponent": {
+      "anchor": [0.0, 0.0],
+      "pivot": [0.0, 0.0],
+      "size": [320, 320]
+    },
+    "spriteComponent": {
+      "image": "images/battle/ui/white_circle_big.png"
+    }
+  },
+  "stickSmallBtn": {
+    "transformComponent": {
+      "anchor": [0.5, 0.5],
+      "pivot": [0.5, 0.5]
+    },
+    "spriteComponent": {
+      "image": "images/battle/ui/white_circle_small.png"
+    }
+  }
+}

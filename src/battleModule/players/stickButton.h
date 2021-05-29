@@ -6,24 +6,25 @@
 #include "common/coreModule/nodes/nodeProperties.h"
 #include "common/coreModule/nodes/widgets/buttonBase.h"
 #include <functional>
-#include <string>
 #include <map>
+#include <string>
 
 namespace mb::battleModule {
     class stickButton
         : public common::coreModule::nodeProperties
         , public common::coreModule::buttonBase {
     public:
-        enum class eStickType { BIG_STICK, SMALL_STICK };
-
-        stickButton(eStickType type);
+        stickButton();
         ~stickButton() override;
+
+        void setStickEnabled(bool value);
+        bool getStickEnabled();
 
     private:
         void initController();
 
-        eStickType stickType = eStickType::SMALL_STICK;
-        static std::map<eStickType, std::string> stickButtonTypes;
+        cocos2d::Sprite* btn = nullptr;
+        bool stickEnabled = false;
     };
 }// namespace mb::battleModule
 
