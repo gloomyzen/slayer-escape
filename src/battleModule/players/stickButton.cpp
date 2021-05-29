@@ -7,6 +7,15 @@ stickButton::stickButton() {
     setFocusEnabled(false);
     setName("stickButton");
     loadProperty("battle/" + this->getName(), this);
+    {
+        //setup settings
+        auto data = getPropertyObject("settings");
+        auto item = data.FindMember("waitAfterEndTouch");
+        if (item != data.MemberEnd() && item->value.IsNumber()) {
+            waitAfterEndTouch = item->value.GetFloat();
+        }
+    }
+
     setStickEnabled(true);
     initController();
 }
@@ -38,7 +47,7 @@ void stickButton::initController() {
         case Widget::TouchEventType::CANCELED: {
             {
                 // action move btn to start position
-                auto delay = cocos2d::DelayTime::create(2.f);
+                auto delay = cocos2d::DelayTime::create(waitAfterEndTouch);
                 auto clb = cocos2d::CallFunc::create([this]() {
                     btn->setPosition(cocos2d::Vec2::ZERO);
                 });

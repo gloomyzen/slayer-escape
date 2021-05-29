@@ -28,6 +28,9 @@ namespace mb::battleModule {
         cocos2d::Sprite* smallBtn = nullptr;
         bool stickEnabled = false;
         cocos2d::Vec2 startPos = cocos2d::Vec2::ZERO;
+
+        //settings
+        float waitAfterEndTouch = 0.f;
     };
 }// namespace mb::battleModule
 

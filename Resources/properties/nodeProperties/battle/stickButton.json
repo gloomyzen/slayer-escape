@@ -17,5 +17,8 @@
     "spriteComponent": {
       "image": "images/battle/ui/white_circle_small.png"
     }
+  },
+  "settings": {
+    "waitAfterEndTouch": 0.9
   }
 }
