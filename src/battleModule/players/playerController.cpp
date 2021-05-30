@@ -22,7 +22,7 @@ void playerController::initJoystick() {
         return;
     }
     LOG_INFO("playerController::initJoystick: Init control");
-    auto spine = spine::SkeletonAnimation::createWithBinaryFile("images/characters/simpleHero/icon/bones_ske_1.skel", "images/characters/simpleHero/icon/bones_ske_1.atlas");
+    auto spine = spine::SkeletonAnimation::createWithBinaryFile("images/characters/simpleHero/icon/spine.skel", "images/characters/simpleHero/icon/spine.atlas");
     auto test = spine->getState()->getData()->getSkeletonData()->getAnimations();
     spine->setAnimation(1, "idle", true);
     addChild(spine);
