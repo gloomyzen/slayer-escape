@@ -3,5 +3,17 @@
     "transformComponent": {
       "size": [220, 220]
     }
+  },
+  "harpy": {
+    "transformComponent": {
+      "size": [220, 220],
+      "position": [772, 200]
+    },
+    "spineComponent": {
+      "file": "images/characters/simpleHero/icon/spine",
+      "animation": "idle",
+      "loop": true,
+      "scale": 0.7
+    }
   }
 }

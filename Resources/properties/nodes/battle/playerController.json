@@ -1,4 +1,10 @@
 {
   "type": "node",
-  "name": "playerController"
+  "name": "playerController",
+  "child": [
+    {
+      "type": "spine",
+      "name": "harpy"
+    }
+  ]
 }
