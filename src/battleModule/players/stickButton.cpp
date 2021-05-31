@@ -49,8 +49,10 @@ void stickButton::initController() {
                                         startPos.y - btn->getContentSize().height / 2);
             btn->setPosition(newPos);
             smallBtn->setPosition(cocos2d::Vec2::ZERO);
+            onMove.emit();
         } break;
         case Widget::TouchEventType::MOVED: {
+            onMove.emit();
             auto currentTouchPos = getTouchMovePosition();
             auto newPos = cocos2d::Vec2(currentTouchPos.x - startPos.x, currentTouchPos.y - startPos.y);
             while (newPos.distance(cocos2d::Vec2::ZERO) > stickDistance) {
@@ -69,6 +71,7 @@ void stickButton::initController() {
         } break;
         case Widget::TouchEventType::ENDED:
         case Widget::TouchEventType::CANCELED: {
+            onStop.emit();
             {
                 // action move btn to start position
                 auto delay = cocos2d::DelayTime::create(waitAfterEndTouch);

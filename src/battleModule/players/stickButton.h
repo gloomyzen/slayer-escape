@@ -5,6 +5,7 @@
 #include "cocos2d.h"
 #include "common/coreModule/nodes/nodeProperties.h"
 #include "common/coreModule/nodes/widgets/buttonBase.h"
+#include "common/coreModule/signals/signalHolder.h"
 #include <functional>
 #include <map>
 #include <string>
@@ -14,6 +15,9 @@ namespace mb::battleModule {
         : public common::coreModule::nodeProperties
         , public common::coreModule::buttonBase {
     public:
+        common::signal::signalHolder<> onMove;
+        common::signal::signalHolder<> onStop;
+
         stickButton();
         ~stickButton() override;
 

@@ -26,6 +26,7 @@ void playerController::initJoystick() {
 //    auto test = spine->getState()->getData()->getSkeletonData()->getAnimations();
 //    spine->setAnimation(1, "idle", true);
 //    addChild(spine);
+
 }
 
 playerController::~playerController() {}
