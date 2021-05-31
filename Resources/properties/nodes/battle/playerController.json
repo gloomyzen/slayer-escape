@@ -4,6 +4,10 @@
   "child": [
     {
       "type": "spine",
+      "name": "slime"
+    },
+    {
+      "type": "spine",
       "name": "harpy"
     }
   ]

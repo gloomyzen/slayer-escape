@@ -1,55 +1,48 @@
 
 spine.png
-size: 299,299
+size: 360,360
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-Left WIng
+EmoteAnger
   rotate: false
-  xy: 2, 79
-  size: 151, 88
-  orig: 314, 274
-  offset: 0, 138
+  xy: 79, 310
+  size: 51, 48
+  orig: 51, 48
+  offset: 0, 0
   index: -1
-Right Wing
+EmoteBasic
   rotate: false
-  xy: 2, 169
-  size: 167, 128
-  orig: 171, 128
-  offset: 4, 0
+  xy: 132, 310
+  size: 51, 48
+  orig: 51, 48
+  offset: 0, 0
+  index: -1
+EmoteDeathA
+  rotate: false
+  xy: 185, 310
+  size: 51, 48
+  orig: 51, 48
+  offset: 0, 0
+  index: -1
+EmoteDeathB
+  rotate: false
+  xy: 238, 310
+  size: 51, 48
+  orig: 51, 48
+  offset: 0, 0
   index: -1
 Shadow
-  rotate: true
-  xy: 279, 122
-  size: 175, 18
-  orig: 175, 18
+  rotate: false
+  xy: 2, 334
+  size: 75, 24
+  orig: 75, 24
   offset: 0, 0
   index: -1
-Tail
-  rotate: true
-  xy: 171, 137
-  size: 160, 106
-  orig: 160, 106
+Slime
+  rotate: false
+  xy: 291, 309
+  size: 67, 49
+  orig: 67, 49
   offset: 0, 0
-  index: -1
-back hair
-  rotate: true
-  xy: 2, 13
-  size: 64, 55
-  orig: 64, 65
-  offset: 0, 0
-  index: -1
-chest
-  rotate: true
-  xy: 155, 46
-  size: 89, 122
-  orig: 155, 197
-  offset: 19, 30
-  index: -1
-head
-  rotate: true
-  xy: 59, 17
-  size: 60, 45
-  orig: 60, 46
-  offset: 0, 1
   index: -1

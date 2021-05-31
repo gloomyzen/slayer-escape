@@ -10,10 +10,22 @@
       "position": [772, 200]
     },
     "spineComponent": {
-      "file": "images/characters/simpleHero/icon/spine",
+      "file": "images/characters/harpy/icon/spine",
       "animation": "idle",
       "loop": true,
       "scale": 0.7
+    }
+  },
+  "slime": {
+    "transformComponent": {
+      "size": [220, 220],
+      "position": [250, 350]
+    },
+    "spineComponent": {
+      "file": "images/characters/simpleHero/icon/spine",
+      "animation": "idle",
+      "loop": true,
+      "scale": 1.0
     }
   }
 }

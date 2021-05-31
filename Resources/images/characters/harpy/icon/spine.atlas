@@ -1,0 +1,55 @@
+
+spine.png
+size: 299,299
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Left WIng
+  rotate: false
+  xy: 2, 79
+  size: 151, 88
+  orig: 314, 274
+  offset: 0, 138
+  index: -1
+Right Wing
+  rotate: false
+  xy: 2, 169
+  size: 167, 128
+  orig: 171, 128
+  offset: 4, 0
+  index: -1
+Shadow
+  rotate: true
+  xy: 279, 122
+  size: 175, 18
+  orig: 175, 18
+  offset: 0, 0
+  index: -1
+Tail
+  rotate: true
+  xy: 171, 137
+  size: 160, 106
+  orig: 160, 106
+  offset: 0, 0
+  index: -1
+back hair
+  rotate: true
+  xy: 2, 13
+  size: 64, 55
+  orig: 64, 65
+  offset: 0, 0
+  index: -1
+chest
+  rotate: true
+  xy: 155, 46
+  size: 89, 122
+  orig: 155, 197
+  offset: 19, 30
+  index: -1
+head
+  rotate: true
+  xy: 59, 17
+  size: 60, 45
+  orig: 60, 46
+  offset: 0, 1
+  index: -1

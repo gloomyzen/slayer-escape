@@ -3,7 +3,7 @@
     "20001": {
       "propertyPath": "battle/characters/simpleHero",
       "iconPath": "images/characters/simpleHero/icon/icon.png",
-      "isSpine": false,
+      "isSpine": true,
       "hp": 17.5,
       "attackMin": 7.0,
       "attackMax": 7.5,
