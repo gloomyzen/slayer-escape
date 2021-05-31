@@ -26,7 +26,12 @@ void playerController::initJoystick() {
 //    auto test = spine->getState()->getData()->getSkeletonData()->getAnimations();
 //    spine->setAnimation(1, "idle", true);
 //    addChild(spine);
-    common::signal::make_slot()
+    joystick->getEmitter()->onMove.connect([]() {
+        LOG_INFO("playerController::initJoystick: move");
+    });
+    joystick->getEmitter()->onStop.connect([]() {
+        LOG_INFO("playerController::initJoystick: stop");
+    });
 }
 
 playerController::~playerController() {}

@@ -25,13 +25,13 @@ namespace mb::battleModule {
 
         void setStickEnabled(bool value);
         bool getStickEnabled();
-        stickButtonEmitter* getEmitter() { return emitter; }
+        stickButtonEmitter* getEmitter() { return &emitter; }
 
     private:
         enum class eActionType { WAIT_AFTER_END_TOUCH = 0 };
         void initController();
 
-        stickButtonEmitter* emitter;
+        stickButtonEmitter emitter;
         cocos2d::Sprite* btn = nullptr;
         cocos2d::Sprite* smallBtn = nullptr;
         bool stickEnabled = false;

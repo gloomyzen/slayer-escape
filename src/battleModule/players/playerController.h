@@ -8,10 +8,6 @@
 #include "stickButton.h"
 
 namespace mb::battleModule {
-    struct stickButtonEmitter {
-        common::signal::signalHolder<> onMove;
-        common::signal::signalHolder<> onStop;
-    };
     class playerController
         : public cocos2d::Node
         , public common::coreModule::nodeProperties {
