@@ -11,23 +11,27 @@
 #include <string>
 
 namespace mb::battleModule {
+    struct stickButtonEmitter {
+        common::signal::signalHolder<> onMove;
+        common::signal::signalHolder<> onStop;
+    };
     class stickButton
         : public common::coreModule::nodeProperties
         , public common::coreModule::buttonBase {
     public:
-        common::signal::signalHolder<> onMove;
-        common::signal::signalHolder<> onStop;
 
         stickButton();
         ~stickButton() override;
 
         void setStickEnabled(bool value);
         bool getStickEnabled();
+        stickButtonEmitter* getEmitter() { return emitter; }
 
     private:
         enum class eActionType { WAIT_AFTER_END_TOUCH = 0 };
         void initController();
 
+        stickButtonEmitter* emitter;
         cocos2d::Sprite* btn = nullptr;
         cocos2d::Sprite* smallBtn = nullptr;
         bool stickEnabled = false;

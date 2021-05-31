@@ -3,10 +3,15 @@
 
 #include "cocos2d.h"
 #include "common/coreModule/nodes/nodeProperties.h"
+#include "common/coreModule/signals/signalHolder.h"
 #include "playerBase.h"
 #include "stickButton.h"
 
 namespace mb::battleModule {
+    struct stickButtonEmitter {
+        common::signal::signalHolder<> onMove;
+        common::signal::signalHolder<> onStop;
+    };
     class playerController
         : public cocos2d::Node
         , public common::coreModule::nodeProperties {
