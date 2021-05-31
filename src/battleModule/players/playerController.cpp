@@ -1,5 +1,6 @@
 #include "playerController.h"
 #include "common/debugModule/logManager.h"
+#include "common/utilityModule/stringUtility.h"
 #include "spine/spine-cocos2dx.h"
 
 using namespace mb::battleModule;
@@ -22,15 +23,9 @@ void playerController::initJoystick() {
         return;
     }
     LOG_INFO("playerController::initJoystick: Init control");
-//    auto spine = spine::SkeletonAnimation::createWithBinaryFile("images/characters/simpleHero/icon/spine.skel", "images/characters/simpleHero/icon/spine.atlas");
-//    auto test = spine->getState()->getData()->getSkeletonData()->getAnimations();
-//    spine->setAnimation(1, "idle", true);
-//    addChild(spine);
-    joystick->getEmitter()->onMove.connect([]() {
-        LOG_INFO("playerController::initJoystick: move");
-    });
-    joystick->getEmitter()->onStop.connect([]() {
-        LOG_INFO("playerController::initJoystick: stop");
+
+    joystick->getEmitter()->onMove.connect([](float x, float y) {
+        LOG_INFO(STRING_FORMAT("%f, %f", x, y));
     });
 }
 

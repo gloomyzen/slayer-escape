@@ -12,8 +12,7 @@
 
 namespace mb::battleModule {
     struct stickButtonEmitter {
-        common::signal::signalHolder<> onMove;
-        common::signal::signalHolder<> onStop;
+        common::signal::signalHolder<float, float> onMove;
     };
     class stickButton
         : public common::coreModule::nodeProperties
