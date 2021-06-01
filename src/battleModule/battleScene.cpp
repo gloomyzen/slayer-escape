@@ -46,12 +46,13 @@ std::deque<nodeTasks> battleScene::getTasks() {
 
     result.emplace_back([this]() {
         plrController = new playerController();
+        //todo change it after testings
         auto player = playerBase::initWithId(20001);
         // todo remove after testing
         {
             // todo нужно поменять структуру уровня, чтобы земля и коллиции находились на разных планах
             //  а коллизиции и объекты были совмещенны
-            world->addChild(player);
+            objects->addChild(player);
         }
         //        plrController->setPawn(player);
         plrController->disableControl();
@@ -77,7 +78,8 @@ void battleScene::initHelpers() {
 #if CC_USE_PHYSICS
         auto clb = [this]() {
             auto temp = physicsDebugDraw;
-            if (ImGui::Button("Physics debug")) {
+            auto label = STRING_FORMAT("Physics debug: %s", physicsDebugDraw ? "ON" : "OFF");
+            if (ImGui::Button(label.c_str())) {
                 physicsDebugDraw = !physicsDebugDraw;
             }
             if (temp != physicsDebugDraw) {
@@ -89,7 +91,7 @@ void battleScene::initHelpers() {
                     physicsDebugDraw ? cocos2d::PhysicsWorld::DEBUGDRAW_ALL : cocos2d::PhysicsWorld::DEBUGDRAW_NONE);
             }
         };
-        imguiLayer->addDebugModules({ "Physics debug", [clb]() {
+        imguiLayer->addDebugModules({ "Physics debug: OFF", [clb]() {
                                          clb();
                                      } });
 #endif

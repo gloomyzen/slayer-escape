@@ -56,8 +56,10 @@ bool sCharacterData::load(const rapidjson::GenericValue<rapidjson::UTF8<char>>::
         return false;
     }
     if (object.HasMember("propertyPath") && object["propertyPath"].IsString()) propertyPath = object["propertyPath"].GetString();
-    if (object.HasMember("isSpine") && object["isSpine"].IsBool()) isSpine = object["isSpine"].GetBool();
     if (object.HasMember("iconPath") && object["iconPath"].IsString()) iconPatch = object["iconPath"].GetString();
+    if (object.HasMember("isSpine") && object["isSpine"].IsBool()) isSpine = object["isSpine"].GetBool();
+    if (object.HasMember("isBoss") && object["isBoss"].IsBool()) isBoss = object["isBoss"].GetBool();
+    if (object.HasMember("hasCollision") && object["hasCollision"].IsBool()) hasCollision = object["hasCollision"].GetBool();
     return true;
 }
 

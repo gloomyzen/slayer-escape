@@ -27,6 +27,8 @@ namespace mb::databasesModule {
         std::string iconPatch;
         sCharacterStats* stats = nullptr;
         bool isSpine = false;
+        bool isBoss = false;
+        bool hasCollision = true;
         bool load(const rapidjson::GenericValue<rapidjson::UTF8<char>>::ConstObject&);
     };
 

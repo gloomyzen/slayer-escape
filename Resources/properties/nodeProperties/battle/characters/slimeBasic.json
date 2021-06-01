@@ -1,11 +1,13 @@
 {
   "unit": {
     "transformComponent": {
-      "size": [220, 220],
-      "position": [0, 0]
+      "size": [75, 70]
     }
   },
   "spine": {
+    "transformComponent": {
+      "pivot": [0.5, 0.3]
+    },
     "spineComponent": {
       "file": "images/characters/slimeBasic/anim/spine",
       "animation": "idle",

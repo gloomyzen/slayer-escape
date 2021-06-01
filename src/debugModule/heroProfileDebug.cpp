@@ -88,7 +88,10 @@ void heroProfileDebug::rightData() {
     ImGui::Text("Character id %d", character->id);
     ImGui::Text("Icon path %s", character->iconPatch.c_str());
     ImGui::Text("Property path %s", character->propertyPath.c_str());
-    ImGui::Text("Unit type: %s", character->isSpine ? "Spine" : "Sprite");
+    ImGui::Text("Source type: %s", character->isSpine ? "Spine" : "Sprite");
+
+    ImGui::Text("Collision type: %s", character->hasCollision ? "collision" : "no collision");
+    ImGui::Text("Unit type: %s", character->isBoss ? "Boss" : "Hero");
 
     if (profile->hasHero(lastOpenedHero)) {
         if (ImGui::ButtonEx("remove hero", ImVec2(0, 0), ImGuiButtonFlags_AlignTextBaseLine | ImGuiButtonFlags_NoHoveredOnFocus)) {

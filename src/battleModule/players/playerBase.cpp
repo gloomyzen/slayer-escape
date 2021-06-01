@@ -7,15 +7,23 @@ using namespace mb::battleModule;
 
 playerBase::playerBase() {}
 
+playerBase::~playerBase() = default;
+
 playerBase* playerBase::initWithId(int id) {
     using namespace databasesModule;
-    auto player = new playerBase();
     auto characterDb =
         GET_DATABASE_MANAGER().getDatabase<charactersDatabase>(databaseManager::eDatabaseList::CHARACTER_DB);
     auto data = characterDb->getCharacterById(id);
+    auto player = new playerBase();
     player->setName("unit");
     player->loadJson(data->propertyPath);
     player->loadComponent(player, player->getName());
+    if (data->hasCollision) {
+        auto physics = cocos2d::PhysicsBody::createBox(
+            cocos2d::Size(player->getContentSize().width, player->getContentSize().height));
+        physics->setDynamic(false);
+        player->addComponent(physics);
+    }
     if (!data->isSpine) {
         auto sprite = new cocos2d::Sprite();
         sprite->setName("sprite");
@@ -30,5 +38,3 @@ playerBase* playerBase::initWithId(int id) {
 
     return player;
 }
-
-playerBase::~playerBase() = default;
