@@ -1,0 +1,69 @@
+
+spine.png
+size: 158,158
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Blade
+  rotate: false
+  xy: 70, 44
+  size: 60, 49
+  orig: 60, 50
+  offset: 0, 1
+  index: -1
+Cape
+  rotate: false
+  xy: 2, 95
+  size: 131, 61
+  orig: 131, 61
+  offset: 0, 0
+  index: -1
+Grip
+  rotate: false
+  xy: 70, 25
+  size: 17, 17
+  orig: 17, 19
+  offset: 0, 1
+  index: -1
+HiltA
+  rotate: true
+  xy: 2, 10
+  size: 26, 35
+  orig: 26, 35
+  offset: 0, 0
+  index: -1
+HiltB
+  rotate: false
+  xy: 135, 72
+  size: 21, 25
+  orig: 21, 25
+  offset: 0, 0
+  index: -1
+Shadow
+  rotate: true
+  xy: 135, 99
+  size: 57, 18
+  orig: 57, 18
+  offset: 0, 0
+  index: -1
+ShoulderL
+  rotate: false
+  xy: 132, 38
+  size: 20, 32
+  orig: 56, 58
+  offset: 0, 24
+  index: -1
+ShoulderR
+  rotate: false
+  xy: 39, 9
+  size: 28, 27
+  orig: 37, 27
+  offset: 6, 0
+  index: -1
+Slime
+  rotate: false
+  xy: 2, 38
+  size: 66, 55
+  orig: 82, 58
+  offset: 3, 0
+  index: -1

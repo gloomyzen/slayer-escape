@@ -11,6 +11,36 @@
       "attackSpeed": 1.0
     },
     "20002": {
+      "propertyPath": "battle/characters/slimeAttacker",
+      "iconPath": "images/characters/slimeAttacker/icon/icon.png",
+      "isSpine": true,
+      "hp": 17.5,
+      "attackMin": 7.0,
+      "attackMax": 7.5,
+      "speed": 1.0,
+      "attackSpeed": 1.0
+    },
+    "20003": {
+      "propertyPath": "battle/characters/slimeCaster",
+      "iconPath": "images/characters/slimeCaster/icon/icon.png",
+      "isSpine": true,
+      "hp": 17.5,
+      "attackMin": 7.0,
+      "attackMax": 7.5,
+      "speed": 1.0,
+      "attackSpeed": 1.0
+    },
+    "20004": {
+      "propertyPath": "battle/characters/slimeDefender",
+      "iconPath": "images/characters/slimeDefender/icon/icon.png",
+      "isSpine": true,
+      "hp": 17.5,
+      "attackMin": 7.0,
+      "attackMax": 7.5,
+      "speed": 1.0,
+      "attackSpeed": 1.0
+    },
+    "21001": {
       "propertyPath": "battle/characters/harpy",
       "iconPath": "images/characters/harpy/icon/icon.png",
       "isSpine": true,

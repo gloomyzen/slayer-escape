@@ -1,0 +1,97 @@
+
+spine.png
+size: 140,140
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Ball
+  rotate: false
+  xy: 77, 19
+  size: 25, 24
+  orig: 25, 24
+  offset: 0, 0
+  index: -1
+BallShade
+  rotate: true
+  xy: 104, 22
+  size: 21, 18
+  orig: 21, 18
+  offset: 0, 0
+  index: -1
+ChainA
+  rotate: false
+  xy: 94, 120
+  size: 13, 18
+  orig: 15, 20
+  offset: 1, 1
+  index: -1
+ChainB
+  rotate: false
+  xy: 94, 100
+  size: 13, 18
+  orig: 15, 20
+  offset: 1, 1
+  index: -1
+ChainC
+  rotate: true
+  xy: 94, 85
+  size: 13, 18
+  orig: 15, 20
+  offset: 1, 1
+  index: -1
+ChainD
+  rotate: false
+  xy: 109, 120
+  size: 13, 18
+  orig: 15, 20
+  offset: 1, 1
+  index: -1
+Fingers
+  rotate: true
+  xy: 77, 2
+  size: 15, 17
+  orig: 18, 18
+  offset: 2, 1
+  index: -1
+Hand
+  rotate: false
+  xy: 104, 4
+  size: 18, 16
+  orig: 18, 16
+  offset: 0, 0
+  index: -1
+Handle
+  rotate: true
+  xy: 77, 45
+  size: 16, 29
+  orig: 16, 29
+  offset: 0, 0
+  index: -1
+Shadow
+  rotate: true
+  xy: 64, 63
+  size: 75, 28
+  orig: 75, 28
+  offset: 0, 0
+  index: -1
+Shield
+  rotate: false
+  xy: 2, 61
+  size: 60, 77
+  orig: 60, 78
+  offset: 0, 1
+  index: -1
+Slime
+  rotate: false
+  xy: 2, 9
+  size: 73, 50
+  orig: 73, 50
+  offset: 0, 0
+  index: -1
+Thumb
+  rotate: false
+  xy: 109, 109
+  size: 9, 9
+  orig: 9, 9
+  offset: 0, 0
+  index: -1
