@@ -1,14 +1,4 @@
 {
   "type": "node",
-  "name": "playerController",
-  "child": [
-    {
-      "type": "spine",
-      "name": "slime"
-    },
-    {
-      "type": "spine",
-      "name": "harpy"
-    }
-  ]
+  "name": "playerController"
 }

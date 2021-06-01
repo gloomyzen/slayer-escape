@@ -1,6 +1,7 @@
 #include "playerBase.h"
-#include <databasesModule/charactersDatabase.h>
-#include <databasesModule/databaseManager.h>
+#include "databasesModule/charactersDatabase.h"
+#include "databasesModule/databaseManager.h"
+#include "common/coreModule/nodes/widgets/spineNode.h"
 
 using namespace mb::battleModule;
 
@@ -21,8 +22,7 @@ playerBase* playerBase::initWithId(int id) {
         player->loadComponent(sprite, sprite->getName());
         player->addChild(sprite);
     } else {
-        // todo add spine node when spine is be ready
-        auto spine = new cocos2d::Sprite();
+        auto spine = new common::coreModule::spineNode();
         spine->setName("spine");
         player->loadComponent(spine, spine->getName());
         player->addChild(spine);
