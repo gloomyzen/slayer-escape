@@ -26,7 +26,7 @@ heroProfileDebug& heroProfileDebug::getInstance() {
 }
 
 void heroProfileDebug::update() {
-    if (ImGui::Button("Heroes")) {
+    if (ImGui::Button("Profile: Heroes")) {
         isOpened = !isOpened;
     }
     if (isOpened) {
@@ -37,7 +37,7 @@ void heroProfileDebug::update() {
 void heroProfileDebug::profileWindow(bool* windowOpened) {
     ImGui::SetNextWindowSize(ImVec2(static_cast<float>(400), static_cast<float>(350)),
                              ImGuiCond_FirstUseEver);
-    if (!ImGui::Begin("Heroes database", reinterpret_cast<bool*>(windowOpened))) {
+    if (!ImGui::Begin("Profile: Heroes", reinterpret_cast<bool*>(windowOpened))) {
         ImGui::End();
         return;
     }
@@ -111,7 +111,7 @@ void heroProfileDebug::rightData() {
         }
 
         float speed = character->stats->speed;
-        ImGui::DragFloat("Speed", &speed, 0.1, 0.1);
+        ImGui::DragFloat("Movement speed", &speed, 0.1, 0.1);
         if (speed != character->stats->speed) {
             character->stats->speed = speed;
         }

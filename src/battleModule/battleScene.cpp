@@ -25,7 +25,7 @@ battleScene::battleScene() {
 #if CC_USE_PHYSICS
         auto clb = [this]() {
             auto temp = physicsDebugDraw;
-            if (ImGui::Button("Debug physics")) {
+            if (ImGui::Button("Physics debug")) {
                 physicsDebugDraw = !physicsDebugDraw;
             }
             if (temp != physicsDebugDraw) {
@@ -41,11 +41,21 @@ battleScene::battleScene() {
         auto clb = []() {};
 #endif
         GET_GAME_MANAGER().getMainScene()->getImGuiLayer()->resetDebugModules();
-        GET_GAME_MANAGER().getMainScene()->getImGuiLayer()->addDebugModules([clb]() {
-            debugProfile::heroProfileDebug::getInstance().update();
-            debugProfile::soundLibraryDebug::getInstance().update();
-            clb();
-        });
+        GET_GAME_MANAGER().getMainScene()->getImGuiLayer()->addDebugModules({
+            "Profile: Heroes",
+            []() {
+                debugProfile::heroProfileDebug::getInstance().update();
+            } });
+        GET_GAME_MANAGER().getMainScene()->getImGuiLayer()->addDebugModules({
+            "Sound library",
+            []() {
+                debugProfile::soundLibraryDebug::getInstance().update();
+            } });
+        GET_GAME_MANAGER().getMainScene()->getImGuiLayer()->addDebugModules({
+            "Physics debug",
+            [clb]() {
+                clb();
+            } });
     }
 #endif
 }

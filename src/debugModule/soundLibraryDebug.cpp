@@ -22,7 +22,7 @@ soundLibraryDebug& soundLibraryDebug::getInstance() {
 }
 
 void soundLibraryDebug::update() {
-    if (ImGui::Button("Sounds")) {
+    if (ImGui::Button("Sound library")) {
         isOpened = !isOpened;
     }
     if (isOpened) {
@@ -33,7 +33,7 @@ void soundLibraryDebug::update() {
 void soundLibraryDebug::soundWindow(bool* windowOpened) {
     ImGui::SetNextWindowSize(ImVec2(static_cast<float>(400), static_cast<float>(350)),
                              ImGuiCond_FirstUseEver);
-    if (!ImGui::Begin("Sounds debug", reinterpret_cast<bool*>(windowOpened))) {
+    if (!ImGui::Begin("Sound library", reinterpret_cast<bool*>(windowOpened))) {
         ImGui::End();
         return;
     }
