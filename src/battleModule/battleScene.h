@@ -19,9 +19,12 @@ namespace mb::battleModule {
         ~battleScene();
         std::deque<nodeTasks> getTasks() override;
 
+        void initHelpers();
+
       private:
         // world section
-        cocos2d::Layer* world = nullptr; //owner
+        cocos2d::Layer* world = nullptr; //layer for background //owner
+        cocos2d::Layer* objects = nullptr; //layer for objects and players //owner
         battleField* maze = nullptr; //owner
         bool physicsDebugDraw = false; //for debug
         playerController* plrController = nullptr; //owner

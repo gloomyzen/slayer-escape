@@ -12,6 +12,12 @@
       "anchor": [ 0.0, 0.0 ]
     }
   },
+  "objects": {
+    "transformComponent": {
+      "pivot": [ 0.0, 0.0 ],
+      "anchor": [ 0.0, 0.0 ]
+    }
+  },
   "incomeGoldWidget": {
     "transformComponent": {
       "pivot": [ 0.0, 1.0 ],

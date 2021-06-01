@@ -10,12 +10,14 @@ namespace mb::battleModule {
         battleField();
         ~battleField();
 
-        void setLayer(cocos2d::Layer* layer) { world = layer; }
+        void setWorldLayer(cocos2d::Layer* layer) { world = layer; }
+        void setObjectsLayer(cocos2d::Layer* layer) { objects = layer; }
 
         void initLayer(int);
 
       private:
         cocos2d::Layer* world = nullptr; //not owner
+        cocos2d::Layer* objects = nullptr; //not owner
     };
 }// namespace mb::battleModule
 

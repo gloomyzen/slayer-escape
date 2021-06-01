@@ -36,11 +36,16 @@ void battleField::initLayer(int id) {
                     node->setPositionY(node->getContentSize().height * node->getScale() * col.first);
                 }
                 if (tile->type == databasesModule::eTileTypes::WALL || tile->type == databasesModule::eTileTypes::WALL_DESTROY) {
-                    auto physics = cocos2d::PhysicsBody::createBox(cocos2d::Size(node->getContentSize().width, node->getContentSize().height));
+                    auto physics = cocos2d::PhysicsBody::createBox(
+                        cocos2d::Size(node->getContentSize().width, node->getContentSize().height));
                     physics->setDynamic(false);
                     node->addComponent(physics);
                 }
-                world->addChild(node);
+                if (tile->type == databasesModule::eTileTypes::WALL || tile->type == databasesModule::eTileTypes::WALL_DESTROY) {
+                    objects->addChild(node);
+                } else {
+                    world->addChild(node);
+                }
             }
         }
     }

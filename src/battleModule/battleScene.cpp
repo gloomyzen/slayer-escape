@@ -20,8 +20,60 @@ battleScene::battleScene() {
     this->setName("battleScene");
     loadProperty("scenes/" + this->getName(), dynamic_cast<Node*>(this));
     GET_GAME_MANAGER().getMainScene()->getPhysicsWorld()->setGravity(cocos2d::Vec2(1.f, 1.f));
+    initHelpers();
+}
+
+battleScene::~battleScene() {}
+
+std::deque<nodeTasks> battleScene::getTasks() {
+    std::deque<nodeTasks> result;
+
+    result.emplace_back([this]() {
+        world = dynamic_cast<cocos2d::Layer*>(findNode("world"));
+        objects = dynamic_cast<cocos2d::Layer*>(findNode("objects"));
+
+        return eTasksStatus::STATUS_OK;
+    });
+
+    result.emplace_back([this]() {
+        maze = new battleField();
+        maze->setWorldLayer(world);
+        maze->setObjectsLayer(objects);
+        maze->initLayer(40001);// todo remove after testing
+
+        return eTasksStatus::STATUS_OK;
+    });
+
+    result.emplace_back([this]() {
+        plrController = new playerController();
+        auto player = playerBase::initWithId(20001);
+        // todo remove after testing
+        {
+            // todo нужно поменять структуру уровня, чтобы земля и коллиции находились на разных планах
+            //  а коллизиции и объекты были совмещенны
+            world->addChild(player);
+        }
+        //        plrController->setPawn(player);
+        plrController->disableControl();
+        plrController->enableControl();
+
+        return eTasksStatus::STATUS_OK;
+    });
+
+    return result;
+}
+
+void battleScene::initHelpers() {
 #ifdef DEBUG
-    if (GET_GAME_MANAGER().getMainScene()->getImGuiLayer()) {
+    if (auto imguiLayer = GET_GAME_MANAGER().getMainScene()->getImGuiLayer()) {
+
+        imguiLayer->resetDebugModules();
+        imguiLayer->addDebugModules({ "Profile: Heroes", []() {
+                                         debugProfile::heroProfileDebug::getInstance().update();
+                                     } });
+        imguiLayer->addDebugModules({ "Sound library", []() {
+                                         debugProfile::soundLibraryDebug::getInstance().update();
+                                     } });
 #if CC_USE_PHYSICS
         auto clb = [this]() {
             auto temp = physicsDebugDraw;
@@ -37,58 +89,10 @@ battleScene::battleScene() {
                     physicsDebugDraw ? cocos2d::PhysicsWorld::DEBUGDRAW_ALL : cocos2d::PhysicsWorld::DEBUGDRAW_NONE);
             }
         };
-#else
-        auto clb = []() {};
+        imguiLayer->addDebugModules({ "Physics debug", [clb]() {
+                                         clb();
+                                     } });
 #endif
-        GET_GAME_MANAGER().getMainScene()->getImGuiLayer()->resetDebugModules();
-        GET_GAME_MANAGER().getMainScene()->getImGuiLayer()->addDebugModules({
-            "Profile: Heroes",
-            []() {
-                debugProfile::heroProfileDebug::getInstance().update();
-            } });
-        GET_GAME_MANAGER().getMainScene()->getImGuiLayer()->addDebugModules({
-            "Sound library",
-            []() {
-                debugProfile::soundLibraryDebug::getInstance().update();
-            } });
-        GET_GAME_MANAGER().getMainScene()->getImGuiLayer()->addDebugModules({
-            "Physics debug",
-            [clb]() {
-                clb();
-            } });
     }
 #endif
-}
-
-battleScene::~battleScene() {}
-
-std::deque<nodeTasks> battleScene::getTasks() {
-    std::deque<nodeTasks> result;
-
-    result.emplace_back([this]() {
-        world = dynamic_cast<cocos2d::Layer*>(findNode("world"));
-        plrController = new playerController();
-        auto player = playerBase::initWithId(20001);
-        // todo remove after testing
-        {
-            //todo нужно поменять структуру уровня, чтобы земля и коллиции находились на разных планах
-            // а коллизиции и объекты были совмещенны
-            world->addChild(player);
-        }
-//        plrController->setPawn(player);
-        plrController->disableControl();
-        plrController->enableControl();
-
-        return eTasksStatus::STATUS_OK;
-    });
-
-    result.emplace_back([this]() {
-        maze = new battleField();
-        maze->setLayer(world);
-        maze->initLayer(40001);// todo remove after testing
-
-        return eTasksStatus::STATUS_OK;
-    });
-
-    return result;
 }

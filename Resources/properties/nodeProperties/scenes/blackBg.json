@@ -1,0 +1,18 @@
+{
+  "blackBg": {
+    "transformComponent": {
+      "pivot": [ 0.5, 0.5 ],
+      "anchor": [ 0.5, 0.5 ],
+      "stretch": [ 1.2, 1.2 ]
+    },
+    "scale9spriteComponent": {
+      "image": "images/general/blackBg.png",
+      "slice9": {
+        "x": 1,
+        "y": 1,
+        "width": 1,
+        "height": 1
+      }
+    }
+  }
+}

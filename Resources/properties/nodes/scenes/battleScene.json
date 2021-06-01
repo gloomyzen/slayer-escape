@@ -8,6 +8,10 @@
     },
     {
       "type": "layer",
+      "name": "objects"
+    },
+    {
+      "type": "layer",
       "name": "uiLayer"
     }
   ]
