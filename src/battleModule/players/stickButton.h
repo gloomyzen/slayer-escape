@@ -25,6 +25,7 @@ namespace mb::battleModule {
         void setStickEnabled(bool value);
         bool getStickEnabled();
         stickButtonEmitter* getEmitter() { return &emitter; }
+        float getStickDistance() { return stickDistance; }
 
     private:
         enum class eActionType { WAIT_AFTER_END_TOUCH = 0 };

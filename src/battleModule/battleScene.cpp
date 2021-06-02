@@ -1,5 +1,7 @@
 #include "battleScene.h"
 #include "battleModule/players/playerBase.h"
+#include "battleModule/players/stickButton.h"
+#include "battleModule/players/playerControllerHelper.h"
 #include "common/coreModule/gameManager.h"
 #include "common/coreModule/scenes/mainScene.h"
 #include "common/debugModule/logManager.h"
@@ -54,9 +56,18 @@ std::deque<nodeTasks> battleScene::getTasks() {
             //  а коллизиции и объекты были совмещенны
             objects->addChild(player);
         }
-        //        plrController->setPawn(player);
+        /*
         plrController->disableControl();
         plrController->enableControl();
+         */
+        onMoveId = plrController->getJoystick()->getEmitter()->onMove.connect([this](float x, float y) {
+            if (!plrController || !plrController->getJoystick()) {
+                LOG_INFO("battleScene::onMove: player controller is not loaded.");
+                return;
+            }
+            auto test = getPlayerStateByStick(x, y, plrController->getJoystick()->getStickDistance());
+            auto test2 = "";
+        });
 
         return eTasksStatus::STATUS_OK;
     });

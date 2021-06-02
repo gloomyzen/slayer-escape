@@ -18,6 +18,8 @@ namespace mb::battleModule {
         void disableControl();
         void enableControl();
 
+        stickButton* getJoystick() { return joystick; }
+
     private:
         void initJoystick();
 

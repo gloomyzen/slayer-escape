@@ -18,6 +18,8 @@ namespace mb::battleModule {
     };
 
     std::pair<ePlayerMoveDirection, ePlayerMoveIntensive> getPlayerStateByStick(float x, float y, float distance);
+
+    ePlayerMoveDirection getPlayerDirectionByStick(float x, float y);
 }
 
 #endif// SLAYER_ESCAPE_PLAYERCONTROLLERHELPER_H

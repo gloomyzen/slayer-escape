@@ -21,8 +21,11 @@ playerBase* playerBase::initWithId(int id) {
     if (data->hasCollision) {
         auto physics = cocos2d::PhysicsBody::createBox(
             cocos2d::Size(player->getContentSize().width, player->getContentSize().height));
-        physics->setDynamic(false);
+        physics->setDynamic(true);
         player->addComponent(physics);
+        physics->setGravityEnable(false);
+        physics->setRotationEnable(false);
+//        physics->setVelocity(cocos2d::Vec2(50.f, 200.f));
     }
     if (!data->isSpine) {
         auto sprite = new cocos2d::Sprite();
