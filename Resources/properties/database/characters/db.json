@@ -9,7 +9,7 @@
       "hp": 17.5,
       "attackMin": 7.0,
       "attackMax": 7.5,
-      "speed": 1.0,
+      "speed": 100.0,
       "attackSpeed": 1.0
     },
     "20002": {
@@ -21,7 +21,7 @@
       "hp": 17.5,
       "attackMin": 7.0,
       "attackMax": 7.5,
-      "speed": 1.0,
+      "speed": 100.0,
       "attackSpeed": 1.0
     },
     "20003": {
@@ -33,7 +33,7 @@
       "hp": 17.5,
       "attackMin": 7.0,
       "attackMax": 7.5,
-      "speed": 1.0,
+      "speed": 100.0,
       "attackSpeed": 1.0
     },
     "20004": {
@@ -45,7 +45,7 @@
       "hp": 17.5,
       "attackMin": 7.0,
       "attackMax": 7.5,
-      "speed": 1.0,
+      "speed": 100.0,
       "attackSpeed": 1.0
     },
     "21001": {
@@ -58,7 +58,7 @@
       "hp": 17.5,
       "attackMin": 7.0,
       "attackMax": 7.5,
-      "speed": 1.0,
+      "speed": 100.0,
       "attackSpeed": 1.0
     }
   }

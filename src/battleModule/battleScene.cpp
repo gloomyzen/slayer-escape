@@ -54,7 +54,7 @@ std::deque<nodeTasks> battleScene::getTasks() {
     result.emplace_back([this]() {
         plrController = new playerController();
         //todo change it after testings
-        auto player = playerBase::initWithId(20001);
+        player = playerBase::initWithId(20001);
         // todo remove after testing
         {
             // todo нужно поменять структуру уровня, чтобы земля и коллиции находились на разных планах
@@ -66,7 +66,7 @@ std::deque<nodeTasks> battleScene::getTasks() {
         plrController->enableControl();
          */
         onMoveId = plrController->getJoystick()->getEmitter()->onMove.connect([this](float x, float y) {
-            if (!plrController || !plrController->getJoystick()) {
+            if (!plrController || !plrController->getJoystick() || !player) {
                 LOG_INFO("battleScene::onMove: player controller is not loaded.");
                 return;
             }
@@ -78,17 +78,15 @@ std::deque<nodeTasks> battleScene::getTasks() {
 //            if (dir.second == ePlayerMoveIntensive::PLAYER_WALK) LOG_INFO("walk");
 //            if (dir.second == ePlayerMoveIntensive::PLAYER_STOP) LOG_INFO("stop");
 //            if (dir.second == ePlayerMoveIntensive::PLAYER_RUN) LOG_INFO("run");
-            auto test2 = "";
+            player->movePlayer(dir);
         });
 
         onStopId = plrController->getJoystick()->getEmitter()->onStop.connect([this]() {
-            if (!plrController || !plrController->getJoystick()) {
+            if (!plrController || !plrController->getJoystick() || !player) {
                 LOG_INFO("battleScene::onMove: player controller is not loaded.");
                 return;
             }
-            //todo add stop action
-
-//            auto dir = getPlayerStateByStick(x, y, plrController->getJoystick()->getStickDistance());
+            player->stopPlayer();
         });
 
         return eTasksStatus::STATUS_OK;

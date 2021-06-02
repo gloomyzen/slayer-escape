@@ -23,9 +23,9 @@ playerBase* playerBase::initWithId(int id) {
             cocos2d::Size(player->getContentSize().width, player->getContentSize().height));
         physics->setDynamic(true);
         player->addComponent(physics);
+        player->setPhysicsComponent(physics);
         physics->setGravityEnable(false);
         physics->setRotationEnable(false);
-//        physics->setVelocity(cocos2d::Vec2(50.f, 200.f));
     }
     if (!data->isSpine) {
         auto sprite = new cocos2d::Sprite();
@@ -45,4 +45,32 @@ playerBase* playerBase::initWithId(int id) {
 void playerBase::loadData(databasesModule::sCharacterData* data) {
     characterData = data;
     playerDirection = !data->flipX ? ePlayerMoveXDirection::RIGHT : ePlayerMoveXDirection::LEFT;
+}
+
+void playerBase::movePlayer(
+    std::pair<std::pair<ePlayerMoveXDirection, ePlayerMoveYDirection>, ePlayerMoveIntensive> dir) {
+    if (!physicsComponent) return;
+    auto move = cocos2d::Vec2::ZERO;
+    auto speed = 0.f;
+    if (dir.second == ePlayerMoveIntensive::PLAYER_WALK) {
+        speed = characterData->stats->speed / 2;
+    } else if (dir.second == ePlayerMoveIntensive::PLAYER_RUN) {
+        speed = characterData->stats->speed;
+    }
+    if (dir.first.first == ePlayerMoveXDirection::RIGHT) {
+        move.x = speed;
+    } else if (dir.first.first == ePlayerMoveXDirection::LEFT) {
+        move.x = speed * -1;
+    }
+    if (dir.first.second == ePlayerMoveYDirection::UP) {
+        move.y = speed;
+    } else if (dir.first.second == ePlayerMoveYDirection::DOWN) {
+        move.y = speed * -1;
+    }
+    physicsComponent->setVelocity(move);
+}
+
+void playerBase::stopPlayer() {
+    if (!physicsComponent) return;
+    physicsComponent->setVelocity(cocos2d::Vec2::ZERO);
 }
