@@ -11,8 +11,7 @@
     "spineComponent": {
       "file": "images/characters/slimeBasic/anim/spine",
       "animation": "idle",
-      "loop": true,
-      "scale": 1.0
+      "loop": true
     }
   }
 }

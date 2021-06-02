@@ -1,16 +1,14 @@
 {
   "unit": {
     "transformComponent": {
-      "size": [220, 220],
-      "position": [0, 0]
+      "size": [75, 70]
     }
   },
   "spine": {
     "spineComponent": {
       "file": "images/characters/slimeCaster/anim/spine",
       "animation": "idle",
-      "loop": true,
-      "scale": 1.0
+      "loop": true
     }
   }
 }
