@@ -5,10 +5,14 @@
 #include <string>
 
 namespace mb::battleModule {
-    enum class ePlayerMoveDirection {
-        LEFT = 0,
+    enum class ePlayerMoveXDirection {
+        NONE = 0,
+        LEFT,
+        RIGHT
+    };
+    enum class ePlayerMoveYDirection {
+        NONE = 0,
         UP,
-        RIGHT,
         DOWN
     };
     enum class ePlayerMoveIntensive {
@@ -17,9 +21,9 @@ namespace mb::battleModule {
         PLAYER_RUN
     };
 
-    std::pair<ePlayerMoveDirection, ePlayerMoveIntensive> getPlayerStateByStick(float x, float y, float distance);
+    std::pair<std::pair<ePlayerMoveXDirection, ePlayerMoveYDirection>, ePlayerMoveIntensive> getPlayerStateByStick(float x, float y, float distance);
 
-    ePlayerMoveDirection getPlayerDirectionByStick(float x, float y);
+    std::pair<ePlayerMoveXDirection, ePlayerMoveYDirection> getPlayerDirectionByStick(float x, float y, float distance);
 }
 
 #endif// SLAYER_ESCAPE_PLAYERCONTROLLERHELPER_H

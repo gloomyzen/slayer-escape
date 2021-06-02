@@ -20,9 +20,10 @@ namespace mb::battleModule {
         void loadData(databasesModule::sCharacterData* data);
 
 
+
     private:
-        int characterId;
-        ePlayerMoveDirection playerDirection = ePlayerMoveDirection::RIGHT;
+        databasesModule::sCharacterData* characterData = nullptr;
+        ePlayerMoveXDirection playerDirection = ePlayerMoveXDirection::RIGHT;
     };
 }// namespace mb::battleModule
 

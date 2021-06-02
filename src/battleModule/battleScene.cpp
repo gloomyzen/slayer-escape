@@ -71,10 +71,10 @@ std::deque<nodeTasks> battleScene::getTasks() {
                 return;
             }
             auto dir = getPlayerStateByStick(x, y, plrController->getJoystick()->getStickDistance());
-//            if (dir.first == ePlayerMoveDirection::DOWN) LOG_INFO("down");
-//            if (dir.first == ePlayerMoveDirection::UP) LOG_INFO("up");
-//            if (dir.first == ePlayerMoveDirection::RIGHT) LOG_INFO("right");
-//            if (dir.first == ePlayerMoveDirection::LEFT) LOG_INFO("left");
+//            if (dir.first.second == ePlayerMoveYDirection::DOWN) LOG_INFO("down");
+//            if (dir.first.second == ePlayerMoveYDirection::UP) LOG_INFO("up");
+//            if (dir.first.first == ePlayerMoveXDirection::RIGHT) LOG_INFO("right");
+//            if (dir.first.first == ePlayerMoveXDirection::LEFT) LOG_INFO("left");
 //            if (dir.second == ePlayerMoveIntensive::PLAYER_WALK) LOG_INFO("walk");
 //            if (dir.second == ePlayerMoveIntensive::PLAYER_STOP) LOG_INFO("stop");
 //            if (dir.second == ePlayerMoveIntensive::PLAYER_RUN) LOG_INFO("run");

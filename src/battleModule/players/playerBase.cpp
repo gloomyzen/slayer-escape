@@ -43,6 +43,6 @@ playerBase* playerBase::initWithId(int id) {
 }
 
 void playerBase::loadData(databasesModule::sCharacterData* data) {
-    characterId = data->id;
-    playerDirection = !data->flipX ? ePlayerMoveDirection::RIGHT : ePlayerMoveDirection::LEFT;
+    characterData = data;
+    playerDirection = !data->flipX ? ePlayerMoveXDirection::RIGHT : ePlayerMoveXDirection::LEFT;
 }

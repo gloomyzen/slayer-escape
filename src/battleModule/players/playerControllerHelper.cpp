@@ -2,29 +2,37 @@
 
 using namespace mb::battleModule;
 
-std::pair<ePlayerMoveDirection, ePlayerMoveIntensive> mb::battleModule::getPlayerStateByStick(float x, float y, float distance) {
-    auto result = std::pair<ePlayerMoveDirection, ePlayerMoveIntensive>(getPlayerDirectionByStick(x, y), ePlayerMoveIntensive::PLAYER_STOP);
-    if ((std::abs(x) > std::abs(distance) * .7f) || (std::abs(y) > std::abs(distance) * .7f)) {
+std::pair<std::pair<ePlayerMoveXDirection, ePlayerMoveYDirection>, ePlayerMoveIntensive> mb::battleModule::getPlayerStateByStick(float x, float y, float distance) {
+    auto result = std::pair<std::pair<ePlayerMoveXDirection, ePlayerMoveYDirection>, ePlayerMoveIntensive>(getPlayerDirectionByStick(x, y, distance), ePlayerMoveIntensive::PLAYER_STOP);
+    auto absX = std::abs(x);
+    auto absY = std::abs(y);
+    auto absD = std::abs(distance);
+    if ((absX > absD * .7f) || (absY > absD * .7f)) {
         result.second = ePlayerMoveIntensive::PLAYER_RUN;
-    } else if ((std::abs(x) > std::abs(distance) / 3) || (std::abs(y) > std::abs(distance) / 3)) {
+    } else if ((absX > absD / 3) || (absY > absD / 3)) {
         result.second = ePlayerMoveIntensive::PLAYER_WALK;
     }
     return result;
 }
 
-ePlayerMoveDirection mb::battleModule::getPlayerDirectionByStick(float x, float y) {
-    if (std::abs(x) > std::abs(y)) {
+std::pair<ePlayerMoveXDirection, ePlayerMoveYDirection> mb::battleModule::getPlayerDirectionByStick(float x, float y, float distance) {
+    auto result = std::pair<ePlayerMoveXDirection, ePlayerMoveYDirection>(ePlayerMoveXDirection::NONE, ePlayerMoveYDirection::NONE);
+    auto absX = std::abs(x);
+    auto absY = std::abs(y);
+    auto absD = std::abs(distance);
+    if (absX > absD / 3) {
         if (x > 0.f) {
-            return ePlayerMoveDirection::RIGHT;
+            result.first = ePlayerMoveXDirection::RIGHT;
         } else {
-            return ePlayerMoveDirection::LEFT;
-        }
-    } else {
-        if (y > 0.f) {
-            return ePlayerMoveDirection::UP;
-        } else {
-            return ePlayerMoveDirection::DOWN;
+            result.first = ePlayerMoveXDirection::LEFT;
         }
     }
-    return ePlayerMoveDirection::RIGHT;
+    if (absY > absD / 3) {
+        if (y > 0.f) {
+            result.second = ePlayerMoveYDirection::UP;
+        } else {
+            result.second = ePlayerMoveYDirection::DOWN;
+        }
+    }
+    return result;
 }
