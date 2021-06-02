@@ -32,6 +32,7 @@ namespace mb::battleModule {
         playerBase* player = nullptr; //owner
 
         int onMoveId;
+        int onStopId;
 
 #ifdef DEBUG
         bool physicsDebugDraw = false; //for debug

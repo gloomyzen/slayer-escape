@@ -28,6 +28,11 @@ stickButton::stickButton() {
     initController();
 }
 
+stickButton::~stickButton() {
+    getEmitter()->onMove.disconnectAll();
+    getEmitter()->onStop.disconnectAll();
+}
+
 void stickButton::initController() {
     btn = dynamic_cast<cocos2d::Sprite*>(findNode("buttonNode"));
     if (btn) {
@@ -71,6 +76,7 @@ void stickButton::initController() {
         case Widget::TouchEventType::ENDED:
         case Widget::TouchEventType::CANCELED: {
             {
+                getEmitter()->onStop.emit();
                 // action move btn to start position
                 auto delay = cocos2d::DelayTime::create(waitAfterEndTouch);
                 auto clb = cocos2d::CallFunc::create([this]() {
@@ -105,5 +111,3 @@ void stickButton::setStickEnabled(bool value) {
 bool stickButton::getStickEnabled() {
     return stickEnabled;
 }
-
-stickButton::~stickButton() = default;

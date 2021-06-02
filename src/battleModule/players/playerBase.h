@@ -4,6 +4,8 @@
 
 #include "cocos2d.h"
 #include "common/coreModule/nodes/nodeProperties.h"
+#include "databasesModule/charactersDatabase.h"
+#include "battleModule/players/playerControllerHelper.h"
 #include <string>
 
 namespace mb::battleModule {
@@ -15,6 +17,12 @@ namespace mb::battleModule {
         ~playerBase();
 
         static playerBase* initWithId(int);
+        void loadData(databasesModule::sCharacterData* data);
+
+
+    private:
+        int characterId;
+        ePlayerMoveDirection playerDirection = ePlayerMoveDirection::RIGHT;
     };
 }// namespace mb::battleModule
 

@@ -9,7 +9,7 @@ namespace mb::battleModule {
         LEFT = 0,
         UP,
         RIGHT,
-        BOTTOM
+        DOWN
     };
     enum class ePlayerMoveIntensive {
         PLAYER_STOP = 0,

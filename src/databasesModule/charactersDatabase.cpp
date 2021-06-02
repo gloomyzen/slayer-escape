@@ -60,6 +60,7 @@ bool sCharacterData::load(const rapidjson::GenericValue<rapidjson::UTF8<char>>::
     if (object.HasMember("isSpine") && object["isSpine"].IsBool()) isSpine = object["isSpine"].GetBool();
     if (object.HasMember("isBoss") && object["isBoss"].IsBool()) isBoss = object["isBoss"].GetBool();
     if (object.HasMember("hasCollision") && object["hasCollision"].IsBool()) hasCollision = object["hasCollision"].GetBool();
+    if (object.HasMember("flipX") && object["flipX"].IsBool()) flipX = object["flipX"].GetBool();
     return true;
 }
 

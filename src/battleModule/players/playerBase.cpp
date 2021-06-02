@@ -1,5 +1,4 @@
 #include "playerBase.h"
-#include "databasesModule/charactersDatabase.h"
 #include "databasesModule/databaseManager.h"
 #include "common/coreModule/nodes/widgets/spineNode.h"
 
@@ -15,6 +14,7 @@ playerBase* playerBase::initWithId(int id) {
         GET_DATABASE_MANAGER().getDatabase<charactersDatabase>(databaseManager::eDatabaseList::CHARACTER_DB);
     auto data = characterDb->getCharacterById(id);
     auto player = new playerBase();
+    player->loadData(data);
     player->setName("unit");
     player->loadJson(data->propertyPath);
     player->loadComponent(player, player->getName());
@@ -40,4 +40,9 @@ playerBase* playerBase::initWithId(int id) {
     }
 
     return player;
+}
+
+void playerBase::loadData(databasesModule::sCharacterData* data) {
+    characterId = data->id;
+    playerDirection = !data->flipX ? ePlayerMoveDirection::RIGHT : ePlayerMoveDirection::LEFT;
 }

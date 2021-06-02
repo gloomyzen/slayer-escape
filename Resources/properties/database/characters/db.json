@@ -54,6 +54,7 @@
       "isSpine": true,
       "isBoss": true,
       "hasCollision": true,
+      "flipX": true,
       "hp": 17.5,
       "attackMin": 7.0,
       "attackMax": 7.5,

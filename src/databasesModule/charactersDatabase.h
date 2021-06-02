@@ -29,6 +29,7 @@ namespace mb::databasesModule {
         bool isSpine = false;
         bool isBoss = false;
         bool hasCollision = true;
+        bool flipX = false;
         bool load(const rapidjson::GenericValue<rapidjson::UTF8<char>>::ConstObject&);
     };
 

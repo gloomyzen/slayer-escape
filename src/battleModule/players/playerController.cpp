@@ -23,10 +23,6 @@ void playerController::initJoystick() {
         return;
     }
     LOG_INFO("playerController::initJoystick: Init control");
-
-    joystick->getEmitter()->onMove.connect([](float x, float y) {
-        LOG_INFO(STRING_FORMAT("%f, %f", x, y));
-    });
 }
 
 playerController::~playerController() {}
