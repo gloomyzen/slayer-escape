@@ -19,13 +19,19 @@ playerBase* playerBase::initWithId(int id) {
     player->loadJson(data->propertyPath);
     player->loadComponent(player, player->getName());
     if (data->hasCollision) {
-        auto physics = cocos2d::PhysicsBody::createBox(
-            cocos2d::Size(player->getContentSize().width, player->getContentSize().height));
+        auto physics = cocos2d::PhysicsBody::createCircle(player->getContentSize().width / 2, cocos2d::PhysicsMaterial(0.0f, 0.0f, 0.0f));
+//        auto physics = cocos2d::PhysicsBody::createBox(
+//            cocos2d::Size(player->getContentSize().width, player->getContentSize().height));
+        physics->setCategoryBitmask(0x02);
+        physics->setCollisionBitmask(0x02);
         physics->setDynamic(true);
         player->addComponent(physics);
         player->setPhysicsComponent(physics);
         physics->setGravityEnable(false);
         physics->setRotationEnable(false);
+        physics->setLinearDamping(0.f);
+        physics->setMass(0.f);
+        physics->setMoment(0.f);
     }
     if (!data->isSpine) {
         auto sprite = new cocos2d::Sprite();

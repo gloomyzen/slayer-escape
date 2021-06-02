@@ -37,10 +37,15 @@ void battleField::initLayer(int id) {
                 }
                 if (tile->type == databasesModule::eTileTypes::WALL || tile->type == databasesModule::eTileTypes::WALL_DESTROY) {
                     auto physics = cocos2d::PhysicsBody::createBox(
-                        cocos2d::Size(node->getContentSize().width, node->getContentSize().height));
+                        cocos2d::Size(node->getContentSize().width, node->getContentSize().height), cocos2d::PhysicsMaterial(0.0f, 0.0f, 0.0f));
+                    physics->setCategoryBitmask(0x02);
+                    physics->setCollisionBitmask(0x02);
                     physics->setDynamic(false);
                     physics->setGravityEnable(false);
                     physics->setRotationEnable(false);
+                    physics->setLinearDamping(0.f);
+                    physics->setMass(0.f);
+                    physics->setMoment(0.f);
                     node->addComponent(physics);
                 }
                 if (tile->type == databasesModule::eTileTypes::WALL || tile->type == databasesModule::eTileTypes::WALL_DESTROY) {
