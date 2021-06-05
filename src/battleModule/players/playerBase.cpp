@@ -1,6 +1,8 @@
 #include "playerBase.h"
 #include "databasesModule/databaseManager.h"
 #include "common/coreModule/nodes/widgets/spineNode.h"
+#include "common/debugModule/logManager.h"
+#include "common/utilityModule/stringUtility.h"
 
 using namespace mb::battleModule;
 
@@ -23,7 +25,8 @@ playerBase* playerBase::initWithId(int id) {
 //        auto physics = cocos2d::PhysicsBody::createBox(
 //            cocos2d::Size(player->getContentSize().width, player->getContentSize().height));
         physics->setCategoryBitmask(0x02);
-        physics->setCollisionBitmask(0x02);
+        physics->setCollisionBitmask(0x01);
+        physics->setContactTestBitmask(0x03);
         physics->setDynamic(true);
         player->addComponent(physics);
         player->setPhysicsComponent(physics);
@@ -73,6 +76,12 @@ void playerBase::movePlayer(
     } else if (dir.first.second == ePlayerMoveYDirection::DOWN) {
         move.y = speed * -1;
     }
+    //fix for moving by diagonal
+    if (move.x != 0.f && move.y != 0.f) {
+        move.x *= .7f;
+        move.y *= .7f;
+    }
+    LOG_INFO(STRING_FORMAT("%lld %f %f", cocos2d::utils::getTimeInMilliseconds(), physicsComponent->getVelocity().x, physicsComponent->getVelocity().y));
     physicsComponent->setVelocity(move);
 }
 
