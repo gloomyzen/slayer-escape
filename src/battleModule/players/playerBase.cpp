@@ -81,11 +81,16 @@ void playerBase::movePlayer(
         move.x *= .7f;
         move.y *= .7f;
     }
-    LOG_INFO(STRING_FORMAT("%lld %f %f", cocos2d::utils::getTimeInMilliseconds(), physicsComponent->getVelocity().x, physicsComponent->getVelocity().y));
-    physicsComponent->setVelocity(move);
+    if (lastMove != move) {
+        //todo this can fix bug, and in future need get another way for fix this
+        LOG_INFO(STRING_FORMAT("%lld %f %f", cocos2d::utils::getTimeInMilliseconds(), physicsComponent->getVelocity().x, physicsComponent->getVelocity().y));
+        lastMove = move;
+        physicsComponent->setVelocity(move);
+    }
 }
 
 void playerBase::stopPlayer() {
     if (!physicsComponent) return;
+    lastMove = cocos2d::Vec2::ZERO;
     physicsComponent->setVelocity(cocos2d::Vec2::ZERO);
 }

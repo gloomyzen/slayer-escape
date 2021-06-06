@@ -27,6 +27,7 @@ namespace mb::battleModule {
         databasesModule::sCharacterData* characterData = nullptr;
         ePlayerMoveXDirection playerDirection = ePlayerMoveXDirection::RIGHT;
         cocos2d::PhysicsBody* physicsComponent = nullptr;
+        cocos2d::Vec2 lastMove = cocos2d::Vec2::ZERO;
     };
 }// namespace mb::battleModule
 

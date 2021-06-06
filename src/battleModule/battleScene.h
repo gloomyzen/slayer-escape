@@ -1,11 +1,11 @@
 #ifndef MERCENARY_BATTLES_BATTLESCENE_H
 #define MERCENARY_BATTLES_BATTLESCENE_H
 
+#include "battleModule/battleField.h"
+#include "battleModule/players/playerController.h"
 #include "cocos2d.h"
 #include "common/coreModule/nodes/nodeProperties.h"
 #include "common/coreModule/scenes/windows/windowBase.h"
-#include "battleModule/battleField.h"
-#include "battleModule/players/playerController.h"
 #include <tuple>
 
 namespace mb::battleModule {
@@ -16,26 +16,29 @@ namespace mb::battleModule {
         : public common::coreModule::nodeProperties
         , public cocos2d::Layer
         , public taskHolder {
-      public:
+    public:
         battleScene();
         ~battleScene();
         std::deque<nodeTasks> getTasks() override;
 
         void initHelpers();
+        void update(float dt) override;
 
-      private:
+    private:
+        void lookAt(cocos2d::Node* node);
         // world section
-        cocos2d::Layer* world = nullptr; //layer for background //owner
-        cocos2d::Layer* objects = nullptr; //layer for objects and players //owner
-        battleField* maze = nullptr; //owner
-        playerController* plrController = nullptr; //owner
-        playerBase* player = nullptr; //owner
+        cocos2d::Layer* world = nullptr;// layer for background //owner
+        cocos2d::Layer* objects = nullptr;// layer for objects and players //owner
+        battleField* maze = nullptr;// owner
+        playerController* plrController = nullptr;// owner
+        playerBase* player = nullptr;// owner
+        cocos2d::Node* lookAtNode = nullptr;
 
         int onMoveId;
         int onStopId;
 
 #ifdef DEBUG
-        bool physicsDebugDraw = false; //for debug
+        bool physicsDebugDraw = false;// for debug
 #endif
     };
 }// namespace mb::battleModule
