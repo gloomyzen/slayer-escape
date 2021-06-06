@@ -82,7 +82,8 @@ std::deque<nodeTasks> battleScene::getTasks() {
             player->stopPlayer();
         });
         scheduleUpdate();
-        lookAt(player);
+        trackLookAt(player);
+        lookAt();
 
         return eTasksStatus::STATUS_OK;
     });
@@ -92,14 +93,23 @@ std::deque<nodeTasks> battleScene::getTasks() {
 
 void battleScene::update(float dt) {
     Node::update(dt);
-    if (lookAtNode) {
-        auto visibleSize = Director::getInstance()->getVisibleSize();
-//        lookAtNode->getPosition()
-    }
+//    lookAt();
 }
 
-void battleScene::lookAt(cocos2d::Node* node) {
+void battleScene::trackLookAt(cocos2d::Node* node) {
     lookAtNode = node;
+}
+
+void battleScene::lookAt() {
+    if (lookAtNode) {
+        auto visibleSize = Director::getInstance()->getVisibleSize();
+        auto roomPos = cocos2d::Vec2((visibleSize.width / 2) - lookAtNode->getPositionX(), (visibleSize.height / 2) - lookAtNode->getPositionY());
+        if (roomPos.x > 0.f) roomPos.x = 0.f;
+        if (roomPos.y > 0.f) roomPos.y = 0.f;
+//        if (roomPos.x < visibleSize.width * -1) roomPos.x = 0.f;
+//        if (roomPos.y > 0.f) roomPos.y = 0.f;
+        setPosition(roomPos);
+    }
 }
 
 void battleScene::initHelpers() {

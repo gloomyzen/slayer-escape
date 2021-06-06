@@ -25,7 +25,8 @@ namespace mb::battleModule {
         void update(float dt) override;
 
     private:
-        void lookAt(cocos2d::Node* node);
+        void trackLookAt(cocos2d::Node* node);
+        void lookAt();
         // world section
         cocos2d::Layer* world = nullptr;// layer for background //owner
         cocos2d::Layer* objects = nullptr;// layer for objects and players //owner
