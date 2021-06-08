@@ -93,7 +93,7 @@ std::deque<nodeTasks> battleScene::getTasks() {
 
 void battleScene::update(float dt) {
     Node::update(dt);
-//    lookAt();
+    lookAt();
 }
 
 void battleScene::trackLookAt(cocos2d::Node* node) {

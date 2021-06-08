@@ -10,8 +10,6 @@ else ()
     add_definitions(-DRELEASE=1)
 endif ()
 
-set(CC_COMPAT_GL 1)
-
 if(NOT DEFINED BUILD_ENGINE_DONE) # to test MyGame into root project
     set(ADXE_ROOT "$ENV{ADXE_ROOT}")
 
