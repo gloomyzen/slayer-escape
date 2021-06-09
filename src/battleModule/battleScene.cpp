@@ -106,8 +106,8 @@ void battleScene::lookAt() {
         auto roomPos = cocos2d::Vec2((visibleSize.width / 2) - lookAtNode->getPositionX(), (visibleSize.height / 2) - lookAtNode->getPositionY());
         if (roomPos.x > 0.f) roomPos.x = 0.f;
         if (roomPos.y > 0.f) roomPos.y = 0.f;
-//        if (roomPos.x < visibleSize.width * -1) roomPos.x = 0.f;
-//        if (roomPos.y > 0.f) roomPos.y = 0.f;
+        if (roomPos.x < (world->getContentSize().width - visibleSize.width) * -1) roomPos.x = (world->getContentSize().width - visibleSize.width) * -1;
+        if (roomPos.y < (world->getContentSize().height - visibleSize.height) * -1) roomPos.y = (world->getContentSize().height - visibleSize.height) * -1;
         setPosition(roomPos);
     }
 }
