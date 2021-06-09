@@ -51,7 +51,7 @@ sMapData* mapsDatabase::getMapById(int id) {
 
 bool sMapData::load(const rapidjson::GenericValue<rapidjson::UTF8<char>>::ConstObject& object) {
     if (object.HasMember("map") && object["map"].IsArray()) {
-        int x = 0;
+        int x = object["map"].GetArray().Size() - 1;
         int y = 0;
         for (const auto& row : object["map"].GetArray()) {
             if (row.IsArray()) {
@@ -60,12 +60,12 @@ bool sMapData::load(const rapidjson::GenericValue<rapidjson::UTF8<char>>::ConstO
                     if (col.IsObject()) {
                         //todo add
                         if (col.HasMember("piece") && col["piece"].IsNumber()) {
-                            map[x][y] = col["piece"].GetInt();
+                            map[y][x] = col["piece"].GetInt();
                         }
                         ++y;
                     }
                 }
-                ++x;
+                --x;
             }
         }
     }

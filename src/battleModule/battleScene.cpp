@@ -55,10 +55,9 @@ std::deque<nodeTasks> battleScene::getTasks() {
         plrController = new playerController();
         //todo change it after testings
         player = playerBase::initWithId(20001);
-        // todo remove after testing
+        // todo fix position for start
         {
-            // todo нужно поменять структуру уровня, чтобы земля и коллиции находились на разных планах
-            //  а коллизиции и объекты были совмещенны
+            player->setPosition(155, 175);
             objects->addChild(player);
         }
         /*
