@@ -55,11 +55,8 @@ std::deque<nodeTasks> battleScene::getTasks() {
         plrController = new playerController();
         //todo change it after testings
         player = playerBase::initWithId(20001);
-        // todo fix position for start
-        {
-            player->setPosition(155, 175);
-            objects->addChild(player);
-        }
+        if (maze) player->setPosition(maze->getNextSpawnPosition());
+        objects->addChild(player);
         /*
         plrController->disableControl();
         plrController->enableControl();

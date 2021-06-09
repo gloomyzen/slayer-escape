@@ -6,6 +6,9 @@
 #include "databasesModule/mapsDatabase.h"
 #include "databasesModule/tilesDatabase.h"
 #include <tuple>
+#include <random>
+#include <algorithm>
+#include <iterator>
 
 using namespace mb::battleModule;
 
@@ -49,14 +52,39 @@ void battleField::initLayer(int id) {
                     physics->setMoment(0.f);
                     node->addComponent(physics);
                 }
-                if (tile->type == databasesModule::eTileTypes::WALL || tile->type == databasesModule::eTileTypes::WALL_DESTROY) {
-                    objects->addChild(node);
-                } else {
+                switch (tile->type) {
+
+                case UNDEFINED:
+                case GROUND:
                     world->addChild(node);
+                    break;
+                case WALL:
+                case WALL_DESTROY:
+                    objects->addChild(node);
+                    break;
+                case SPAWN_PLAYER: {
+                    world->addChild(node);
+                    spawnPositions.emplace_back(node->getPosition().x + node->getContentSize().width / 2, node->getPosition().y + node->getContentSize().height / 2);
+                } break;
                 }
             }
         }
     }
     world->setContentSize(mapSize);
     objects->setContentSize(mapSize);
+}
+
+cocos2d::Vec2 battleField::getNextSpawnPosition() {
+    if (!spawnPositions.empty()) {
+        std::random_device rd;
+        std::mt19937 g(rd());
+
+        std::shuffle(spawnPositions.begin(), spawnPositions.end(), g);
+        auto pos = spawnPositions.front();
+        spawnPositions.erase(spawnPositions.begin());
+        return pos;
+    }
+
+    LOG_ERROR(STRING_FORMAT("battleField::getNextSpawnPosition: Can't find next spawn positions"));
+    return cocos2d::Vec2(155.f, 175.f);
 }
