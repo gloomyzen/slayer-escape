@@ -5,7 +5,6 @@
 #include "databasesModule/databaseManager.h"
 #include "databasesModule/mapsDatabase.h"
 #include "databasesModule/tilesDatabase.h"
-#include <tuple>
 #include <random>
 #include <algorithm>
 #include <iterator>
@@ -64,7 +63,11 @@ void battleField::initLayer(int id) {
                     break;
                 case SPAWN_PLAYER: {
                     world->addChild(node);
-                    spawnPositions.emplace_back(node->getPosition().x + node->getContentSize().width / 2, node->getPosition().y + node->getContentSize().height / 2);
+                    spawnPlayerPositions.emplace_back(node->getPosition().x + node->getContentSize().width / 2, node->getPosition().y + node->getContentSize().height / 2);
+                } break;
+                case SPAWN_ENEMY: {
+                    world->addChild(node);
+                    spawnEnemyPositions.emplace_back(node->getPosition().x + node->getContentSize().width / 2, node->getPosition().y + node->getContentSize().height / 2);
                 } break;
                 }
             }
@@ -74,17 +77,32 @@ void battleField::initLayer(int id) {
     objects->setContentSize(mapSize);
 }
 
-cocos2d::Vec2 battleField::getNextSpawnPosition() {
-    if (!spawnPositions.empty()) {
+cocos2d::Vec2 battleField::getPlayerSpawnPosition() {
+    if (!spawnPlayerPositions.empty()) {
         std::random_device rd;
         std::mt19937 g(rd());
 
-        std::shuffle(spawnPositions.begin(), spawnPositions.end(), g);
-        auto pos = spawnPositions.front();
-        spawnPositions.erase(spawnPositions.begin());
+        std::shuffle(spawnPlayerPositions.begin(), spawnPlayerPositions.end(), g);
+        auto pos = spawnPlayerPositions.front();
+        spawnPlayerPositions.erase(spawnPlayerPositions.begin());
         return pos;
     }
 
-    LOG_ERROR(STRING_FORMAT("battleField::getNextSpawnPosition: Can't find next spawn positions"));
+    LOG_ERROR(STRING_FORMAT("battleField::getPlayerSpawnPosition: Can't find next spawn positions"));
+    return cocos2d::Vec2(155.f, 175.f);
+}
+
+cocos2d::Vec2 battleField::getEnemySpawnPosition() {
+    if (!spawnEnemyPositions.empty()) {
+        std::random_device rd;
+        std::mt19937 g(rd());
+
+        std::shuffle(spawnEnemyPositions.begin(), spawnEnemyPositions.end(), g);
+        auto pos = spawnEnemyPositions.front();
+        spawnEnemyPositions.erase(spawnEnemyPositions.begin());
+        return pos;
+    }
+
+    LOG_ERROR(STRING_FORMAT("battleField::getEnemySpawnPosition: Can't find next spawn positions"));
     return cocos2d::Vec2(155.f, 175.f);
 }

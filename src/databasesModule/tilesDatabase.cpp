@@ -9,7 +9,8 @@ const std::map<std::string, eTileTypes> tileTypesMap = {
     {"ground", eTileTypes::GROUND},
     {"wall", eTileTypes::WALL},
     {"wallDestroy", eTileTypes::WALL_DESTROY},
-    {"spawnPlayer", eTileTypes::SPAWN_PLAYER}
+    {"spawnPlayer", eTileTypes::SPAWN_PLAYER},
+    {"spawnEnemy", eTileTypes::SPAWN_ENEMY}
 };
 
 tilesDatabase::tilesDatabase() {}

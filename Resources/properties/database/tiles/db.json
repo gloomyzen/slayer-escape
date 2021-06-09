@@ -11,6 +11,10 @@
     "31001": {
       "propertyPath": "battle/tiles/spawnPlayer",
       "type": "spawnPlayer"
+    },
+    "31002": {
+      "propertyPath": "battle/tiles/spawnEnemy",
+      "type": "spawnEnemy"
     }
   }
 }

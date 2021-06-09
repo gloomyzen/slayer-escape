@@ -33,6 +33,7 @@ namespace mb::battleModule {
         battleField* maze = nullptr;// owner
         playerController* plrController = nullptr;// owner
         playerBase* player = nullptr;// owner
+        playerBase* enemy = nullptr;// owner
         cocos2d::Node* lookAtNode = nullptr;
 
         int onMoveId;

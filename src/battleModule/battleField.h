@@ -13,14 +13,16 @@ namespace mb::battleModule {
 
         void setWorldLayer(cocos2d::Layer* layer) { world = layer; }
         void setObjectsLayer(cocos2d::Layer* layer) { objects = layer; }
-        cocos2d::Vec2 getNextSpawnPosition();
+        cocos2d::Vec2 getPlayerSpawnPosition();
+        cocos2d::Vec2 getEnemySpawnPosition();
 
         void initLayer(int);
 
       private:
         cocos2d::Layer* world = nullptr; //not owner
         cocos2d::Layer* objects = nullptr; //not owner
-        std::vector<cocos2d::Vec2> spawnPositions;
+        std::vector<cocos2d::Vec2> spawnPlayerPositions;
+        std::vector<cocos2d::Vec2> spawnEnemyPositions;
     };
 }// namespace mb::battleModule
 
