@@ -7,6 +7,10 @@
     "30002": {
       "propertyPath": "battle/tiles/wall",
       "type": "wall"
+    },
+    "31001": {
+      "propertyPath": "battle/tiles/spawnPlayer",
+      "type": "spawnPlayer"
     }
   }
 }

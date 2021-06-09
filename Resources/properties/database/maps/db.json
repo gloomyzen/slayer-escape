@@ -4,7 +4,7 @@
       "map": [
         [{"piece": 30002}, {"piece": 30002}, {"piece": 30002}, {"piece": 30002}, {"piece": 30002}, {"piece": 30002}, {"piece": 30002}, {"piece": 30002}, {"piece": 30002}, {"piece": 30002}],
         [{"piece": 30002}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30002}],
-        [{"piece": 30002}, {"piece": 30002}, {"piece": 30002}, {"piece": 30002}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30002}],
+        [{"piece": 30002}, {"piece": 30002}, {"piece": 31001}, {"piece": 30002}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30002}],
         [{"piece": 30002}, {"piece": 30002}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30002}],
         [{"piece": 30002}, {"piece": 30001}, {"piece": 30001}, {"piece": 30002}, {"piece": 30002}, {"piece": 30002}, {"piece": 30002}, {"piece": 30001}, {"piece": 30001}, {"piece": 30002}],
         [{"piece": 30002}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30002}],
@@ -12,7 +12,7 @@
         [{"piece": 30002}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30002}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30002}],
         [{"piece": 30002}, {"piece": 30001}, {"piece": 30001}, {"piece": 30002}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30002}],
         [{"piece": 30002}, {"piece": 30001}, {"piece": 30002}, {"piece": 30002}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30002}],
-        [{"piece": 30002}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30002}],
+        [{"piece": 30002}, {"piece": 31001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 31001}, {"piece": 30002}],
         [{"piece": 30002}, {"piece": 30002}, {"piece": 30002}, {"piece": 30002}, {"piece": 30002}, {"piece": 30002}, {"piece": 30002}, {"piece": 30002}, {"piece": 30002}, {"piece": 30002}]
       ]
     }

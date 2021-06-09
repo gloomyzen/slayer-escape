@@ -5,7 +5,7 @@
       "scale": 2
     },
     "spriteComponent": {
-      "image": "images/battle/tiles/wall.png",
+      "image": "images/battle/tiles/ground.png",
       "polygon": false
     }
   }

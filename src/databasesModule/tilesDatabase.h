@@ -12,7 +12,7 @@
 
 namespace mb::databasesModule {
 
-    enum eTileTypes { UNDEFINED = 0, GROUND, WALL, WALL_DESTROY };
+    enum eTileTypes { UNDEFINED = 0, GROUND, WALL, WALL_DESTROY, SPAWN_PLAYER };
 
     struct sTileData {
         int id;
