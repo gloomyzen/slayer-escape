@@ -23,17 +23,19 @@ void battleField::initLayer(int id) {
         LOG_ERROR(STRING_FORMAT("battleField::initLayer: Can't find map bu id - %d", id));
         return;
     }
-    mapTile* tempMap = nullptr;
+    auto mapSize = cocos2d::Size();
     for (const auto& row : map->map) {
         for (const auto& col : row.second) {
             if (auto tile = tilesDb->getTileById(col.second)) {
                 auto node = new mapTile();
                 node->initWithProp(STRING_FORMAT("tile_%d", tile->id), tile->nodePath);
-                if (tempMap == nullptr) {
-                    tempMap = node;
-                } else {
-                    node->setPositionX(node->getContentSize().width * node->getScale() * row.first);
-                    node->setPositionY(node->getContentSize().height * node->getScale() * col.first);
+                node->setPositionX(node->getContentSize().width * node->getScale() * row.first);
+                node->setPositionY(node->getContentSize().height * node->getScale() * col.first);
+                if (mapSize.width < node->getContentSize().width * node->getScale() * (row.first + 1)) {
+                    mapSize.width = node->getContentSize().width * node->getScale() * (row.first + 1);
+                }
+                if (mapSize.height < node->getContentSize().height * node->getScale() * (col.first + 1)) {
+                    mapSize.height = node->getContentSize().height * node->getScale() * (col.first + 1);
                 }
                 if (tile->type == databasesModule::eTileTypes::WALL || tile->type == databasesModule::eTileTypes::WALL_DESTROY) {
                     auto physics = cocos2d::PhysicsBody::createBox(
@@ -41,12 +43,8 @@ void battleField::initLayer(int id) {
                     physics->setCategoryBitmask(0x03);
                     physics->setCollisionBitmask(0x03);
                     physics->setGravityEnable(false);
-//                    physics->setContactTestBitmask(3);
                     physics->setDynamic(false);
-//                    physics->setGravityEnable(false);
                     physics->setRotationEnable(false);
-//                    physics->setLinearDamping(100.f);
-//                    physics->setAngularDamping(100.f);
                     physics->setMass(100.f);
                     physics->setMoment(0.f);
                     node->addComponent(physics);
@@ -59,4 +57,6 @@ void battleField::initLayer(int id) {
             }
         }
     }
+    world->setContentSize(mapSize);
+    objects->setContentSize(mapSize);
 }
