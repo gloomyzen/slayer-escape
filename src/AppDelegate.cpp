@@ -16,6 +16,7 @@
 #include "databasesModule/tilesDatabase.h"
 // all scenes
 #include "battleModule/battleScene.h"
+#include "battle3dModule/battle3dScene.h"
 // widgets
 #include "interfaceModule/customNodeTypes.h"
 
@@ -78,7 +79,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     director->setAnimationInterval(1.0f / 60);
 
     // set project view mode
-    director->setProjection(Director::Projection::_2D);
+    director->setProjection(Director::Projection::_3D);
     cocos2d::Sprite::setUsePixelMode(currentResolution->spritePixel);
     // Set the design resolution
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32) || (CC_TARGET_PLATFORM == CC_PLATFORM_MAC) \
@@ -113,9 +114,13 @@ bool AppDelegate::applicationDidFinishLaunching() {
         GET_GAME_MANAGER().getMainScene()->initWithPhysics();
         return new mb::battleModule::battleScene();
     });
+    GET_SCENES_FACTORY().registerState("battle3dScene", []() {
+           GET_GAME_MANAGER().getMainScene()->initWithPhysics();
+           return new mb::battle3dModule::battle3dScene();
+    });
 
     // run first scene
-    GET_GAME_MANAGER().run("battleScene");
+    GET_GAME_MANAGER().run("battle3dScene");
 
     return true;
 }
