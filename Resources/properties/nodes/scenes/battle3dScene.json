@@ -1,0 +1,10 @@
+{
+  "type": "layer",
+  "name": "battle3dScene",
+  "child": [
+    {
+      "type": "layer",
+      "name": "world"
+    }
+  ]
+}

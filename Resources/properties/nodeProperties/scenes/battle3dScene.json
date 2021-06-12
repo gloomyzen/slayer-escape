@@ -1,0 +1,15 @@
+{
+  "battleScene": {
+    "transformComponent": {
+      "pivot": [ 0.0, 0.0 ],
+      "anchor": [ 0.5, 0.5 ],
+      "stretch": [ 1.0, 1.0 ]
+    }
+  },
+  "world": {
+    "transformComponent": {
+      "pivot": [ 0.0, 0.0 ],
+      "anchor": [ 0.0, 0.0 ]
+    }
+  }
+}
