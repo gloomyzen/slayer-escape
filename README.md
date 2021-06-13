@@ -52,9 +52,8 @@ cmake --build build --config Release --target slayer-escape -- -quiet -jobs 16
 
 For Visual Studio Community 2019
 ```bash
-mkdir build && cd build
-cmake .. -G"Visual Studio 16 2019" -Tv142 -A Win32 -DDEBUG=1
-and open .sln file from `build` folder
+cmake -S . -B build -G "Visual Studio 16 2019" -A Win32 -DDEBUG=1
+and open $(PROJECT_NAME).sln file from `build` folder and set $(PROJECT_NAME) target as "startup project" in "solution explorer"
 ```
 
 For Android studio:
