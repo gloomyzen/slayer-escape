@@ -40,6 +40,22 @@ std::deque<nodeTasks> battle3dScene::getTasks() {
         objects = dynamic_cast<cocos2d::Layer*>(findNode("objects"));
         auto map = cocos2d::FastTMXTiledMap::create("images/battle/maps/firstMap.tmx");
         world->addChild(map);
+        auto walls = map->getObjectGroup("walls");
+
+        for (auto item : walls->getObjects()) {
+            auto type = item.getType();
+            if (type == cocos2d::Value::Type::MAP) {
+                auto values = item.asValueMap();
+                for (auto test : values) {
+                    auto temp = test.second.getType();
+                    auto name = test.first;
+                    auto testset = "";
+                }
+                auto tesm = "";
+            }
+            auto tesmp = ";";
+
+        }
 
         Size CC_UNUSED s = map->getContentSize();
         CCLOG("ContentSize: %f, %f", s.width, s.height);
