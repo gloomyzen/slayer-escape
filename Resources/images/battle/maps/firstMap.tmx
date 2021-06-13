@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.5" tiledversion="1.7.0" orientation="orthogonal" renderorder="right-down" width="64" height="48" tilewidth="64" tileheight="64" infinite="0" nextlayerid="6" nextobjectid="7">
+ <tileset firstgid="1" source="firstMapTileMap.tsx"/>
+ <layer id="2" name="bg" width="64" height="48">
+  <data encoding="base64" compression="zlib">
+   eJztw8EJAAAMA6GD7L9z1+hDwVVTVVVVVVVVVVVVVVVfP6qgJAE=
+  </data>
+ </layer>
+ <layer id="4" name="tileLayer1" width="64" height="48">
+  <data encoding="base64" compression="zlib">
+   eJzt0bsJAkEYhdHNfMRqI1aiBSjGNrC+Ld1rAQuygwM658DHH0x0ma4DAAAAAAAAgP+zSdsRTdI0zQbuvOaIAse0H9EiLdNq4K5rjijw3n/4Qvb/Bvvtb3n/rmt7f+v/b7/9Le/v0ymd0yVd0y3d06Pg7VlxA8AnXn7+a7g=
+  </data>
+ </layer>
+ <layer id="3" name="spawnLayer" width="64" height="48">
+  <data encoding="base64" compression="zlib">
+   eJztzgEJAAAIwDB7af9clhAU3AKcRwAAAAAAAAAAwE+1PQDAuDzWAYBJDUyiALM=
+  </data>
+ </layer>
+ <objectgroup id="5" name="walls">
+  <object id="1" x="298.165" y="2020.43" width="1388.66" height="93.8282"/>
+  <object id="4" x="321.21" y="2751.53" width="1356.22" height="30.5914"/>
+  <object id="5" x="299.116" y="2115.91" width="18.6948" height="664.514"/>
+  <object id="6" x="1667.23" y="2115.91" width="20.3943" height="664.514"/>
+ </objectgroup>
+</map>

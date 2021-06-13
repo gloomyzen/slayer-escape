@@ -38,6 +38,11 @@ std::deque<nodeTasks> battle3dScene::getTasks() {
     result.emplace_back([this]() {
         world = dynamic_cast<cocos2d::Layer*>(findNode("world"));
         objects = dynamic_cast<cocos2d::Layer*>(findNode("objects"));
+        auto map = cocos2d::FastTMXTiledMap::create("images/battle/maps/firstMap.tmx");
+        world->addChild(map);
+
+        Size CC_UNUSED s = map->getContentSize();
+        CCLOG("ContentSize: %f, %f", s.width, s.height);
 
         return eTasksStatus::STATUS_OK;
     });
