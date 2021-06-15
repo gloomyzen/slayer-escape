@@ -22,11 +22,47 @@ void battleField::initLayer(int id) {
         LOG_ERROR(STRING_FORMAT("battleField::initLayer: Can't find map by id - %d", id));
         return;
     }
-    auto tiled = cocos2d::FastTMXTiledMap::create(map->mapPath);
-    world->addChild(tiled);
-    auto walls = tiled->getObjectGroup(map->wallsObject);
-
+    tiledMap = cocos2d::FastTMXTiledMap::create(map->mapPath);
+    world->addChild(tiledMap);
     //insert collisions walls
+    insertWalls(map);
+
+//    world->setContentSize(mapSize);
+//    objects->setContentSize(mapSize);
+}
+
+cocos2d::Vec2 battleField::getPlayerSpawnPosition() {
+    if (!spawnPlayerPositions.empty()) {
+        std::random_device rd;
+        std::mt19937 g(rd());
+
+        std::shuffle(spawnPlayerPositions.begin(), spawnPlayerPositions.end(), g);
+        auto pos = spawnPlayerPositions.front();
+        spawnPlayerPositions.erase(spawnPlayerPositions.begin());
+        return pos;
+    }
+
+    LOG_ERROR(STRING_FORMAT("battleField::getPlayerSpawnPosition: Can't find next spawn positions"));
+    return cocos2d::Vec2(155.f, 175.f);
+}
+
+cocos2d::Vec2 battleField::getEnemySpawnPosition() {
+    if (!spawnEnemyPositions.empty()) {
+        std::random_device rd;
+        std::mt19937 g(rd());
+
+        std::shuffle(spawnEnemyPositions.begin(), spawnEnemyPositions.end(), g);
+        auto pos = spawnEnemyPositions.front();
+        spawnEnemyPositions.erase(spawnEnemyPositions.begin());
+        return pos;
+    }
+
+    LOG_ERROR(STRING_FORMAT("battleField::getEnemySpawnPosition: Can't find next spawn positions"));
+    return cocos2d::Vec2(155.f, 175.f);
+}
+
+void battleField::insertWalls(databasesModule::sMapData* map) {
+    auto walls = tiledMap->getObjectGroup(map->wallsObject);
     for (const auto& item : walls->getObjects()) {
         auto type = item.getType();
         cocos2d::Size objectSize;
@@ -69,36 +105,4 @@ void battleField::initLayer(int id) {
         }
 
     }
-//    world->setContentSize(mapSize);
-//    objects->setContentSize(mapSize);
-}
-
-cocos2d::Vec2 battleField::getPlayerSpawnPosition() {
-    if (!spawnPlayerPositions.empty()) {
-        std::random_device rd;
-        std::mt19937 g(rd());
-
-        std::shuffle(spawnPlayerPositions.begin(), spawnPlayerPositions.end(), g);
-        auto pos = spawnPlayerPositions.front();
-        spawnPlayerPositions.erase(spawnPlayerPositions.begin());
-        return pos;
-    }
-
-    LOG_ERROR(STRING_FORMAT("battleField::getPlayerSpawnPosition: Can't find next spawn positions"));
-    return cocos2d::Vec2(155.f, 175.f);
-}
-
-cocos2d::Vec2 battleField::getEnemySpawnPosition() {
-    if (!spawnEnemyPositions.empty()) {
-        std::random_device rd;
-        std::mt19937 g(rd());
-
-        std::shuffle(spawnEnemyPositions.begin(), spawnEnemyPositions.end(), g);
-        auto pos = spawnEnemyPositions.front();
-        spawnEnemyPositions.erase(spawnEnemyPositions.begin());
-        return pos;
-    }
-
-    LOG_ERROR(STRING_FORMAT("battleField::getEnemySpawnPosition: Can't find next spawn positions"));
-    return cocos2d::Vec2(155.f, 175.f);
 }
