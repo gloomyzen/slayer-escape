@@ -81,7 +81,7 @@ std::deque<nodeTasks> battleScene::getTasks() {
 //
 //    result.emplace_back([this]() {
 //        plrController = new playerController();
-        todo change it after testings
+//        todo change it after testings
 //        player = playerBase::initWithId(20001);
 //        if (maze)
 //            player->setPosition(maze->getPlayerSpawnPosition());
