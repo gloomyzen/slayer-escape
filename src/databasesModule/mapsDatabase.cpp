@@ -50,24 +50,20 @@ sMapData* mapsDatabase::getMapById(int id) {
 }
 
 bool sMapData::load(const rapidjson::GenericValue<rapidjson::UTF8<char>>::ConstObject& object) {
-    if (object.HasMember("map") && object["map"].IsArray()) {
-        int x = object["map"].GetArray().Size() - 1;
-        int y = 0;
-        for (const auto& row : object["map"].GetArray()) {
-            if (row.IsArray()) {
-                y = 0;
-                for (const auto& col : row.GetArray()) {
-                    if (col.IsObject()) {
-                        //todo add
-                        if (col.HasMember("piece") && col["piece"].IsNumber()) {
-                            map[y][x] = col["piece"].GetInt();
-                        }
-                        ++y;
-                    }
-                }
-                --x;
-            }
-        }
+    if (object.HasMember("mapPath") && object["mapPath"].IsString()) {
+        mapPath = object["mapPath"].GetString();
+    }
+    if (object.HasMember("wallsObject") && object["wallsObject"].IsString()) {
+        wallsObject = object["wallsObject"].GetString();
+    }
+    if (object.HasMember("groundGroup") && object["groundGroup"].IsString()) {
+        groundGroup = object["groundGroup"].GetString();
+    }
+    if (object.HasMember("spawnPlayerProperty") && object["spawnPlayerProperty"].IsString()) {
+        spawnPlayerProperty = object["spawnPlayerProperty"].GetString();
+    }
+    if (object.HasMember("spawnEnemyProperty") && object["spawnEnemyProperty"].IsString()) {
+        spawnEnemyProperty = object["spawnEnemyProperty"].GetString();
     }
     return true;
 }

@@ -13,7 +13,11 @@ namespace mb::databasesModule {
 
     struct sMapData {
         int id;
-        std::map<int, std::map<int, int>> map; //x y tileId
+        std::string mapPath;
+        std::string wallsObject;
+        std::string groundGroup;
+        std::string spawnPlayerProperty;
+        std::string spawnEnemyProperty;
         bool load(const rapidjson::GenericValue<rapidjson::UTF8<char>>::ConstObject&);
     };
 

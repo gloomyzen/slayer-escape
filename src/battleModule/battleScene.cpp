@@ -38,7 +38,7 @@ std::deque<nodeTasks> battleScene::getTasks() {
     result.emplace_back([this]() {
            world = dynamic_cast<cocos2d::Layer*>(findNode("world"));
            objects = dynamic_cast<cocos2d::Layer*>(findNode("objects"));
-           auto map = cocos2d::FastTMXTiledMap::create("images/battle/maps/firstMap.tmx");
+           auto map = cocos2d::FastTMXTiledMap::create("images/battle/maps/location_1/firstMap.tmx");
            world->addChild(map);
            auto walls = map->getObjectGroup("walls");
 

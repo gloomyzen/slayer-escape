@@ -1,25 +1,11 @@
 {
   "maps": {
     "40001": {
-      "map": [
-        [{"piece": 30002}, {"piece": 30002}, {"piece": 30002}, {"piece": 30002}, {"piece": 30002}, {"piece": 30002}, {"piece": 30002}, {"piece": 30002}, {"piece": 30002}, {"piece": 30002}, {"piece": 30002}, {"piece": 30002}],
-        [{"piece": 30002}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 31001}, {"piece": 30002}],
-        [{"piece": 30002}, {"piece": 30002}, {"piece": 31001}, {"piece": 30002}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30002}],
-        [{"piece": 30002}, {"piece": 30002}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30002}],
-        [{"piece": 30002}, {"piece": 30001}, {"piece": 30001}, {"piece": 30002}, {"piece": 30002}, {"piece": 30002}, {"piece": 30002}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30002}],
-        [{"piece": 30002}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30002}],
-        [{"piece": 30002}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30002}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30002}],
-        [{"piece": 30002}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30002}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30002}],
-        [{"piece": 30002}, {"piece": 30001}, {"piece": 30001}, {"piece": 30002}, {"piece": 30001}, {"piece": 30001}, {"piece": 31002}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30002}],
-        [{"piece": 30002}, {"piece": 30001}, {"piece": 30002}, {"piece": 30002}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30002}],
-        [{"piece": 30002}, {"piece": 30001}, {"piece": 30002}, {"piece": 30002}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30002}],
-        [{"piece": 30002}, {"piece": 30001}, {"piece": 30002}, {"piece": 30002}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30002}],
-        [{"piece": 30002}, {"piece": 30001}, {"piece": 30002}, {"piece": 30002}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30002}],
-        [{"piece": 30002}, {"piece": 30001}, {"piece": 30002}, {"piece": 30002}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30002}],
-        [{"piece": 30002}, {"piece": 30001}, {"piece": 30002}, {"piece": 30002}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30002}],
-        [{"piece": 30002}, {"piece": 31001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 30001}, {"piece": 31001}, {"piece": 30002}],
-        [{"piece": 30002}, {"piece": 30002}, {"piece": 30002}, {"piece": 30002}, {"piece": 30002}, {"piece": 30002}, {"piece": 30002}, {"piece": 30002}, {"piece": 30002}, {"piece": 30002}, {"piece": 30002}, {"piece": 30002}]
-      ]
+      "mapPath": "images/battle/maps/location_1/firstMap.tmx",
+      "wallsObject": "walls",
+      "groundGroup": "ground",
+      "spawnPlayerProperty": "spawnPlayer",
+      "spawnEnemyProperty": "spawnEnemy"
     }
   }
 }
