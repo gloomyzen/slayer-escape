@@ -26,75 +26,103 @@ battleScene::battleScene() {
 }
 
 battleScene::~battleScene() {
-    if (onMoveId && plrController && plrController->getJoystick())
-        plrController->getJoystick()->getEmitter()->onMove.disconnect(onMoveId);
-    if (onStopId && plrController && plrController->getJoystick())
-        plrController->getJoystick()->getEmitter()->onStop.disconnect(onStopId);
+//    if (onMoveId && plrController && plrController->getJoystick())
+//        plrController->getJoystick()->getEmitter()->onMove.disconnect(onMoveId);
+//    if (onStopId && plrController && plrController->getJoystick())
+//        plrController->getJoystick()->getEmitter()->onStop.disconnect(onStopId);
 }
 
 std::deque<nodeTasks> battleScene::getTasks() {
     std::deque<nodeTasks> result;
 
     result.emplace_back([this]() {
-        world = dynamic_cast<cocos2d::Layer*>(findNode("world"));
-        objects = dynamic_cast<cocos2d::Layer*>(findNode("objects"));
+           world = dynamic_cast<cocos2d::Layer*>(findNode("world"));
+           objects = dynamic_cast<cocos2d::Layer*>(findNode("objects"));
+           auto map = cocos2d::FastTMXTiledMap::create("images/battle/maps/firstMap.tmx");
+           world->addChild(map);
+           auto walls = map->getObjectGroup("walls");
 
-        return eTasksStatus::STATUS_OK;
+           for (auto item : walls->getObjects()) {
+               auto type = item.getType();
+               if (type == cocos2d::Value::Type::MAP) {
+                   auto values = item.asValueMap();
+                   for (auto test : values) {
+                       auto temp = test.second.getType();
+                       auto name = test.first;
+                       auto testset = "";
+                   }
+                   auto tesm = "";
+               }
+               auto tesmp = ";";
+
+           }
+
+           Size CC_UNUSED s = map->getContentSize();
+           CCLOG("ContentSize: %f, %f", s.width, s.height);
+
+           return eTasksStatus::STATUS_OK;
     });
 
-    result.emplace_back([this]() {
-        maze = new battleField();
-        maze->setWorldLayer(world);
-        maze->setObjectsLayer(objects);
-        maze->initLayer(40001);// todo remove after testing
-
-        return eTasksStatus::STATUS_OK;
-    });
-
-    result.emplace_back([this]() {
-        plrController = new playerController();
-        //todo change it after testings
-        player = playerBase::initWithId(20001);
-        if (maze)
-            player->setPosition(maze->getPlayerSpawnPosition());
-        objects->addChild(player);
-        enemy = playerBase::initWithId(21001);
-        if (maze)
-            enemy->setPosition(maze->getEnemySpawnPosition());
-        objects->addChild(enemy);
-        /*
-        plrController->disableControl();
-        plrController->enableControl();
-         */
-        onMoveId = plrController->getJoystick()->getEmitter()->onMove.connect([this](float x, float y) {
-            if (!plrController || !plrController->getJoystick() || !player) {
-                LOG_INFO("battleScene::onMove: player controller is not loaded.");
-                return;
-            }
-            auto dir = getPlayerStateByStick(x, y, plrController->getJoystick()->getStickDistance());
-            player->movePlayer(dir);
-        });
-
-        onStopId = plrController->getJoystick()->getEmitter()->onStop.connect([this]() {
-            if (!plrController || !plrController->getJoystick() || !player) {
-                LOG_INFO("battleScene::onMove: player controller is not loaded.");
-                return;
-            }
-            player->stopPlayer();
-        });
-        scheduleUpdate();
-        trackLookAt(player);
-        lookAt();
-
-        return eTasksStatus::STATUS_OK;
-    });
+//    result.emplace_back([this]() {
+//        world = dynamic_cast<cocos2d::Layer*>(findNode("world"));
+//        objects = dynamic_cast<cocos2d::Layer*>(findNode("objects"));
+//
+//        return eTasksStatus::STATUS_OK;
+//    });
+//
+//    result.emplace_back([this]() {
+//        maze = new battleField();
+//        maze->setWorldLayer(world);
+//        maze->setObjectsLayer(objects);
+//        maze->initLayer(40001);// todo remove after testing
+//
+//        return eTasksStatus::STATUS_OK;
+//    });
+//
+//    result.emplace_back([this]() {
+//        plrController = new playerController();
+        todo change it after testings
+//        player = playerBase::initWithId(20001);
+//        if (maze)
+//            player->setPosition(maze->getPlayerSpawnPosition());
+//        objects->addChild(player);
+//        enemy = playerBase::initWithId(21001);
+//        if (maze)
+//            enemy->setPosition(maze->getEnemySpawnPosition());
+//        objects->addChild(enemy);
+//        /*
+//        plrController->disableControl();
+//        plrController->enableControl();
+//         */
+//        onMoveId = plrController->getJoystick()->getEmitter()->onMove.connect([this](float x, float y) {
+//            if (!plrController || !plrController->getJoystick() || !player) {
+//                LOG_INFO("battleScene::onMove: player controller is not loaded.");
+//                return;
+//            }
+//            auto dir = getPlayerStateByStick(x, y, plrController->getJoystick()->getStickDistance());
+//            player->movePlayer(dir);
+//        });
+//
+//        onStopId = plrController->getJoystick()->getEmitter()->onStop.connect([this]() {
+//            if (!plrController || !plrController->getJoystick() || !player) {
+//                LOG_INFO("battleScene::onMove: player controller is not loaded.");
+//                return;
+//            }
+//            player->stopPlayer();
+//        });
+//        scheduleUpdate();
+//        trackLookAt(player);
+//        lookAt();
+//
+//        return eTasksStatus::STATUS_OK;
+//    });
 
     return result;
 }
 
 void battleScene::update(float dt) {
     Node::update(dt);
-    lookAt();
+//    lookAt();
 }
 
 void battleScene::trackLookAt(cocos2d::Node* node) {

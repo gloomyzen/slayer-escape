@@ -13,10 +13,8 @@
 #include "databasesModule/charactersDatabase.h"
 #include "databasesModule/databaseManager.h"
 #include "databasesModule/mapsDatabase.h"
-#include "databasesModule/tilesDatabase.h"
 // all scenes
 #include "battleModule/battleScene.h"
-#include "battle3dModule/battle3dScene.h"
 // widgets
 #include "interfaceModule/customNodeTypes.h"
 
@@ -103,8 +101,6 @@ bool AppDelegate::applicationDidFinishLaunching() {
                                        "properties/database/characters/db.json",
                                        new charactersDatabase());
     GET_DATABASE_MANAGER().addDatabase(
-        databaseManager::eDatabaseList::TILES_DB, "properties/database/tiles/db.json", new tilesDatabase());
-    GET_DATABASE_MANAGER().addDatabase(
         databaseManager::eDatabaseList::MAPS_DB, "properties/database/maps/db.json", new mapsDatabase());
     GET_DATABASE_MANAGER().executeLoadData();
     // register external node types
@@ -114,13 +110,9 @@ bool AppDelegate::applicationDidFinishLaunching() {
         GET_GAME_MANAGER().getMainScene()->initWithPhysics();
         return new mb::battleModule::battleScene();
     });
-    GET_SCENES_FACTORY().registerState("battle3dScene", []() {
-           GET_GAME_MANAGER().getMainScene()->initWithPhysics();
-           return new mb::battle3dModule::battle3dScene();
-    });
 
     // run first scene
-    GET_GAME_MANAGER().run("battle3dScene");
+    GET_GAME_MANAGER().run("battleScene");
 
     return true;
 }
