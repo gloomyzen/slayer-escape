@@ -19,8 +19,26 @@ void battleField::initLayer(int id) {
     auto mapsDb = GET_DATABASE_MANAGER().getDatabase<mapsDatabase>(databaseManager::eDatabaseList::MAPS_DB);
     auto map = mapsDb->getMapById(id);
     if (map == nullptr) {
-        LOG_ERROR(STRING_FORMAT("battleField::initLayer: Can't find map bu id - %d", id));
+        LOG_ERROR(STRING_FORMAT("battleField::initLayer: Can't find map by id - %d", id));
         return;
+    }
+    auto tiled = cocos2d::FastTMXTiledMap::create(map->mapPath);
+    world->addChild(tiled);
+    auto walls = tiled->getObjectGroup(map->wallsObject);
+
+    for (auto item : walls->getObjects()) {
+        auto type = item.getType();
+        if (type == cocos2d::Value::Type::MAP) {
+            auto values = item.asValueMap();
+            for (auto test : values) {
+                auto temp = test.second.getType();
+                auto name = test.first;
+                auto testset = "";
+            }
+            auto tesm = "";
+        }
+        auto tesmp = ";";
+
     }
 //    world->setContentSize(mapSize);
 //    objects->setContentSize(mapSize);

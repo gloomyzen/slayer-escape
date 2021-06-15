@@ -52,18 +52,33 @@ sMapData* mapsDatabase::getMapById(int id) {
 bool sMapData::load(const rapidjson::GenericValue<rapidjson::UTF8<char>>::ConstObject& object) {
     if (object.HasMember("mapPath") && object["mapPath"].IsString()) {
         mapPath = object["mapPath"].GetString();
+    } else {
+        LOG_ERROR("sMapData::load: missing property 'mapPath'!");
+        return false;
     }
     if (object.HasMember("wallsObject") && object["wallsObject"].IsString()) {
         wallsObject = object["wallsObject"].GetString();
+    } else {
+        LOG_ERROR("sMapData::load: missing property 'wallsObject'!");
+        return false;
     }
     if (object.HasMember("groundGroup") && object["groundGroup"].IsString()) {
         groundGroup = object["groundGroup"].GetString();
+    } else {
+        LOG_ERROR("sMapData::load: missing property 'groundGroup'!");
+        return false;
     }
     if (object.HasMember("spawnPlayerProperty") && object["spawnPlayerProperty"].IsString()) {
         spawnPlayerProperty = object["spawnPlayerProperty"].GetString();
+    } else {
+        LOG_ERROR("sMapData::load: missing property 'spawnPlayerProperty'!");
+        return false;
     }
     if (object.HasMember("spawnEnemyProperty") && object["spawnEnemyProperty"].IsString()) {
         spawnEnemyProperty = object["spawnEnemyProperty"].GetString();
+    } else {
+        LOG_ERROR("sMapData::load: missing property 'spawnEnemyProperty'!");
+        return false;
     }
     return true;
 }

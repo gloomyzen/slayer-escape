@@ -36,49 +36,21 @@ std::deque<nodeTasks> battleScene::getTasks() {
     std::deque<nodeTasks> result;
 
     result.emplace_back([this]() {
-           world = dynamic_cast<cocos2d::Layer*>(findNode("world"));
-           objects = dynamic_cast<cocos2d::Layer*>(findNode("objects"));
-           auto map = cocos2d::FastTMXTiledMap::create("images/battle/maps/location_1/firstMap.tmx");
-           world->addChild(map);
-           auto walls = map->getObjectGroup("walls");
+        world = dynamic_cast<cocos2d::Layer*>(findNode("world"));
+        objects = dynamic_cast<cocos2d::Layer*>(findNode("objects"));
 
-           for (auto item : walls->getObjects()) {
-               auto type = item.getType();
-               if (type == cocos2d::Value::Type::MAP) {
-                   auto values = item.asValueMap();
-                   for (auto test : values) {
-                       auto temp = test.second.getType();
-                       auto name = test.first;
-                       auto testset = "";
-                   }
-                   auto tesm = "";
-               }
-               auto tesmp = ";";
-
-           }
-
-           Size CC_UNUSED s = map->getContentSize();
-           CCLOG("ContentSize: %f, %f", s.width, s.height);
-
-           return eTasksStatus::STATUS_OK;
+        return eTasksStatus::STATUS_OK;
     });
 
-//    result.emplace_back([this]() {
-//        world = dynamic_cast<cocos2d::Layer*>(findNode("world"));
-//        objects = dynamic_cast<cocos2d::Layer*>(findNode("objects"));
-//
-//        return eTasksStatus::STATUS_OK;
-//    });
-//
-//    result.emplace_back([this]() {
-//        maze = new battleField();
-//        maze->setWorldLayer(world);
-//        maze->setObjectsLayer(objects);
-//        maze->initLayer(40001);// todo remove after testing
-//
-//        return eTasksStatus::STATUS_OK;
-//    });
-//
+    result.emplace_back([this]() {
+        maze = new battleField();
+        maze->setWorldLayer(world);
+        maze->setObjectsLayer(objects);
+        maze->initLayer(40001);// todo remove after testing
+
+        return eTasksStatus::STATUS_OK;
+    });
+
 //    result.emplace_back([this]() {
 //        plrController = new playerController();
 //        todo change it after testings
