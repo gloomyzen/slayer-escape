@@ -3,8 +3,7 @@
 
 #include "cocos2d.h"
 #include "common/databaseModule/databaseInterface.h"
-#include "rapidjson/document.h"
-#include "rapidjson/ostreamwrapper.h"
+#include "common/utilityModule/jsonHelper.h"
 #include <map>
 #include <string>
 #include <vector>

@@ -2,8 +2,7 @@
 #define MERCENARY_BATTLES_HEROESPROFILEBLOCK_H
 
 #include "common/profileModule/profileBlockInterface.h"
-#include "rapidjson/document.h"
-#include "rapidjson/ostreamwrapper.h"
+#include "common/utilityModule/jsonHelper.h"
 #include <map>
 #include <string>
 #include <utility>
