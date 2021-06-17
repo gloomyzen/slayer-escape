@@ -27,16 +27,6 @@
     <object id="1" x="0.127592" y="0.127592" width="63.9234" height="63.7959"/>
    </objectgroup>
   </tile>
-  <tile id="58">
-   <properties>
-    <property name="spawnPlayer" type="bool" value="true"/>
-   </properties>
-  </tile>
-  <tile id="59">
-   <properties>
-    <property name="spawnEnemy" type="bool" value="true"/>
-   </properties>
-  </tile>
  </tileset>
  <group id="6" name="ground">
   <layer id="2" name="bg" width="64" height="48">
