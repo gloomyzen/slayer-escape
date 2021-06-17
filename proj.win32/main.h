@@ -34,4 +34,8 @@
 // C RunTime Header Files
 #include "platform/CCStdC.h"
 
+#ifdef GetObject
+#undef GetObject
+#endif
+
 #endif    // __MAIN_H__

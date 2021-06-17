@@ -23,9 +23,6 @@
  ****************************************************************************/
 
 #include "main.h"
-#ifdef GetObject
-#undef GetObject
-#endif
 #include "AppDelegate.h"
 #include "cocos2d.h"
 
