@@ -5,6 +5,7 @@
 #include "ImGuiEXT/imgui/imgui.h"
 #include "ImGuiEXT/imgui/imgui_internal.h"
 #include "common/audioModule/audioEngine.h"
+#include "common/utilityModule/stringUtility.h"
 
 using namespace mb::debugProfile;
 
@@ -44,17 +45,20 @@ void soundLibraryDebug::soundWindow(bool* windowOpened) {
     ImGui::PushID("sounds");
 
     auto effects = GET_AUDIO_ENGINE().getAllSounds();
-    const char* items[effects.size()];
     static int currentEffect = 0;
     int countEffects = 0;
-    std::for_each(effects.begin(), effects.end(), [&items, &countEffects](const auto& effect){
-           items[countEffects] = effect.first.c_str();
-           countEffects++;
+    std::vector<std::string> list;
+    std::string text;
+    std::for_each(effects.begin(), effects.end(), [&text, &list, &countEffects](const auto& effect) {
+        text += STRING_FORMAT("%s\0", effect.first.c_str());
+        list.push_back(effect.first);
+        countEffects++;
     });
+    const char* items = text.c_str();
 
-    ImGui::Combo("Effects", &currentEffect, items, IM_ARRAYSIZE(items));
+    ImGui::Combo("Effects", &currentEffect, items);
     if (ImGui::Button("Play effect") && currentEffect >= 0 && currentEffect < static_cast<int>(effects.size())) {
-        GET_AUDIO_ENGINE().play(items[currentEffect]);
+        GET_AUDIO_ENGINE().play(list[currentEffect]);
     }
 
 

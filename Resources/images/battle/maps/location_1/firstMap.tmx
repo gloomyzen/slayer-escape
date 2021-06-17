@@ -2,6 +2,47 @@
 <map version="1.5" tiledversion="1.7.0" orientation="orthogonal" renderorder="right-down" width="64" height="48" tilewidth="64" tileheight="64" infinite="0" nextlayerid="7" nextobjectid="10">
  <tileset firstgid="1" name="firstMapTileMap" tilewidth="64" tileheight="64" tilecount="143" columns="13">
   <image source="firstMapTileMap.png" trans="ff00ff" width="832" height="704"/>
+  <tile id="3">
+   <objectgroup draworder="index" id="3">
+    <object id="2" x="44" y="44" width="20" height="20"/>
+   </objectgroup>
+  </tile>
+  <tile id="4">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="0.0410783" y="43.9495" width="64" height="20"/>
+   </objectgroup>
+  </tile>
+  <tile id="5">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="0.0410783" y="43.9495" width="64" height="20"/>
+   </objectgroup>
+  </tile>
+  <tile id="6">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="0.0410783" y="43.9495" width="64" height="20"/>
+   </objectgroup>
+  </tile>
+  <tile id="7">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="0.0410783" y="43.9495" width="64" height="20"/>
+   </objectgroup>
+  </tile>
+  <tile id="8">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="0.0410783" y="43.9495" width="64" height="20"/>
+   </objectgroup>
+  </tile>
+  <tile id="15">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="0.0410783" y="43.9495" width="64" height="20"/>
+   </objectgroup>
+  </tile>
+  <tile id="16">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="0.0410783" y="43.9495" width="64" height="20"/>
+    <object id="2" x="40" y="0" width="24" height="44"/>
+   </objectgroup>
+  </tile>
   <tile id="17">
    <objectgroup draworder="index" id="2">
     <object id="6" x="0.255183" y="0.382775" width="63.5407" height="63.4131"/>
@@ -27,6 +68,64 @@
     <object id="1" x="0.127592" y="0.127592" width="63.9234" height="63.7959"/>
    </objectgroup>
   </tile>
+  <tile id="22">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="0.0410783" y="43.9495" width="64" height="20"/>
+    <object id="2" x="0.0496363" y="0.0453573" width="24" height="44"/>
+   </objectgroup>
+  </tile>
+  <tile id="23">
+   <objectgroup draworder="index" id="2">
+    <object id="2" x="0" y="44" width="64" height="20"/>
+   </objectgroup>
+  </tile>
+  <tile id="36">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="0" y="0" width="64" height="64"/>
+   </objectgroup>
+  </tile>
+  <tile id="37">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="0.00813008" y="0.0410783" width="26" height="64"/>
+   </objectgroup>
+  </tile>
+  <tile id="50">
+   <objectgroup draworder="index" id="2">
+    <object id="3" x="0" y="0" width="26" height="64"/>
+   </objectgroup>
+  </tile>
+  <tile id="81">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="0.0410783" y="43.9495" width="64" height="20"/>
+   </objectgroup>
+  </tile>
+  <tile id="82">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="0.0410783" y="43.9495" width="64" height="20"/>
+    <object id="2" x="39.8956" y="0.0453573" width="24" height="44"/>
+   </objectgroup>
+  </tile>
+  <tile id="86">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="0.0410783" y="43.9495" width="64" height="20"/>
+    <object id="2" x="0" y="0" width="24" height="44"/>
+   </objectgroup>
+  </tile>
+  <tile id="87">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="0.0410783" y="43.9495" width="64" height="20"/>
+   </objectgroup>
+  </tile>
+  <tile id="101">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="0.00813008" y="0.0410783" width="26" height="64"/>
+   </objectgroup>
+  </tile>
+  <tile id="114">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="0.00813008" y="0.0410783" width="26" height="64"/>
+   </objectgroup>
+  </tile>
  </tileset>
  <group id="6" name="ground">
   <layer id="2" name="bg" width="64" height="48">
@@ -37,11 +136,6 @@
   <layer id="4" name="tileLayer1" width="64" height="48">
    <data encoding="base64" compression="zlib">
    eJzt0bsJAkEYhdHNfMRqI1aiBSjGNrC+Ld1rAQuygwM658DHH0x0ma4DAAAAAAAAgP+zSdsRTdI0zQbuvOaIAse0H9EiLdNq4K5rjijw3n/4Qvb/Bvvtb3n/rmt7f+v/b7/9Le/v0ymd0yVd0y3d06Pg7VlxA8AnXn7+a7g=
-  </data>
-  </layer>
-  <layer id="3" name="spawnLayer" width="64" height="48">
-   <data encoding="base64" compression="zlib">
-   eJztzgEJAAAIwDB7af9clhAU3AKcRwAAAAAAAAAAwE+1PQDAuDzWAYBJDUyiALM=
   </data>
   </layer>
  </group>
