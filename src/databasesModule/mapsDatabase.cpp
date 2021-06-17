@@ -2,9 +2,6 @@
 #include "common/debugModule/logManager.h"
 #include "common/utilityModule/stringUtility.h"
 #include <map>
-#ifdef GetObject
-#undef GetObject
-#endif
 
 using namespace mb::databasesModule;
 
