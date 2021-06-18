@@ -67,7 +67,21 @@ cocos2d::Vec2 battleField::getEnemySpawnPosition() {
 }
 
 void battleField::insertWalls(databasesModule::sMapData* map) {
-    auto walls = tiledMap->getObjectGroup(map->wallsObject);
+    auto layer = tiledMap->getLayer("bg");
+    if (layer) {
+        const auto& size = layer->getLayerSize();
+        for (auto x = 0; x < static_cast<int>(size.width); ++x) {
+            for (auto y = 0; y < static_cast<int>(size.height); ++y) {
+//                layer.get
+                auto tile = layer->getTileAt({static_cast<float>(x), static_cast<float>(y)});
+                if (tile) {
+//                    tile.getPr
+                }
+            }
+        }
+    }
+    return;
+    auto walls = tiledMap->getObjectGroup(map->wallProperty);
     if (walls) {
         for (const auto& item : walls->getObjects()) {
             auto type = item.getType();

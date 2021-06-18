@@ -56,16 +56,10 @@ bool sMapData::load(const rapidjson::GenericValue<rapidjson::UTF8<char>>::ConstO
         LOG_ERROR("sMapData::load: missing property 'mapPath'!");
         return false;
     }
-    if (object.HasMember("wallsObject") && object["wallsObject"].IsString()) {
-        wallsObject = object["wallsObject"].GetString();
+    if (object.HasMember("wallProperty") && object["wallProperty"].IsString()) {
+        wallProperty = object["wallProperty"].GetString();
     } else {
-        LOG_ERROR("sMapData::load: missing property 'wallsObject'!");
-        return false;
-    }
-    if (object.HasMember("groundGroup") && object["groundGroup"].IsString()) {
-        groundGroup = object["groundGroup"].GetString();
-    } else {
-        LOG_ERROR("sMapData::load: missing property 'groundGroup'!");
+        LOG_ERROR("sMapData::load: missing property 'wallProperty'!");
         return false;
     }
     if (object.HasMember("spawnPlayerProperty") && object["spawnPlayerProperty"].IsString()) {

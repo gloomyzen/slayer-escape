@@ -2,8 +2,7 @@
   "maps": {
     "40001": {
       "mapPath": "images/battle/maps/location_1/firstMap.tmx",
-      "wallsObject": "walls",
-      "groundGroup": "ground",
+      "wallProperty": "wall",
       "spawnPlayerProperty": "spawnPlayer",
       "spawnEnemyProperty": "spawnEnemy"
     }
