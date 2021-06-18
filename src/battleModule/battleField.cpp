@@ -11,7 +11,12 @@ using namespace mb::battleModule;
 
 battleField::battleField() {}
 
-battleField::~battleField() {}
+battleField::~battleField() {
+    spawnPlayerPositions.clear();
+    spawnEnemyPositions.clear();
+    delete tiledMap;
+    tiledMap = nullptr;
+}
 
 void battleField::initLayer(int id) {
     using namespace databasesModule;
@@ -63,46 +68,48 @@ cocos2d::Vec2 battleField::getEnemySpawnPosition() {
 
 void battleField::insertWalls(databasesModule::sMapData* map) {
     auto walls = tiledMap->getObjectGroup(map->wallsObject);
-    for (const auto& item : walls->getObjects()) {
-        auto type = item.getType();
-        cocos2d::Size objectSize;
-        cocos2d::Vec2 objectPos;
-        std::string objectId;
-        std::string objectName;
-        if (type == cocos2d::Value::Type::MAP) {
-            auto values = item.asValueMap();
-            for (const auto& value : values) {
-                if (value.first == "height" && value.second.getType() == cocos2d::Value::Type::FLOAT) {
-                    objectSize.height = value.second.asFloat();
-                } else if (value.first == "width" && value.second.getType() == cocos2d::Value::Type::FLOAT) {
-                    objectSize.width = value.second.asFloat();
-                } else if (value.first == "x" && value.second.getType() == cocos2d::Value::Type::FLOAT) {
-                    objectPos.x = value.second.asFloat();
-                } else if (value.first == "y" && value.second.getType() == cocos2d::Value::Type::FLOAT) {
-                    objectPos.y = value.second.asFloat();
-                } else if (value.first == "id" && value.second.getType() == cocos2d::Value::Type::STRING) {
-                    objectId = value.second.asString();
-                } else if (value.first == "name" && value.second.getType() == cocos2d::Value::Type::STRING) {
-                    objectName = value.second.asString();
+    if (walls) {
+        for (const auto& item : walls->getObjects()) {
+            auto type = item.getType();
+            cocos2d::Size objectSize;
+            cocos2d::Vec2 objectPos;
+            std::string objectId;
+            std::string objectName;
+            if (type == cocos2d::Value::Type::MAP) {
+                auto values = item.asValueMap();
+                for (const auto& value : values) {
+                    if (value.first == "height" && value.second.getType() == cocos2d::Value::Type::FLOAT) {
+                        objectSize.height = value.second.asFloat();
+                    } else if (value.first == "width" && value.second.getType() == cocos2d::Value::Type::FLOAT) {
+                        objectSize.width = value.second.asFloat();
+                    } else if (value.first == "x" && value.second.getType() == cocos2d::Value::Type::FLOAT) {
+                        objectPos.x = value.second.asFloat();
+                    } else if (value.first == "y" && value.second.getType() == cocos2d::Value::Type::FLOAT) {
+                        objectPos.y = value.second.asFloat();
+                    } else if (value.first == "id" && value.second.getType() == cocos2d::Value::Type::STRING) {
+                        objectId = value.second.asString();
+                    } else if (value.first == "name" && value.second.getType() == cocos2d::Value::Type::STRING) {
+                        objectName = value.second.asString();
+                    }
                 }
+                auto block = new cocos2d::Node();
+                block->setName(
+                    STRING_FORMAT("%s_%s", objectName.empty() ? "block" : objectName.c_str(), objectId.c_str()));
+                block->setPosition(objectPos);
+                block->setContentSize(objectSize);
+
+                auto physics = cocos2d::PhysicsBody::createBox(objectSize, cocos2d::PhysicsMaterial(0.0f, 0.0f, 0.0f));
+                physics->setCategoryBitmask(0x03);
+                physics->setCollisionBitmask(0x03);
+                physics->setGravityEnable(false);
+                physics->setDynamic(false);
+                physics->setRotationEnable(false);
+                physics->setMass(100.f);
+                physics->setMoment(0.f);
+                block->addComponent(physics);
+
+                objects->addChild(block);
             }
-            auto block = new cocos2d::Node();
-            block->setName(STRING_FORMAT("%s_%s", objectName.empty() ? "block" : objectName.c_str(), objectId.c_str()));
-            block->setPosition(objectPos);
-            block->setContentSize(objectSize);
-
-            auto physics = cocos2d::PhysicsBody::createBox(objectSize, cocos2d::PhysicsMaterial(0.0f, 0.0f, 0.0f));
-            physics->setCategoryBitmask(0x03);
-            physics->setCollisionBitmask(0x03);
-            physics->setGravityEnable(false);
-            physics->setDynamic(false);
-            physics->setRotationEnable(false);
-            physics->setMass(100.f);
-            physics->setMoment(0.f);
-            block->addComponent(physics);
-
-            objects->addChild(block);
         }
-
     }
 }
