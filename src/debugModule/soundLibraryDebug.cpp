@@ -50,7 +50,7 @@ void soundLibraryDebug::soundWindow(bool* windowOpened) {
     std::vector<std::string> list;
     std::string text;
     std::for_each(effects.begin(), effects.end(), [&text, &list, &countEffects](const auto& effect) {
-        text += STRING_FORMAT("%s\0", effect.first.c_str());
+        text += text.empty() ? effect.first.c_str() : STRING_FORMAT("\0%s", effect.first.c_str());
         list.push_back(effect.first);
         countEffects++;
     });
