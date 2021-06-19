@@ -41,7 +41,7 @@ namespace mb::battleModule {
         std::vector<cocos2d::Vec2> spawnPlayerPositions;
         std::vector<cocos2d::Vec2> spawnEnemyPositions;
         cocos2d::FastTMXTiledMap* tiledMap = nullptr; //owner
-        std::map<int, sBattleFieldPiece*> tileObjMap;
+        std::map<int, sBattleFieldPiece> tileObjMap;
     };
 }// namespace mb::battleModule
 

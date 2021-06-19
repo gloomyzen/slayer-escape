@@ -16,9 +16,6 @@ battleField::~battleField() {
     spawnEnemyPositions.clear();
     delete tiledMap;
     tiledMap = nullptr;
-    for (auto item : tileObjMap) {
-        delete item.second;
-    }
     tileObjMap.clear();
 }
 
@@ -139,9 +136,6 @@ void battleField::insertWalls(databasesModule::sMapData* map) {
     }
 }
 void battleField::collectObjectData() {
-    for (auto item : tileObjMap) {
-        delete item.second;
-    }
     tileObjMap.clear();
     if (!tiledMap) return;
     auto data = tiledMap->getObjectGroups();
@@ -159,7 +153,7 @@ void battleField::collectObjectData() {
                         piece.vec.x = value.second.asFloat();
                     } else if (value.first == "y" && value.second.getType() == cocos2d::Value::Type::FLOAT) {
                         piece.vec.y = value.second.asFloat();
-                    } else if (value.first == "id" && value.second.getType() == cocos2d::Value::Type::STRING) {
+                    } else if (value.first == "gid" && value.second.getType() == cocos2d::Value::Type::STRING) {
                         piece.gid = std::stoi(value.second.asString());
                     }
                 }
@@ -168,9 +162,9 @@ void battleField::collectObjectData() {
         if (piece.gid != -1) {
             auto prop = tiledMap->getPropertiesForGID(piece.gid);
             if (prop.getType() != cocos2d::Value::Type::NONE) {
-                auto test2 = "";
+                // todo get prop
             }
+            tileObjMap.insert({ piece.gid, piece });
         }
-        //todo get prop
     }
 }
