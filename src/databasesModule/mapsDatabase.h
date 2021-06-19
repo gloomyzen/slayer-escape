@@ -19,13 +19,6 @@ namespace mb::databasesModule {
         bool load(const rapidjson::GenericValue<rapidjson::UTF8<char>>::ConstObject&);
     };
 
-    struct sMapPiece {
-        int gid;
-        cocos2d::Size size;
-        cocos2d::Vec2 vec;
-        bool isWall = false;
-    };
-
     class mapsDatabase : public common::databaseModule::databaseInterface {
       public:
         mapsDatabase();

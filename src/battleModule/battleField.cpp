@@ -16,6 +16,10 @@ battleField::~battleField() {
     spawnEnemyPositions.clear();
     delete tiledMap;
     tiledMap = nullptr;
+    for (auto item : tileObjMap) {
+        delete item.second;
+    }
+    tileObjMap.clear();
 }
 
 void battleField::initLayer(int id) {
@@ -29,6 +33,7 @@ void battleField::initLayer(int id) {
     }
     tiledMap = cocos2d::FastTMXTiledMap::create(map->mapPath);
     world->addChild(tiledMap);
+    collectObjectData();
     //insert collisions walls
     insertWalls(map);
 
@@ -68,7 +73,6 @@ cocos2d::Vec2 battleField::getEnemySpawnPosition() {
 
 void battleField::insertWalls(databasesModule::sMapData* map) {
     auto layer = tiledMap->getLayer("bg");
-    auto temp = tiledMap->getObjectGroups();
     if (layer) {
         const auto& size = layer->getLayerSize();
         for (auto x = 0; x < static_cast<int>(size.width); ++x) {
@@ -132,5 +136,20 @@ void battleField::insertWalls(databasesModule::sMapData* map) {
                 objects->addChild(block);
             }
         }
+    }
+}
+void battleField::collectObjectData() {
+    for (auto item : tileObjMap) {
+        delete item.second;
+    }
+    tileObjMap.clear();
+    if (!tiledMap) return;
+    auto data = tiledMap->getObjectGroups();
+    for (const auto& item : data) {
+        sBattleFieldPiece piece;
+        for (const auto& obj : item->getObjects()) {
+            auto temp = "";
+        }
+        //todo get prop
     }
 }

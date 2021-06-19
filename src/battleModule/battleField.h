@@ -9,6 +9,14 @@ namespace mb::databasesModule {
     struct sMapData;
 }
 namespace mb::battleModule {
+
+    struct sBattleFieldPiece {
+        int gid;
+        cocos2d::Size size;
+        cocos2d::Vec2 vec;
+        bool isWall = false;
+    };
+
     class battleField {
     public:
         battleField();
@@ -26,12 +34,14 @@ namespace mb::battleModule {
         void initLayer(int);
 
     private:
+        void collectObjectData();
         void insertWalls(databasesModule::sMapData*);
         cocos2d::Layer* world = nullptr;// not owner
         cocos2d::Layer* objects = nullptr;// not owner
         std::vector<cocos2d::Vec2> spawnPlayerPositions;
         std::vector<cocos2d::Vec2> spawnEnemyPositions;
         cocos2d::FastTMXTiledMap* tiledMap = nullptr; //owner
+        std::map<int, sBattleFieldPiece*> tileObjMap;
     };
 }// namespace mb::battleModule
 
