@@ -148,7 +148,28 @@ void battleField::collectObjectData() {
     for (const auto& item : data) {
         sBattleFieldPiece piece;
         for (const auto& obj : item->getObjects()) {
-            auto temp = "";
+            if (obj.getType() == cocos2d::Value::Type::MAP) {
+                auto values = obj.asValueMap();
+                for (const auto& value : values) {
+                    if (value.first == "height" && value.second.getType() == cocos2d::Value::Type::FLOAT) {
+                        piece.size.height = value.second.asFloat();
+                    } else if (value.first == "width" && value.second.getType() == cocos2d::Value::Type::FLOAT) {
+                        piece.size.width = value.second.asFloat();
+                    } else if (value.first == "x" && value.second.getType() == cocos2d::Value::Type::FLOAT) {
+                        piece.vec.x = value.second.asFloat();
+                    } else if (value.first == "y" && value.second.getType() == cocos2d::Value::Type::FLOAT) {
+                        piece.vec.y = value.second.asFloat();
+                    } else if (value.first == "id" && value.second.getType() == cocos2d::Value::Type::STRING) {
+                        piece.gid = std::stoi(value.second.asString());
+                    }
+                }
+            }
+        }
+        if (piece.gid != -1) {
+            auto prop = tiledMap->getPropertiesForGID(piece.gid);
+            if (prop.getType() != cocos2d::Value::Type::NONE) {
+                auto test2 = "";
+            }
         }
         //todo get prop
     }

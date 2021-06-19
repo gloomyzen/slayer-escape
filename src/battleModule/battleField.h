@@ -11,7 +11,7 @@ namespace mb::databasesModule {
 namespace mb::battleModule {
 
     struct sBattleFieldPiece {
-        int gid;
+        int gid = -1;
         cocos2d::Size size;
         cocos2d::Vec2 vec;
         bool isWall = false;
