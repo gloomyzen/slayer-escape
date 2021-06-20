@@ -78,24 +78,13 @@ void battleField::insertWalls(databasesModule::sMapData* map) {
                 auto piece = getPieceById(gid);
                 if (piece.gid != battleFieldIncorrectValue) {
                     auto tile = layer->getTileAt({static_cast<float>(x), static_cast<float>(y)});
-                    auto block = new cocos2d::Node();
-                    block->setName(STRING_FORMAT("block_%d", gid));
-                    block->setPosition(tile->getPosition());
-                    block->setAnchorPoint(tile->getAnchorPoint());
                     for (const auto& item : piece.objects) {
-                        auto pos = cocos2d::Vec2::ZERO;
-                        pos.x = tile->getContentSize().width - item.size.width / 2;
-                        pos.y = tile->getContentSize().height - item.size.height / 2;
-                        //test
-                        auto testNode = new cocos2d::Node();
-                        testNode->setContentSize(item.size);
-                        testNode->setPosition(pos);
-                        testNode->setAnchorPoint(tile->getAnchorPoint());
-                        block->addChild(testNode);
-                        testNode->setDebug(true);
-                        //test
+                        auto block = new cocos2d::Node();
+                        block->setName(STRING_FORMAT("block_%d", gid));
+                        block->setContentSize(item.size);
+                        block->setPosition(tile->getPosition() + item.pos);
                         auto physics = cocos2d::PhysicsBody::createBox(item.size, cocos2d::PhysicsMaterial(0.0f, 0.0f, 0.0f));
-                        physics->setPositionOffset(pos);
+//                        physics->setPositionOffset(item.pos);
                         physics->setCategoryBitmask(0x03);
                         physics->setCollisionBitmask(0x03);
                         physics->setGravityEnable(false);
@@ -104,8 +93,8 @@ void battleField::insertWalls(databasesModule::sMapData* map) {
                         physics->setMass(100.f);
                         physics->setMoment(0.f);
                         block->addComponent(physics);
+                        objects->addChild(block);
                     }
-                    objects->addChild(block);
                 }
             }
         }
@@ -114,6 +103,7 @@ void battleField::insertWalls(databasesModule::sMapData* map) {
 void battleField::collectObjectData() {
     tileObjMap.clear();
     if (!tiledMap) return;
+    auto tileSize = tiledMap->getTileSize();
     auto data = tiledMap->getObjectGroups();
     for (const auto& item : data) {
         sBattleFieldPiece piece;
@@ -133,6 +123,7 @@ void battleField::collectObjectData() {
                     }
                 }
             }
+            object.pos = convertPosition(tileSize, object.size, object.pos);
             piece.objects.push_back(object);
         }
         piece.gid = item->getTileGid();
@@ -153,4 +144,9 @@ sBattleFieldPiece battleField::getPieceById(int id) {
         return tileObjMap[id];
     }
     return sBattleFieldPiece();
+}
+
+cocos2d::Vec2 battleField::convertPosition(const cocos2d::Size& tileSize, const cocos2d::Size& shapeSize, const cocos2d::Vec2& shapePos) {
+    auto y = tileSize.height - (shapePos.y + shapeSize.height);
+    return cocos2d::Vec2(shapePos.x, y);
 }

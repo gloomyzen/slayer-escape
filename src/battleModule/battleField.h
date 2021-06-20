@@ -42,6 +42,7 @@ namespace mb::battleModule {
     private:
         void collectObjectData();
         void insertWalls(databasesModule::sMapData*);
+        cocos2d::Vec2 convertPosition(const cocos2d::Size& tileSize, const cocos2d::Size& shapeSize, const cocos2d::Vec2& shapePos);
         sBattleFieldPiece getPieceById(int);
         cocos2d::Layer* world = nullptr;// not owner
         cocos2d::Layer* objects = nullptr;// not owner
