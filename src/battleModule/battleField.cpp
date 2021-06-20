@@ -153,12 +153,11 @@ void battleField::collectObjectData() {
                         piece.vec.x = value.second.asFloat();
                     } else if (value.first == "y" && value.second.getType() == cocos2d::Value::Type::FLOAT) {
                         piece.vec.y = value.second.asFloat();
-                    } else if (value.first == "gid" && value.second.getType() == cocos2d::Value::Type::STRING) {
-                        piece.gid = std::stoi(value.second.asString());
                     }
                 }
             }
         }
+        piece.gid = item->getTileGid();
         if (piece.gid != -1) {
             auto prop = tiledMap->getPropertiesForGID(piece.gid);
             if (prop.getType() != cocos2d::Value::Type::NONE) {
