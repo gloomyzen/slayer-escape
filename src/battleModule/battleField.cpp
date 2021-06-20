@@ -80,16 +80,21 @@ void battleField::insertWalls(databasesModule::sMapData* map) {
                     auto tile = layer->getTileAt({static_cast<float>(x), static_cast<float>(y)});
                     auto block = new cocos2d::Node();
                     block->setName(STRING_FORMAT("block_%d", gid));
-//                    auto pos = item.pos;
-//                    pos.y -= tile->getPosition().y;
                     block->setPosition(tile->getPosition());
-//                    block->setContentSize(tile->getContentSize());
-//                    block->setAnchorPoint(tile->getAnchorPoint());
+                    block->setAnchorPoint(tile->getAnchorPoint());
                     for (const auto& item : piece.objects) {
-                        auto physics = cocos2d::PhysicsBody::createBox(item.size, cocos2d::PhysicsMaterial(0.0f, 0.0f, 0.0f));
                         auto pos = cocos2d::Vec2::ZERO;
-                        pos.x -= item.size.height;
-                        pos.y -= item.size.width;
+                        pos.x = tile->getContentSize().width - item.size.width / 2;
+                        pos.y = tile->getContentSize().height - item.size.height / 2;
+                        //test
+                        auto testNode = new cocos2d::Node();
+                        testNode->setContentSize(item.size);
+                        testNode->setPosition(pos);
+                        testNode->setAnchorPoint(tile->getAnchorPoint());
+                        block->addChild(testNode);
+                        testNode->setDebug(true);
+                        //test
+                        auto physics = cocos2d::PhysicsBody::createBox(item.size, cocos2d::PhysicsMaterial(0.0f, 0.0f, 0.0f));
                         physics->setPositionOffset(pos);
                         physics->setCategoryBitmask(0x03);
                         physics->setCollisionBitmask(0x03);
