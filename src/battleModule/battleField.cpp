@@ -74,17 +74,29 @@ void battleField::insertWalls(databasesModule::sMapData* map) {
         const auto& size = layer->getLayerSize();
         for (auto x = 0; x < static_cast<int>(size.width); ++x) {
             for (auto y = 0; y < static_cast<int>(size.height); ++y) {
-                auto propGid = layer->getTileGIDAt({static_cast<float>(x), static_cast<float>(y)});
-                auto prop = tiledMap->getPropertiesForGID(propGid);
-                if (prop.getType() != cocos2d::Value::Type::NONE) {
-                    auto test2 = "";
+                auto gid = layer->getTileGIDAt({static_cast<float>(x), static_cast<float>(y)});
+                auto piece = getPieceById(gid);
+                if (piece.gid != battleFieldIncorrectValue) {
+                    auto tile = layer->getTileAt({static_cast<float>(x), static_cast<float>(y)});
+                    for (const auto& item : piece.objects) {
+                        auto block = new cocos2d::Node();
+                        block->setName(STRING_FORMAT("block_%d", gid));
+                        block->setPosition(item.pos - tile->getPosition());
+                        block->setContentSize(item.size);
+
+                        auto physics = cocos2d::PhysicsBody::createBox(item.size, cocos2d::PhysicsMaterial(0.0f, 0.0f, 0.0f));
+                        physics->setCategoryBitmask(0x03);
+                        physics->setCollisionBitmask(0x03);
+                        physics->setGravityEnable(false);
+                        physics->setDynamic(false);
+                        physics->setRotationEnable(false);
+                        physics->setMass(100.f);
+                        physics->setMoment(0.f);
+                        block->addComponent(physics);
+
+                        objects->addChild(block);
+                    }
                 }
-
-//                auto tile = layer->getTileAt({static_cast<float>(x), static_cast<float>(y)});
-
-//                if (tile) {
-//                    tile->
-//                }
             }
         }
     }
@@ -142,28 +154,39 @@ void battleField::collectObjectData() {
     for (const auto& item : data) {
         sBattleFieldPiece piece;
         for (const auto& obj : item->getObjects()) {
+            sBattleFieldObject object;
             if (obj.getType() == cocos2d::Value::Type::MAP) {
                 auto values = obj.asValueMap();
                 for (const auto& value : values) {
                     if (value.first == "height" && value.second.getType() == cocos2d::Value::Type::FLOAT) {
-                        piece.size.height = value.second.asFloat();
+                        object.size.height = value.second.asFloat();
                     } else if (value.first == "width" && value.second.getType() == cocos2d::Value::Type::FLOAT) {
-                        piece.size.width = value.second.asFloat();
+                        object.size.width = value.second.asFloat();
                     } else if (value.first == "x" && value.second.getType() == cocos2d::Value::Type::FLOAT) {
-                        piece.vec.x = value.second.asFloat();
+                        object.pos.x = value.second.asFloat();
                     } else if (value.first == "y" && value.second.getType() == cocos2d::Value::Type::FLOAT) {
-                        piece.vec.y = value.second.asFloat();
+                        object.pos.y = value.second.asFloat();
                     }
                 }
             }
+            piece.objects.push_back(object);
         }
         piece.gid = item->getTileGid();
-        if (piece.gid != -1) {
+        if (piece.gid != battleFieldIncorrectValue) {
             auto prop = tiledMap->getPropertiesForGID(piece.gid);
-            if (prop.getType() != cocos2d::Value::Type::NONE) {
-                // todo get prop
+            if (prop.getType() == cocos2d::Value::Type::MAP) {
+                auto val = prop.asValueMap();
+                if (val.find("wall") != val.end()) {
+                    piece.isWall = val["wall"].asBool();
+                }
             }
             tileObjMap.insert({ piece.gid, piece });
         }
     }
+}
+sBattleFieldPiece battleField::getPieceById(int id) {
+    if (tileObjMap.count(id)) {
+        return tileObjMap[id];
+    }
+    return sBattleFieldPiece();
 }
