@@ -78,13 +78,19 @@ void battleField::insertWalls(databasesModule::sMapData* map) {
                 auto piece = getPieceById(gid);
                 if (piece.gid != battleFieldIncorrectValue) {
                     auto tile = layer->getTileAt({static_cast<float>(x), static_cast<float>(y)});
+                    auto block = new cocos2d::Node();
+                    block->setName(STRING_FORMAT("block_%d", gid));
+//                    auto pos = item.pos;
+//                    pos.y -= tile->getPosition().y;
+                    block->setPosition(tile->getPosition());
+//                    block->setContentSize(tile->getContentSize());
+//                    block->setAnchorPoint(tile->getAnchorPoint());
                     for (const auto& item : piece.objects) {
-                        auto block = new cocos2d::Node();
-                        block->setName(STRING_FORMAT("block_%d", gid));
-                        block->setPosition(item.pos - tile->getPosition());
-                        block->setContentSize(item.size);
-
                         auto physics = cocos2d::PhysicsBody::createBox(item.size, cocos2d::PhysicsMaterial(0.0f, 0.0f, 0.0f));
+                        auto pos = cocos2d::Vec2::ZERO;
+                        pos.x -= item.size.height;
+                        pos.y -= item.size.width;
+                        physics->setPositionOffset(pos);
                         physics->setCategoryBitmask(0x03);
                         physics->setCollisionBitmask(0x03);
                         physics->setGravityEnable(false);
@@ -93,56 +99,9 @@ void battleField::insertWalls(databasesModule::sMapData* map) {
                         physics->setMass(100.f);
                         physics->setMoment(0.f);
                         block->addComponent(physics);
-
-                        objects->addChild(block);
                     }
+                    objects->addChild(block);
                 }
-            }
-        }
-    }
-    return;
-    auto walls = tiledMap->getObjectGroup(map->wallProperty);
-    if (walls) {
-        for (const auto& item : walls->getObjects()) {
-            auto type = item.getType();
-            cocos2d::Size objectSize;
-            cocos2d::Vec2 objectPos;
-            std::string objectId;
-            std::string objectName;
-            if (type == cocos2d::Value::Type::MAP) {
-                auto values = item.asValueMap();
-                for (const auto& value : values) {
-                    if (value.first == "height" && value.second.getType() == cocos2d::Value::Type::FLOAT) {
-                        objectSize.height = value.second.asFloat();
-                    } else if (value.first == "width" && value.second.getType() == cocos2d::Value::Type::FLOAT) {
-                        objectSize.width = value.second.asFloat();
-                    } else if (value.first == "x" && value.second.getType() == cocos2d::Value::Type::FLOAT) {
-                        objectPos.x = value.second.asFloat();
-                    } else if (value.first == "y" && value.second.getType() == cocos2d::Value::Type::FLOAT) {
-                        objectPos.y = value.second.asFloat();
-                    } else if (value.first == "id" && value.second.getType() == cocos2d::Value::Type::STRING) {
-                        objectId = value.second.asString();
-                    } else if (value.first == "name" && value.second.getType() == cocos2d::Value::Type::STRING) {
-                        objectName = value.second.asString();
-                    }
-                }
-                auto block = new cocos2d::Node();
-                block->setName(
-                    STRING_FORMAT("%s_%s", objectName.empty() ? "block" : objectName.c_str(), objectId.c_str()));
-                block->setPosition(objectPos);
-                block->setContentSize(objectSize);
-
-                auto physics = cocos2d::PhysicsBody::createBox(objectSize, cocos2d::PhysicsMaterial(0.0f, 0.0f, 0.0f));
-                physics->setCategoryBitmask(0x03);
-                physics->setCollisionBitmask(0x03);
-                physics->setGravityEnable(false);
-                physics->setDynamic(false);
-                physics->setRotationEnable(false);
-                physics->setMass(100.f);
-                physics->setMoment(0.f);
-                block->addComponent(physics);
-
-                objects->addChild(block);
             }
         }
     }
@@ -162,9 +121,9 @@ void battleField::collectObjectData() {
                         object.size.height = value.second.asFloat();
                     } else if (value.first == "width" && value.second.getType() == cocos2d::Value::Type::FLOAT) {
                         object.size.width = value.second.asFloat();
-                    } else if (value.first == "x" && value.second.getType() == cocos2d::Value::Type::FLOAT) {
+                    } else if (value.first == "offsetX" && value.second.getType() == cocos2d::Value::Type::FLOAT) {
                         object.pos.x = value.second.asFloat();
-                    } else if (value.first == "y" && value.second.getType() == cocos2d::Value::Type::FLOAT) {
+                    } else if (value.first == "offsetY" && value.second.getType() == cocos2d::Value::Type::FLOAT) {
                         object.pos.y = value.second.asFloat();
                     }
                 }
