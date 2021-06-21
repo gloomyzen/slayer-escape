@@ -237,6 +237,16 @@
     <object id="2" x="44" y="24" width="20" height="40"/>
    </objectgroup>
   </tile>
+  <tile id="58">
+   <properties>
+    <property name="playerSpawn" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="59">
+   <properties>
+    <property name="enemySpawn" type="bool" value="true"/>
+   </properties>
+  </tile>
   <tile id="61">
    <properties>
     <property name="wall" type="bool" value="true"/>
@@ -485,7 +495,7 @@
  </tileset>
  <layer id="2" name="bg" width="64" height="48">
   <data encoding="base64" compression="zlib">
-   eJzt0bsNwlAQRUELB3xioBEqgQJAxDTAH0rnhiRGlgHZ0ptgdIONjrauqqoGAAAAgIKMfqjvFv369evXr1+/fv369Tdbx6aDcUxi2rCzAbS1cYhdB/NYxLJhVwNoa9u//wP9/bfp16//s23h/aX/X7/+kvuPcYpzXOIat7jH44vbcwBtAO9egVSLUw==
+   eJzt1TsOgkAURuEJFCK1uBFK2QQsAGLNBniKS/dvSGwmEsA4OKf4cotJbnJyiwmNMSEAAAAAAADgkWBHv26hn3766aeffvrpp59++u1yKVY4SSRny4wdaFuilmqFiyRytczUgbal/fcvOFr/bafuec/R+n2/P/2fZX/YX3J/+unn//P0/o200kkvg4zykGnD29OBNgB49wLaKIqW
   </data>
  </layer>
 </map>

@@ -3,8 +3,8 @@
     "40001": {
       "mapPath": "images/battle/maps/location_1/firstMap.tmx",
       "wallProperty": "wall",
-      "spawnPlayerProperty": "spawnPlayer",
-      "spawnEnemyProperty": "spawnEnemy"
+      "spawnPlayerProperty": "playerSpawn",
+      "spawnEnemyProperty": "enemySpawn"
     }
   }
 }

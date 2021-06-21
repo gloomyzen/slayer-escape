@@ -30,7 +30,7 @@ void battleField::initLayer(int id) {
     }
     tiledMap = cocos2d::FastTMXTiledMap::create(map->mapPath);
     world->addChild(tiledMap);
-    collectObjectData();
+    collectObjectData(map);
     //insert collisions walls
     insertWalls(map);
 
@@ -43,10 +43,11 @@ cocos2d::Vec2 battleField::getPlayerSpawnPosition() {
         std::random_device rd;
         std::mt19937 g(rd());
 
-        std::shuffle(spawnPlayerPositions.begin(), spawnPlayerPositions.end(), g);
-        auto pos = spawnPlayerPositions.front();
-        spawnPlayerPositions.erase(spawnPlayerPositions.begin());
-        return pos;
+//        std::shuffle(spawnPlayerPositions.begin(), spawnPlayerPositions.end(), g);
+//        auto pos = spawnPlayerPositions.front();
+//        spawnPlayerPositions.erase(spawnPlayerPositions.begin());
+//        return pos;
+        return cocos2d::Vec2::ZERO;
     }
 
     LOG_ERROR(STRING_FORMAT("battleField::getPlayerSpawnPosition: Can't find next spawn positions"));
@@ -58,10 +59,11 @@ cocos2d::Vec2 battleField::getEnemySpawnPosition() {
         std::random_device rd;
         std::mt19937 g(rd());
 
-        std::shuffle(spawnEnemyPositions.begin(), spawnEnemyPositions.end(), g);
-        auto pos = spawnEnemyPositions.front();
-        spawnEnemyPositions.erase(spawnEnemyPositions.begin());
-        return pos;
+//        std::shuffle(spawnEnemyPositions.begin(), spawnEnemyPositions.end(), g);
+//        auto pos = spawnEnemyPositions.front();
+//        spawnEnemyPositions.erase(spawnEnemyPositions.begin());
+//        return pos;
+        return cocos2d::Vec2::ZERO;
     }
 
     LOG_ERROR(STRING_FORMAT("battleField::getEnemySpawnPosition: Can't find next spawn positions"));
@@ -84,7 +86,6 @@ void battleField::insertWalls(databasesModule::sMapData* map) {
                         block->setContentSize(item.size);
                         block->setPosition(tile->getPosition() + item.pos);
                         auto physics = cocos2d::PhysicsBody::createBox(item.size, cocos2d::PhysicsMaterial(0.0f, 0.0f, 0.0f));
-//                        physics->setPositionOffset(item.pos);
                         physics->setCategoryBitmask(0x03);
                         physics->setCollisionBitmask(0x03);
                         physics->setGravityEnable(false);
@@ -100,7 +101,7 @@ void battleField::insertWalls(databasesModule::sMapData* map) {
         }
     }
 }
-void battleField::collectObjectData() {
+void battleField::collectObjectData(databasesModule::sMapData* map) {
     tileObjMap.clear();
     if (!tiledMap) return;
     auto tileSize = tiledMap->getTileSize();
@@ -116,9 +117,9 @@ void battleField::collectObjectData() {
                         object.size.height = value.second.asFloat();
                     } else if (value.first == "width" && value.second.getType() == cocos2d::Value::Type::FLOAT) {
                         object.size.width = value.second.asFloat();
-                    } else if (value.first == "offsetX" && value.second.getType() == cocos2d::Value::Type::FLOAT) {
+                    } else if (value.first == "localX" && value.second.getType() == cocos2d::Value::Type::FLOAT) {
                         object.pos.x = value.second.asFloat();
-                    } else if (value.first == "offsetY" && value.second.getType() == cocos2d::Value::Type::FLOAT) {
+                    } else if (value.first == "localY" && value.second.getType() == cocos2d::Value::Type::FLOAT) {
                         object.pos.y = value.second.asFloat();
                     }
                 }
@@ -131,8 +132,8 @@ void battleField::collectObjectData() {
             auto prop = tiledMap->getPropertiesForGID(piece.gid);
             if (prop.getType() == cocos2d::Value::Type::MAP) {
                 auto val = prop.asValueMap();
-                if (val.find("wall") != val.end()) {
-                    piece.isWall = val["wall"].asBool();
+                if (val.find(map->wallProperty) != val.end()) {
+                    piece.isWall = val[map->wallProperty].asBool();
                 }
             }
             tileObjMap.insert({ piece.gid, piece });

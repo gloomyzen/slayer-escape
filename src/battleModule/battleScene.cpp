@@ -51,8 +51,8 @@ std::deque<nodeTasks> battleScene::getTasks() {
         return eTasksStatus::STATUS_OK;
     });
 
-//    result.emplace_back([this]() {
-//        plrController = new playerController();
+    result.emplace_back([this]() {
+        plrController = new playerController();
 //        todo change it after testings
 //        player = playerBase::initWithId(20001);
 //        if (maze)
@@ -86,8 +86,8 @@ std::deque<nodeTasks> battleScene::getTasks() {
 //        trackLookAt(player);
 //        lookAt();
 //
-//        return eTasksStatus::STATUS_OK;
-//    });
+        return eTasksStatus::STATUS_OK;
+    });
 
     return result;
 }

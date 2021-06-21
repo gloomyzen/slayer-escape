@@ -40,14 +40,14 @@ namespace mb::battleModule {
         void initLayer(int);
 
     private:
-        void collectObjectData();
+        void collectObjectData(databasesModule::sMapData*);
         void insertWalls(databasesModule::sMapData*);
         cocos2d::Vec2 convertPosition(const cocos2d::Size& tileSize, const cocos2d::Size& shapeSize, const cocos2d::Vec2& shapePos);
         sBattleFieldPiece getPieceById(int);
         cocos2d::Layer* world = nullptr;// not owner
         cocos2d::Layer* objects = nullptr;// not owner
-        std::vector<cocos2d::Vec2> spawnPlayerPositions;
-        std::vector<cocos2d::Vec2> spawnEnemyPositions;
+        std::map<int, cocos2d::Vec2> spawnPlayerPositions;
+        std::map<int, cocos2d::Vec2> spawnEnemyPositions;
         cocos2d::FastTMXTiledMap* tiledMap = nullptr; //owner
         std::map<int, sBattleFieldPiece> tileObjMap;
     };
