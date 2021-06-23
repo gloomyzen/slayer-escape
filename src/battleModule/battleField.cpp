@@ -101,6 +101,7 @@ void battleField::insertWalls(databasesModule::sMapData* map) {
         }
     }
 }
+
 void battleField::collectObjectData(databasesModule::sMapData* map) {
     tileObjMap.clear();
     if (!tiledMap) return;
@@ -140,6 +141,7 @@ void battleField::collectObjectData(databasesModule::sMapData* map) {
         }
     }
 }
+
 sBattleFieldPiece battleField::getPieceById(int id) {
     if (tileObjMap.count(id)) {
         return tileObjMap[id];
