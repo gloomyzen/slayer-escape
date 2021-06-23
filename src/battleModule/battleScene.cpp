@@ -26,10 +26,10 @@ battleScene::battleScene() {
 }
 
 battleScene::~battleScene() {
-//    if (onMoveId && plrController && plrController->getJoystick())
-//        plrController->getJoystick()->getEmitter()->onMove.disconnect(onMoveId);
-//    if (onStopId && plrController && plrController->getJoystick())
-//        plrController->getJoystick()->getEmitter()->onStop.disconnect(onStopId);
+    if (onMoveId && plrController && plrController->getJoystick())
+        plrController->getJoystick()->getEmitter()->onMove.disconnect(onMoveId);
+    if (onStopId && plrController && plrController->getJoystick())
+        plrController->getJoystick()->getEmitter()->onStop.disconnect(onStopId);
 }
 
 std::deque<nodeTasks> battleScene::getTasks() {
@@ -54,37 +54,37 @@ std::deque<nodeTasks> battleScene::getTasks() {
     result.emplace_back([this]() {
         plrController = new playerController();
 //        todo change it after testings
-//        player = playerBase::initWithId(20001);
-//        if (maze)
-//            player->setPosition(maze->getPlayerSpawnPosition());
-//        objects->addChild(player);
-//        enemy = playerBase::initWithId(21001);
-//        if (maze)
-//            enemy->setPosition(maze->getEnemySpawnPosition());
-//        objects->addChild(enemy);
+        player = playerBase::initWithId(20001);
+        if (maze)
+            player->setPosition(maze->getPlayerSpawnPosition());
+        objects->addChild(player);
+        enemy = playerBase::initWithId(21001);
+        if (maze)
+            enemy->setPosition(maze->getEnemySpawnPosition());
+        objects->addChild(enemy);
 //        /*
 //        plrController->disableControl();
 //        plrController->enableControl();
 //         */
-//        onMoveId = plrController->getJoystick()->getEmitter()->onMove.connect([this](float x, float y) {
-//            if (!plrController || !plrController->getJoystick() || !player) {
-//                LOG_INFO("battleScene::onMove: player controller is not loaded.");
-//                return;
-//            }
-//            auto dir = getPlayerStateByStick(x, y, plrController->getJoystick()->getStickDistance());
-//            player->movePlayer(dir);
-//        });
-//
-//        onStopId = plrController->getJoystick()->getEmitter()->onStop.connect([this]() {
-//            if (!plrController || !plrController->getJoystick() || !player) {
-//                LOG_INFO("battleScene::onMove: player controller is not loaded.");
-//                return;
-//            }
-//            player->stopPlayer();
-//        });
-//        scheduleUpdate();
-//        trackLookAt(player);
-//        lookAt();
+        onMoveId = plrController->getJoystick()->getEmitter()->onMove.connect([this](float x, float y) {
+            if (!plrController || !plrController->getJoystick() || !player) {
+                LOG_INFO("battleScene::onMove: player controller is not loaded.");
+                return;
+            }
+            auto dir = getPlayerStateByStick(x, y, plrController->getJoystick()->getStickDistance());
+            player->movePlayer(dir);
+        });
+
+        onStopId = plrController->getJoystick()->getEmitter()->onStop.connect([this]() {
+            if (!plrController || !plrController->getJoystick() || !player) {
+                LOG_INFO("battleScene::onMove: player controller is not loaded.");
+                return;
+            }
+            player->stopPlayer();
+        });
+        scheduleUpdate();
+        trackLookAt(player);
+        lookAt();
 //
         return eTasksStatus::STATUS_OK;
     });
@@ -94,7 +94,7 @@ std::deque<nodeTasks> battleScene::getTasks() {
 
 void battleScene::update(float dt) {
     Node::update(dt);
-//    lookAt();
+    lookAt();
 }
 
 void battleScene::trackLookAt(cocos2d::Node* node) {

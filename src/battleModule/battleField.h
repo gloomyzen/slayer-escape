@@ -47,8 +47,8 @@ namespace mb::battleModule {
         sBattleFieldPiece getPieceById(int);
         cocos2d::Layer* world = nullptr;// not owner
         cocos2d::Layer* objects = nullptr;// not owner
-        std::map<int, cocos2d::Vec2> spawnPlayerPositions;
-        std::map<int, cocos2d::Vec2> spawnEnemyPositions;
+        std::vector<cocos2d::Vec2> spawnPlayerPositions;
+        std::vector<cocos2d::Vec2> spawnEnemyPositions;
         cocos2d::FastTMXTiledMap* tiledMap = nullptr; //owner
         std::map<int, sBattleFieldPiece> tileObjMap;
     };

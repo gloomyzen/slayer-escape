@@ -35,8 +35,8 @@ void battleField::initLayer(int id) {
     insertWalls(map);
     findProperties(map);
 
-//    world->setContentSize(mapSize);
-//    objects->setContentSize(mapSize);
+    world->setContentSize(tiledMap->getContentSize());
+    objects->setContentSize(tiledMap->getContentSize());
 }
 
 cocos2d::Vec2 battleField::getPlayerSpawnPosition() {
@@ -44,15 +44,14 @@ cocos2d::Vec2 battleField::getPlayerSpawnPosition() {
         std::random_device rd;
         std::mt19937 g(rd());
 
-//        std::shuffle(spawnPlayerPositions.begin(), spawnPlayerPositions.end(), g);
-//        auto pos = spawnPlayerPositions.front();
-//        spawnPlayerPositions.erase(spawnPlayerPositions.begin());
-//        return pos;
-        return cocos2d::Vec2::ZERO;
+        std::shuffle(spawnPlayerPositions.begin(), spawnPlayerPositions.end(), g);
+        auto pos = spawnPlayerPositions.front();
+        spawnPlayerPositions.erase(spawnPlayerPositions.begin());
+        return pos;
     }
 
     LOG_ERROR(STRING_FORMAT("battleField::getPlayerSpawnPosition: Can't find next spawn positions"));
-    return cocos2d::Vec2(155.f, 175.f);
+    return cocos2d::Vec2::ZERO;
 }
 
 cocos2d::Vec2 battleField::getEnemySpawnPosition() {
@@ -60,15 +59,14 @@ cocos2d::Vec2 battleField::getEnemySpawnPosition() {
         std::random_device rd;
         std::mt19937 g(rd());
 
-//        std::shuffle(spawnEnemyPositions.begin(), spawnEnemyPositions.end(), g);
-//        auto pos = spawnEnemyPositions.front();
-//        spawnEnemyPositions.erase(spawnEnemyPositions.begin());
-//        return pos;
-        return cocos2d::Vec2::ZERO;
+        std::shuffle(spawnEnemyPositions.begin(), spawnEnemyPositions.end(), g);
+        auto pos = spawnEnemyPositions.front();
+        spawnEnemyPositions.erase(spawnEnemyPositions.begin());
+        return pos;
     }
 
     LOG_ERROR(STRING_FORMAT("battleField::getEnemySpawnPosition: Can't find next spawn positions"));
-    return cocos2d::Vec2(155.f, 175.f);
+    return cocos2d::Vec2::ZERO;
 }
 
 void battleField::insertWalls(databasesModule::sMapData*) {
@@ -168,10 +166,10 @@ void battleField::findProperties(mb::databasesModule::sMapData* map) {
                     auto val = prop.asValueMap();
                     if (val.find(map->spawnPlayerProperty) != val.end() && val[map->spawnPlayerProperty].asBool()) {
                         if (auto pos = layer->getTileAt({ static_cast<float>(x), static_cast<float>(y) }))
-                            spawnPlayerPositions.insert({gid, pos->getPosition()});
+                            spawnPlayerPositions.push_back(pos->getPosition());
                     } else if (val.find(map->spawnEnemyProperty) != val.end() && val[map->spawnEnemyProperty].asBool()) {
                         if (auto pos = layer->getTileAt({ static_cast<float>(x), static_cast<float>(y) }))
-                            spawnEnemyPositions.insert({gid, pos->getPosition()});
+                            spawnEnemyPositions.push_back(pos->getPosition());
                     }
                 }
             }
