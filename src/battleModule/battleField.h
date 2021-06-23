@@ -40,6 +40,7 @@ namespace mb::battleModule {
         void initLayer(int);
 
     private:
+        void findProperties(databasesModule::sMapData*);
         void collectObjectData(databasesModule::sMapData*);
         void insertWalls(databasesModule::sMapData*);
         cocos2d::Vec2 convertPosition(const cocos2d::Size& tileSize, const cocos2d::Size& shapeSize, const cocos2d::Vec2& shapePos);

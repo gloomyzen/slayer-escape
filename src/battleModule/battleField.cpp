@@ -33,6 +33,7 @@ void battleField::initLayer(int id) {
     collectObjectData(map);
     //insert collisions walls
     insertWalls(map);
+    findProperties(map);
 
 //    world->setContentSize(mapSize);
 //    objects->setContentSize(mapSize);
@@ -70,7 +71,7 @@ cocos2d::Vec2 battleField::getEnemySpawnPosition() {
     return cocos2d::Vec2(155.f, 175.f);
 }
 
-void battleField::insertWalls(databasesModule::sMapData* map) {
+void battleField::insertWalls(databasesModule::sMapData*) {
     auto layer = tiledMap->getLayer("bg");
     if (layer) {
         const auto& size = layer->getLayerSize();
@@ -152,4 +153,28 @@ sBattleFieldPiece battleField::getPieceById(int id) {
 cocos2d::Vec2 battleField::convertPosition(const cocos2d::Size& tileSize, const cocos2d::Size& shapeSize, const cocos2d::Vec2& shapePos) {
     auto y = tileSize.height - (shapePos.y + shapeSize.height);
     return cocos2d::Vec2(shapePos.x, y);
+}
+
+void battleField::findProperties(mb::databasesModule::sMapData* map) {
+    //todo add multilevel layers
+    auto layer = tiledMap->getLayer("bg");
+    if (layer) {
+        const auto& size = layer->getLayerSize();
+        for (auto x = 0; x < static_cast<int>(size.width); ++x) {
+            for (auto y = 0; y < static_cast<int>(size.height); ++y) {
+                auto gid = layer->getTileGIDAt({ static_cast<float>(x), static_cast<float>(y) });
+                auto prop = tiledMap->getPropertiesForGID(gid);
+                if (prop.getType() == cocos2d::Value::Type::MAP) {
+                    auto val = prop.asValueMap();
+                    if (val.find(map->spawnPlayerProperty) != val.end() && val[map->spawnPlayerProperty].asBool()) {
+                        if (auto pos = layer->getTileAt({ static_cast<float>(x), static_cast<float>(y) }))
+                            spawnPlayerPositions.insert({gid, pos->getPosition()});
+                    } else if (val.find(map->spawnEnemyProperty) != val.end() && val[map->spawnEnemyProperty].asBool()) {
+                        if (auto pos = layer->getTileAt({ static_cast<float>(x), static_cast<float>(y) }))
+                            spawnEnemyPositions.insert({gid, pos->getPosition()});
+                    }
+                }
+            }
+        }
+    }
 }
