@@ -16,6 +16,7 @@ namespace mb::databasesModule {
         std::string wallProperty;
         std::string spawnPlayerProperty;
         std::string spawnEnemyProperty;
+        std::vector<std::string> groups;
         bool load(const rapidjson::GenericValue<rapidjson::UTF8<char>>::ConstObject&);
     };
 

@@ -4,13 +4,15 @@
       "mapPath": "images/battle/maps/location_1/firstMap.tmx",
       "wallProperty": "wall",
       "spawnPlayerProperty": "playerSpawn",
-      "spawnEnemyProperty": "enemySpawn"
+      "spawnEnemyProperty": "enemySpawn",
+      "groups": ["level0"]
     },
     "40002": {
       "mapPath": "images/battle/maps/location_1/firstMap.tmx",
       "wallProperty": "wall",
       "spawnPlayerProperty": "playerSpawn",
-      "spawnEnemyProperty": "enemySpawn"
+      "spawnEnemyProperty": "enemySpawn",
+      "groups": ["level0", "level1"]
     }
   }
 }

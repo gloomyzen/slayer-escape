@@ -74,5 +74,14 @@ bool sMapData::load(const rapidjson::GenericValue<rapidjson::UTF8<char>>::ConstO
         LOG_ERROR("sMapData::load: missing property 'spawnEnemyProperty'!");
         return false;
     }
+    if (object.HasMember("groups") && object["groups"].IsArray()) {
+        const auto& array = object["groups"].GetArray();
+        for (const auto& item : array) {
+            groups.emplace_back(item.GetString());
+        }
+    } else {
+        LOG_ERROR("sMapData::load: missing property 'groups'!");
+        return false;
+    }
     return true;
 }
