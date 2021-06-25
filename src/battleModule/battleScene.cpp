@@ -46,7 +46,7 @@ std::deque<nodeTasks> battleScene::getTasks() {
         maze = new battleField();
         maze->setWorldLayer(world);
         maze->setObjectsLayer(objects);
-        maze->initLayer(40001);// todo remove after testing
+        maze->initLayer(40002);// todo remove after testing
 
         return eTasksStatus::STATUS_OK;
     });
