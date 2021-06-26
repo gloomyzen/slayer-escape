@@ -10,6 +10,15 @@
    </object>
   </objectgroup>
  </tile>
+ <tile id="18">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="24" y="0" width="8" height="32">
+    <properties>
+     <property name="wall" type="bool" value="true"/>
+    </properties>
+   </object>
+  </objectgroup>
+ </tile>
  <tile id="20">
   <objectgroup draworder="index" id="2">
    <object id="1" x="0" y="0" width="8" height="32">
@@ -19,9 +28,27 @@
    </object>
   </objectgroup>
  </tile>
+ <tile id="21">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="24" y="0" width="8" height="32">
+    <properties>
+     <property name="wall" type="bool" value="true"/>
+    </properties>
+   </object>
+  </objectgroup>
+ </tile>
  <tile id="23">
   <objectgroup draworder="index" id="2">
    <object id="1" x="0" y="0" width="8" height="32">
+    <properties>
+     <property name="wall" type="bool" value="true"/>
+    </properties>
+   </object>
+  </objectgroup>
+ </tile>
+ <tile id="24">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="24" y="0" width="8" height="32">
     <properties>
      <property name="wall" type="bool" value="true"/>
     </properties>
@@ -55,9 +82,27 @@
    </object>
   </objectgroup>
  </tile>
+ <tile id="37">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="24" y="0" width="8" height="32">
+    <properties>
+     <property name="wall" type="bool" value="true"/>
+    </properties>
+   </object>
+  </objectgroup>
+ </tile>
  <tile id="39">
   <objectgroup draworder="index" id="2">
    <object id="1" x="0" y="0" width="8" height="32">
+    <properties>
+     <property name="wall" type="bool" value="true"/>
+    </properties>
+   </object>
+  </objectgroup>
+ </tile>
+ <tile id="40">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="24" y="0" width="8" height="32">
     <properties>
      <property name="wall" type="bool" value="true"/>
     </properties>
@@ -73,9 +118,27 @@
    </object>
   </objectgroup>
  </tile>
+ <tile id="50">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="24" y="0" width="8" height="32">
+    <properties>
+     <property name="wall" type="bool" value="true"/>
+    </properties>
+   </object>
+  </objectgroup>
+ </tile>
  <tile id="52">
   <objectgroup draworder="index" id="2">
    <object id="1" x="0" y="0" width="8" height="32">
+    <properties>
+     <property name="wall" type="bool" value="true"/>
+    </properties>
+   </object>
+  </objectgroup>
+ </tile>
+ <tile id="53">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="24" y="0" width="8" height="32">
     <properties>
      <property name="wall" type="bool" value="true"/>
     </properties>
@@ -91,9 +154,27 @@
    </object>
   </objectgroup>
  </tile>
+ <tile id="56">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="24" y="0" width="8" height="32">
+    <properties>
+     <property name="wall" type="bool" value="true"/>
+    </properties>
+   </object>
+  </objectgroup>
+ </tile>
  <tile id="81">
   <objectgroup draworder="index" id="2">
    <object id="1" x="0" y="0" width="8" height="32">
+    <properties>
+     <property name="wall" type="bool" value="true"/>
+    </properties>
+   </object>
+  </objectgroup>
+ </tile>
+ <tile id="82">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="24" y="0" width="8" height="32">
     <properties>
      <property name="wall" type="bool" value="true"/>
     </properties>
@@ -109,9 +190,27 @@
    </object>
   </objectgroup>
  </tile>
+ <tile id="85">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="24" y="0" width="8" height="32">
+    <properties>
+     <property name="wall" type="bool" value="true"/>
+    </properties>
+   </object>
+  </objectgroup>
+ </tile>
  <tile id="87">
   <objectgroup draworder="index" id="2">
    <object id="1" x="0" y="0" width="8" height="32">
+    <properties>
+     <property name="wall" type="bool" value="true"/>
+    </properties>
+   </object>
+  </objectgroup>
+ </tile>
+ <tile id="88">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="24" y="0" width="8" height="32">
     <properties>
      <property name="wall" type="bool" value="true"/>
     </properties>
@@ -127,9 +226,27 @@
    </object>
   </objectgroup>
  </tile>
+ <tile id="98">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="24" y="0" width="8" height="32">
+    <properties>
+     <property name="wall" type="bool" value="true"/>
+    </properties>
+   </object>
+  </objectgroup>
+ </tile>
  <tile id="100">
   <objectgroup draworder="index" id="2">
    <object id="1" x="0" y="0" width="8" height="32">
+    <properties>
+     <property name="wall" type="bool" value="true"/>
+    </properties>
+   </object>
+  </objectgroup>
+ </tile>
+ <tile id="101">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="24" y="0" width="8" height="32">
     <properties>
      <property name="wall" type="bool" value="true"/>
     </properties>
@@ -145,9 +262,27 @@
    </object>
   </objectgroup>
  </tile>
+ <tile id="104">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="24" y="0" width="8" height="32">
+    <properties>
+     <property name="wall" type="bool" value="true"/>
+    </properties>
+   </object>
+  </objectgroup>
+ </tile>
  <tile id="113">
   <objectgroup draworder="index" id="2">
    <object id="1" x="0" y="0" width="8" height="32">
+    <properties>
+     <property name="wall" type="bool" value="true"/>
+    </properties>
+   </object>
+  </objectgroup>
+ </tile>
+ <tile id="114">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="24" y="0" width="8" height="32">
     <properties>
      <property name="wall" type="bool" value="true"/>
     </properties>
@@ -163,9 +298,27 @@
    </object>
   </objectgroup>
  </tile>
+ <tile id="117">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="24" y="0" width="8" height="32">
+    <properties>
+     <property name="wall" type="bool" value="true"/>
+    </properties>
+   </object>
+  </objectgroup>
+ </tile>
  <tile id="119">
   <objectgroup draworder="index" id="2">
    <object id="1" x="0" y="0" width="8" height="32">
+    <properties>
+     <property name="wall" type="bool" value="true"/>
+    </properties>
+   </object>
+  </objectgroup>
+ </tile>
+ <tile id="120">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="24" y="0" width="8" height="32">
     <properties>
      <property name="wall" type="bool" value="true"/>
     </properties>

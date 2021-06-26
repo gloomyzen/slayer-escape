@@ -7,7 +7,7 @@
       "name": "world"
     },
     {
-      "type": "layer",
+      "type": "node3d",
       "name": "objects"
     },
     {

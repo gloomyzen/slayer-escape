@@ -28,10 +28,10 @@ namespace mb::battleModule {
         battleField();
         ~battleField();
 
-        void setWorldLayer(cocos2d::Layer* layer) {
+        void setWorldLayer(cocos2d::Node* layer) {
             world = layer;
         }
-        void setObjectsLayer(cocos2d::Layer* layer) {
+        void setObjectsLayer(cocos2d::Node* layer) {
             objects = layer;
         }
         cocos2d::Vec2 getPlayerSpawnPosition();
@@ -45,8 +45,8 @@ namespace mb::battleModule {
         void insertWalls(databasesModule::sMapData*);
         cocos2d::Vec2 convertPosition(const cocos2d::Size& tileSize, const cocos2d::Size& shapeSize, const cocos2d::Vec2& shapePos);
         sBattleFieldPiece getPieceById(int);
-        cocos2d::Layer* world = nullptr;// not owner
-        cocos2d::Layer* objects = nullptr;// not owner
+        cocos2d::Node* world = nullptr;// not owner
+        cocos2d::Node* objects = nullptr;// not owner
         std::vector<cocos2d::Vec2> spawnPlayerPositions;
         std::vector<cocos2d::Vec2> spawnEnemyPositions;
         cocos2d::FastTMXTiledMap* tiledMap = nullptr; //owner
